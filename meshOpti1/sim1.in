@@ -49,5 +49,5 @@ extract name="subvt" \
 log off
 quit
 
-# vt=-0.000863099 V
-# subvt=0.48771 V/decade
+#vt=-0.000863099 V
+#subvt=0.48771 V/decade
