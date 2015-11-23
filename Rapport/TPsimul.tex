@@ -31,8 +31,22 @@ Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place l
 
 
 Il faut ensuite dessiner le composant que nous voulons modéliser sur cette grille. Pour cela, il nous suffira de dessiner des régions en précisant les matériaux utilisés pour chacune d'entre elles.
+\vspace{0.3cm}
 
-%inclure file .in.
+\noindent\texttt{region number = 1 x.min=0.0 x.max = 0.3 y.min = 0.0 y.max = 0.002 material = Oxide\\
+region number = 2 x.min=0 x.max = 0.3 y.min = 0.002 y.max = 1.002 material = Silicon}
+\vspace{0.3cm}
+
+\noindent\texttt{electrode name = gate   number = 1 x.min = 0.1 x.max = 0.2 y.min = 0.00 y.max = 0\\
+electrode name = source number = 2 x.min = 0.0 x.max = 0.0 y.min = 0.002 y.max = 0.012\\
+electrode name = drain  number = 3 x.min = 0.3 x.max = 0.3 y.min = 0.002 y.max = 0.012}
+\vspace{0.3cm}
+
+\noindent\texttt{doping uniform conc = 1E15 p.type region = 2\\
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.0 x.right = 0.1 y.max = 0.012\\
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.2 x.right = 0.3 y.max = 0.012\\
+struct outf = mos.str}
+
 
 %\begin{tikzpicture}
 
@@ -47,5 +61,24 @@ Il faut ensuite dessiner le composant que nous voulons modéliser sur cette gril
 \end{figure}
 
 Nous avons ainsi une modélisation 2D du transistor, comme le montre la Figure \ref{transistortonyplot}.
+
+On précise ensuite au logiciel les différents contacts que nous allons utiliser, on obtient ainsi l'image en figure \ref{TransistorFull}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=300pt]{TransistorFull.png}
+    \caption{Image des régions, du dopage ainsi que des contacts générée par le logiciel}
+    \label{TransistorFull}
+\end{figure}
+
+Maintenant que notre transistor est modélisé, nous allons pouvoir réaliser des simulations en jouant avec les différentes tensions appliquées.
+
+\section{Tracés de caractéristiques}
+
+En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes.
+
+
+
+
 
 \end{document}
