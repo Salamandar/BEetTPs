@@ -32,11 +32,19 @@ method carriers = 2 newton
 output charge band.param ex.field ey.field jx.tot con.band val.band
 
 solve init
+save outfile = nmos1.str
+
 solve vgate = 0 vdrain = 0 vstep = 0.1 vfinal = 1 name = drain
+save outfile = nmos2.str
 
 log outfile = idvg_vds1.log
-
+save outfile = nmos3.str
 solve vgate = 0 vdrain = 1 vstep = 0.1 vfinal = 2 name = gate
+extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \
+        - abs(ave(v."drain"))/2.0)
+extract name="subvt" \
+        1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))
+
 log off
 quit
 
