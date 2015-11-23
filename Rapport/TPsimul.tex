@@ -82,7 +82,7 @@ Maintenant que notre transistor est modélisé, nous allons pouvoir réaliser de
 \section{Tracés de caractéristiques}
 
 En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes.
-%code tracé graphes
+
 
 \noindent\fbox{
 \begin{minipage}{\textwidth}
@@ -113,10 +113,24 @@ extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \ }
 \section{Optimisation du maillage}
 
 Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Ainsi, nous devons trouver un meilleur maillage afin d'optimiser le temps de calcul sans perdre de précision dans les zones importantes. 
+\vspace{0.3cm}
 
 On modifie alors le maillage comme suit :
+\vspace{0.3cm}
 
-%code maillage pas fin.
+\noindent\fbox{
+\begin{minipage}{\textwidth}
+\noindent\texttt{mesh space.mult = 1.0\\
+x.mesh loc = 0.0 spac = 0.005\\
+x.mesh loc = 0.1 spac = 0.001\\
+x.mesh loc = 0.2 spac = 0.001\\
+x.mesh loc = 0.3 spac = 0.005\\
+y.mesh loc = 0.000 spac = 0.0001\\
+y.mesh loc = 0.002 spac = 0.001\\
+y.mesh loc = 0.020 spac = 0.01\\
+y.mesh loc = 1.002 spac = 0.01}
+\end{minipage}}
+\vspace{0.3cm}
 
 Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cela est possible grâce à Tonyplot.
 
