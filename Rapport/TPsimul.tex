@@ -25,14 +25,19 @@ Lors de la conception de composant à semiconducteurs, il est important d'avoir 
 \section{Initialisation de la simulation}
 
 Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place la séquence de commandes à réaliser dans le logiciel \texttt{Atlas}. En premier lieu il faut créer un maillage 2D pour pouvoir y inclure des régions.
+\vspace{0.3cm}
 
-
-\noindent\texttt{go atlas\\mesh space.mult = 1.0\\x.mesh loc=0.0 spac=0.001\\x.mesh loc=0.1 spac=0.001\\x.mesh loc=0.2 spac=0.001\\x.mesh loc=0.3 spac=0.001\\y.mesh loc=0.000 spac=0.0001\\y.mesh loc=0.002 spac=0.0001\\y.mesh loc=1.002 spac=0.01\\}
-
+\fbox{
+\begin{minipage}{0.90\textwidth}
+\noindent\texttt{go atlas\\mesh space.mult = 1.0\\x.mesh loc=0.0 spac=0.001\\x.mesh loc=0.1 spac=0.001\\x.mesh loc=0.2 spac=0.001\\x.mesh loc=0.3 spac=0.001\\y.mesh loc=0.000 spac=0.0001\\y.mesh loc=0.002 spac=0.0001\\y.mesh loc=1.002 spac=0.01}
+\end{minipage}}
+\vspace{0.3cm}
 
 Il faut ensuite dessiner le composant que nous voulons modéliser sur cette grille. Pour cela, il nous suffira de dessiner des régions en précisant les matériaux utilisés pour chacune d'entre elles.
 \vspace{0.3cm}
 
+\fbox{
+\begin{minipage}{0.95\textwidth}
 \noindent\texttt{region number = 1 x.min=0.0 x.max = 0.3 y.min = 0.0 y.max = 0.002 material = Oxide\\
 region number = 2 x.min=0 x.max = 0.3 y.min = 0.002 y.max = 1.002 material = Silicon}
 \vspace{0.3cm}
@@ -46,7 +51,8 @@ electrode name = drain  number = 3 x.min = 0.3 x.max = 0.3 y.min = 0.002 y.max =
 doping uniform conc = 1E20 N.type region = 2 x.left = 0.0 x.right = 0.1 y.max = 0.012\\
 doping uniform conc = 1E20 N.type region = 2 x.left = 0.2 x.right = 0.3 y.max = 0.012\\
 struct outf = mos.str}
-
+\end{minipage}}
+\vspace{0.3cm}
 
 %\begin{tikzpicture}
 
@@ -62,7 +68,7 @@ struct outf = mos.str}
 
 Nous avons ainsi une modélisation 2D du transistor, comme le montre la Figure \ref{transistortonyplot}.
 
-On précise ensuite au logiciel les différents contacts que nous allons utiliser, on obtient ainsi l'image en figure \ref{TransistorFull}
+On précise ensuite au logiciel les différents contacts que nous allons utiliser, on obtient ainsi l'image en Figure \ref{TransistorFull}
 
 \begin{figure}
     \centering
@@ -76,6 +82,15 @@ Maintenant que notre transistor est modélisé, nous allons pouvoir réaliser de
 \section{Tracés de caractéristiques}
 
 En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes.
+
+
+
+\section{Optimisation du maillage}
+
+Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Ainsi, nous devons trouver un meilleur maillage afin d'optimiser le temps de calcul sans perdre de précision dans les zones importantes. 
+
+
+
 
 
 
