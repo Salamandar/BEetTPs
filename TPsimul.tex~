@@ -40,8 +40,5 @@ Il faut ensuite dessiner le composant que nous voulons modéliser sur cette gril
 
 %\end{tikzpicture}
 
-%include image tonyplot
-
-Nous avons ainsi une modélisation 2D du transistor, comme le montre la Figure \ref{transistortonyplot}.
 
 \end{document}
