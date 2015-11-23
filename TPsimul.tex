@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
+\usepackage{textcomp,rotating,epic,eepic,pdfpages}
+\usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
+\usepackage[babel=true,kerning=true]{microtype}
+
+\pdfsuppresswarningpagegroup=1
+\title{Rapport de Stage d'Application}
+
+
+\begin{document}
+\input{0.Couverture}
+
+\chapter{Introduction}
+Lors de la conception de composant à semiconducteurs, il est important d'avoir des outils de simulation pour avoir une idée des résultats et performances attendues. Il est également important de maîtriser ces outils de simulation pour réaliser ces simulations. Ce TP a pour but de nous initier à certains de ces outils en nous proposant de réaliser la simulation de composants MOS tel que ceux étudiés de manière théorique en cours. Ainsi, nous pourrons mettre des graphes  numériques sur les équations calculées théoriquement.
+
+\chapter{Simulation}
+
+\section{Initialisation de la simulation}
+
+Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place la séquence de commandes à réaliser dans le logiciel \texttt{Atlas}. En premier lieu il faut créer un maillage 2D pour pouvoir y inclure des régions.
+
+
+\noindent\texttt{go atlas\\mesh space.mult = 1.0\\x.mesh loc=0.0 spac=0.001\\x.mesh loc=0.1 spac=0.001\\x.mesh loc=0.2 spac=0.001\\x.mesh loc=0.3 spac=0.001\\y.mesh loc=0.000 spac=0.0001\\y.mesh loc=0.002 spac=0.0001\\y.mesh loc=1.002 spac=0.01\\}
+
+
+Il faut ensuite dessiner le composant que nous voulons modéliser sur cette grille. Pour cela, il nous suffira de dessiner des régions en précisant les matériaux utilisés pour chacune d'entre elles.
+
+%inclure file .in.
+
+%\begin{tikzpicture}
+
+%Dessiner ici le transistor qu'on modélise
+
+%\end{tikzpicture}
+
+
+\end{document}
