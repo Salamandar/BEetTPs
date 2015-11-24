@@ -1,112 +1,105 @@
+option explicit
+
+' Paramètres
+Dim EspacementLignes, LongueurLignes
+EspacementLignes    = 5
+LongueurLignes      = 100
+
+Dim LongueurS, LargeurS
+LongueurS   = 100
+LargeurS    = 10
+
+Dim LineWidth
+LineWidth = "2"
 
 
-WGMgr.DeleteAll 
+WGMgr.DeleteAll
+InputPlaneMgr.DeleteAll
 
-InputPlaneMgr.DeleteAll 
- 
-Dim SBendArc1 
-Set SBendArc1 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc1" ) 
-SBendArc1.SetAttr "AngleOffset", CDbl( 0.000000 ) 
-SBendArc1.SetPosition   60, 13.5,  160,  3.5 
-SBendArc1.SetAttr "WidthExpr", "6.0" 
-SBendArc1.SetAttr "RadiusUsed", False 
-SBendArc1.SetAttr "RadiusExpr", "252.5" 
-SBendArc1.SetAttr "RadiusType", 0 
-SBendArc1.SetAttr "NewPosBase", 0 
-SBendArc1.SetAttr "Depth", "0" 
-SBendArc1.SetAttr "StartThickness", "0.000000" 
-SBendArc1.SetAttr "EndThickness", "0.000000" 
-SBendArc1.SetProfileName "guidecanal1" 
-SBendArc1.SetDefaultThicknessTaperMode True 
 
-Dim Linear1 
-Set Linear1 = WGMgr.CreateObj ( "WGLinear", "Linear1" ) 
-Linear1.SetPosition  160,  3.5,  360,  3.5 
-Linear1.SetAttr "WidthExpr", "6.0" 
-Linear1.SetAttr "Depth", "0" 
-Linear1.SetAttr "StartThickness", "0.000000" 
-Linear1.SetAttr "EndThickness", "0.000000" 
-Linear1.SetProfileName "guidecanal1" 
+Dim SBendArc1
+Set SBendArc1 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc1" )
+SBendArc1.SetPosition 0, EspacementLignes/2 + LargeurS, LongueurS, EspacementLignes/2
+SBendArc1.SetAttr "WidthExpr", cstr(LineWidth)
+SBendArc1.SetProfileName "guidecanal1"
+SBendArc1.SetDefaultThicknessTaperMode True
+
+Dim Linear1
+Set Linear1 = WGMgr.CreateObj ( "WGLinear", "Linear1" )
+Linear1.SetPosition LongueurS, EspacementLignes/2, LongueurS + LongueurLignes, EspacementLignes/2
+Linear1.SetAttr "WidthExpr", cstr(LineWidth)
+Linear1.SetProfileName "guidecanal1"
 Linear1.SetDefaultThicknessTaperMode True
 
-Dim SBendArc2 
-Set SBendArc2 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc4" ) 
-SBendArc2.SetAttr "AngleOffset", CDbl( 359.061230 ) 
-SBendArc2.SetPosition  360, 3.5, 460, 13.5 
-SBendArc2.SetAttr "WidthExpr", "6.0" 
-SBendArc2.SetAttr "RadiusUsed", False 
-SBendArc2.SetAttr "RadiusExpr", "1320.481" 
-SBendArc2.SetAttr "RadiusType", 0 
-SBendArc2.SetAttr "NewPosBase", 0 
-SBendArc2.SetAttr "Depth", "0" 
-SBendArc2.SetAttr "StartThickness", "0.000000" 
-SBendArc2.SetAttr "EndThickness", "0.000000" 
-SBendArc2.SetProfileName "guidecanal1" 
-SBendArc2.SetDefaultThicknessTaperMode True 
+Dim SBendArc2
+Set SBendArc2 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc2" )
+SBendArc2.SetPosition LongueurS + LongueurLignes, EspacementLignes/2, 2*LongueurS + LongueurLignes, EspacementLignes/2 + LargeurS
+SBendArc2.SetAttr "WidthExpr", cstr(LineWidth)
+SBendArc2.SetProfileName "guidecanal1"
+SBendArc2.SetDefaultThicknessTaperMode True
 
 
 
 
 Dim SBendArc3
-Set SBendArc3 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc2" ) 
-SBendArc3.SetAttr "AngleOffset", CDbl( 0.000000 ) 
-SBendArc3.SetPosition   60, -13.5,  160, -3.5
-SBendArc3.SetAttr "WidthExpr", "6.0" 
-SBendArc3.SetAttr "RadiusUsed", False 
-SBendArc3.SetAttr "RadiusExpr", "252.5" 
-SBendArc3.SetAttr "RadiusType", 0 
-SBendArc3.SetAttr "NewPosBase", 0 
-SBendArc3.SetAttr "Depth", "0" 
-SBendArc3.SetAttr "StartThickness", "0.000000" 
-SBendArc3.SetAttr "EndThickness", "0.000000" 
-SBendArc3.SetProfileName "guidecanal1" 
-SBendArc3.SetDefaultThicknessTaperMode True 
- 
-Dim Linear2 
-Set Linear2 = WGMgr.CreateObj ( "WGLinear", "Linear2" ) 
-Linear2.SetPosition  160, -3.5,  360, -3.5
-Linear2.SetAttr "WidthExpr", "6.0" 
-Linear2.SetAttr "Depth", "0" 
-Linear2.SetAttr "StartThickness", "0.000000" 
-Linear2.SetAttr "EndThickness", "0.000000" 
-Linear2.SetProfileName "guidecanal1" 
-Linear2.SetDefaultThicknessTaperMode True 
- 
-Dim SBendArc4 
-Set SBendArc4 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc3" ) 
-SBendArc4.SetAttr "AngleOffset", CDbl( 180.000000 ) 
-SBendArc4.SetPosition  360, -3.5,  460,  -13.5 
-SBendArc4.SetAttr "WidthExpr", "6.0" 
-SBendArc4.SetAttr "RadiusUsed", False 
-SBendArc4.SetAttr "RadiusExpr", "252.5" 
-SBendArc4.SetAttr "RadiusType", 0 
-SBendArc4.SetAttr "NewPosBase", 0 
-SBendArc4.SetAttr "Depth", "0" 
-SBendArc4.SetAttr "StartThickness", "0.000000" 
-SBendArc4.SetAttr "EndThickness", "0.000000" 
-SBendArc4.SetProfileName "guidecanal1" 
-SBendArc4.SetDefaultThicknessTaperMode True 
- 
- 
- 
-Dim InputPlane1 
-Set InputPlane1 = InputPlaneMgr.CreateObj ( "Gaussian", "InputPlane1" ) 
-InputPlane1.SetZPosition   60 
-InputPlane1.SetReferenceIndexWaveguide2D "Unknown" 
-InputPlane1.SetReferenceIndexWaveguide3D "Unknown" 
-Set InputFieldGauss1 = InputPlane1.CreateInputField ( "2D" , "Gaussian" , "InputFieldGauss1" ) 
-InputFieldGauss1.SetWaveguideID  "Unknown" 
-InputFieldGauss1.SetAmplitude  "1.0" 
-InputFieldGauss1.SetPhase  "0.0" 
-InputFieldGauss1.SetTiltAngleType  "User" 
-InputFieldGauss1.SetTiltAngle  "0.0" 
-InputFieldGauss1.SetTiltIndexType  "User" 
-InputFieldGauss1.SetTiltIndex  "0.0" 
-InputFieldGauss1.SetCenterX  "13.5" 
-InputFieldGauss1.SetCenterY  "0.0" 
-InputFieldGauss1.SetWidthTypeX  "User" 
-InputFieldGauss1.SetWidthX  "1.0" 
-InputFieldGauss1.SetWidthTypeY  "User" 
-InputFieldGauss1.SetWidthY  "0.0" 
-InputPlane1.SetEnabled  TRUE 
- 
+Set SBendArc3 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc3" )
+SBendArc3.SetAttr "AngleOffset", CDbl( 0.000000 )
+SBendArc3.SetPosition 0, -EspacementLignes/2 - LargeurS, LongueurS, -EspacementLignes/2
+SBendArc3.SetAttr "WidthExpr", cstr(LineWidth)
+SBendArc3.SetProfileName "guidecanal1"
+SBendArc3.SetDefaultThicknessTaperMode True
+
+Dim Linear2
+Set Linear2 = WGMgr.CreateObj ( "WGLinear", "Linear2" )
+Linear2.SetPosition LongueurS, -EspacementLignes/2, LongueurS + LongueurLignes, -EspacementLignes/2
+Linear2.SetAttr "WidthExpr", cstr(LineWidth)
+Linear2.SetProfileName "guidecanal1"
+Linear2.SetDefaultThicknessTaperMode True
+
+Dim SBendArc4
+Set SBendArc4 = WGMgr.CreateObj ( "WGSBendArc", "SBendArc4" )
+SBendArc4.SetAttr "AngleOffset", CDbl( 0 )
+SBendArc4.SetPosition LongueurS + LongueurLignes, -EspacementLignes/2, 2*LongueurS + LongueurLignes, -EspacementLignes/2 - LargeurS
+SBendArc4.SetAttr "WidthExpr", cstr(LineWidth)
+SBendArc4.SetProfileName "guidecanal1"
+SBendArc4.SetDefaultThicknessTaperMode True
+
+
+
+Dim InputPlane1
+Set InputPlane1 = InputPlaneMgr.CreateObj ( "Gaussian", "InputPlane1" )
+InputPlane1.SetZPosition 0
+InputPlane1.SetReferenceIndexWaveguide2D "Unknown"
+InputPlane1.SetReferenceIndexWaveguide3D "Unknown"
+Dim InputFieldGauss1
+Set InputFieldGauss1 = InputPlane1.CreateInputField ( "2D" , "Gaussian" , "InputFieldGauss1" )
+InputFieldGauss1.SetWaveguideID "Unknown"
+InputFieldGauss1.SetAmplitude "1.0"
+InputFieldGauss1.SetPhase "0.0"
+InputFieldGauss1.SetTiltAngleType "User"
+InputFieldGauss1.SetTiltAngle "0.0"
+InputFieldGauss1.SetTiltIndexType "User"
+InputFieldGauss1.SetTiltIndex "0.0"
+InputFieldGauss1.SetCenterX "13.5"
+InputFieldGauss1.SetCenterY "0.0"
+InputFieldGauss1.SetWidthTypeX "User"
+InputFieldGauss1.SetWidthX "1.0"
+InputFieldGauss1.SetWidthTypeY "User"
+InputFieldGauss1.SetWidthY "0.0"
+InputPlane1.SetEnabled TRUE
+
+
+
+' Start Simulation
+Dim lambda1, lambda2
+lambda1 = 1.31
+lambda2 = 1.55
+
+ParamMgr.SetParam"lambda", CStr(lambda1)
+ParamMgr.Simulate
+WGMgr.Sleep(50)
+
+ParamMgr.SetParam"lambda", CStr(lambda2)
+ParamMgr.Simulate
+WGMgr.Sleep(50)
+
