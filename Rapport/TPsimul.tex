@@ -20,7 +20,7 @@
 \chapter{Introduction}
 Lors de la conception de composant à semiconducteurs, il est important d'avoir des outils de simulation pour avoir une idée des résultats et performances attendues. Il est également important de maîtriser ces outils de simulation pour réaliser ces simulations. Ce TP a pour but de nous initier à certains de ces outils en nous proposant de réaliser la simulation de composants MOS tel que ceux étudiés de manière théorique en cours. Ainsi, nous pourrons mettre des graphes  numériques sur les équations calculées théoriquement.
 
-\chapter{Simulation}
+\chapter{Architecture "Bulk"}
 
 \section{Initialisation de la simulation}
 
@@ -59,6 +59,7 @@ struct outf = mos.str}
 %Dessiner ici le transistor qu'on modélise
 
 %\end{tikzpicture}
+
 \begin{figure}
 \centering
 \includegraphics[width=300pt]{Simu1-Dopage.png}
@@ -136,11 +137,42 @@ Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le 
 
 
 
-\section{A mettre}
+\section{Extraction des paramètres}
+A partir des caractéristiques tracées, nous pouvons remonter à certains paramètres. Par exemple, SS et DIBL.
 
+%SS 
+
+%DIBL
 
 
 \chapter{Une autre architecture : FDSOI}
 
+\section{Position du problème}
+
+On passe à une architecture FDSOI pour limiter les effets de canaux courts.
+
+%schéma
+
+\section{Simulation}
+On reprend les élements précedents en rajoutant une zone d'oxyde sous le silicium dopé n.
+
+On obtient ainsi le dispositif suivant :
+
+%image de dispo
+
+
+\section{Tracé des caractéristiques}
+
+On peut ainsi tracer les caractéristiques :
+%Courbes
+%champs / Courant
+
+\section{Extraction des paramètres}
+
+De même qu'avec l'architecture précédente, on peut extraire les paramètres SS et DIBL.
+
+%SS
+
+%DIBL
 
 \end{document}
