@@ -39,11 +39,19 @@ Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En eff
 Le tracé de la tangente nous donne ainsi $V_T=450mV$.
 
 \section{Méthode de la fonction Y}
+On peut également utiliser une méthode différente pour déterminer $V_T$, à l'aide d'une fonction Y, définie par :
+\[Y(V_g)=\dfrac{I_d(V_g)}{\sqrt{g_m(V_g)}}\]
 
+Cette fonction est linéaire après le seuil, on peut alors approximer asymptotiquement plus précisément. On obtient alors $V_T$.
 \subsection{Transistor Bulk}
-
+%graphes
 \subsection{Transistor FDSOI}
+%graphes
+%résultats
+\section{Méthode du courant constant}
+A $V_d$ fort il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{DN}}\cdot\dfrac{W}{L}\]
 
+$I_{d_{DN}}$ est un paramètre arbitraire, réutilisable qui permet de calculer $V_T$ pour plusieurs transistors.
 
 
 \subsection{Méthode de la transconductance}
