@@ -1,0 +1,126 @@
+$SIG #MODE2D_PLW
+$VER 3.10
+# -------- Layout Display Setup Data --------
+# ===========================================
+# -------         Device Data         -------
+# Output Data Files
+$BN OutputDataFiles_Block
+$begin
+# --- Auto Generation of Output File Name (0 - no, 1 - yes )
+0
+# --- Modal Fields (0 - no, 1 - yes)
+0
+# Start Mode Number
+0
+# End Mode Number
+0
+# --- Save Modal Indices (0 - no, 1 - yes)
+0
+# --- Log File (0 - no, 1 - yes)
+0
+$end
+# Variables
+$BN VariablesData
+$begin
+0
+$end
+# Swapped Variables (End Values)
+$BN SwapVariablesData
+$begin
+# The Leading Variable
+not defined
+# Iterations
+1
+# Swap Parameters:
+$begin
+# Number of Parameters
+0
+$end
+$end
+# --- Device Base data ---
+$BN PLWGeneralData
+$begin
+# polarization type (0 - TE, 1 - TM)
+0
+# Nr of points in Mesh
+251.00000000
+# Wavelength [um]
+1.55000000
+$end
+$BN LayersStructureDataBlock
+$begin
+# Cladding: Thick_um [um], Reffractive Index:
+1.00000000
+(1.00000000,0.00000000)
+# Substrate: Thick_um [um], Reffractive Index:
+1.00000000
+(1.00000000,0.00000000)
+# ========================= List Of Layers ==========================
+5
+$BN LayerDataBlock
+$begin
+# Layer ID
+0
+# Layer Name
+$NAME 
+# Layer Start Thickness [um]
+20.00000000
+# Layer End Thickness [um]
+0.00000000
+# Layer Base Reff Idx
+(1.50000000,0.00000000)
+$end
+$BN LayerDataBlock
+$begin
+# Layer ID
+1
+# Layer Name
+$NAME 
+# Layer Start Thickness [um]
+3.00000000
+# Layer End Thickness [um]
+0.00000000
+# Layer Base Reff Idx
+(1.51000000,0.00000000)
+$end
+$BN LayerDataBlock
+$begin
+# Layer ID
+2
+# Layer Name
+$NAME 
+# Layer Start Thickness [um]
+2.00000000
+# Layer End Thickness [um]
+0.00000000
+# Layer Base Reff Idx
+(1.50000000,0.00000000)
+$end
+$BN LayerDataBlock
+$begin
+# Layer ID
+3
+# Layer Name
+$NAME 
+# Layer Start Thickness [um]
+3.00000000
+# Layer End Thickness [um]
+0.00000000
+# Layer Base Reff Idx
+(1.51000000,0.00000000)
+$end
+$BN LayerDataBlock
+$begin
+# Layer ID
+4
+# Layer Name
+$NAME 
+# Layer Start Thickness [um]
+20.00000000
+# Layer End Thickness [um]
+0.00000000
+# Layer Base Reff Idx
+(1.50000000,0.00000000)
+$end
+# ---------------------- End of List Of Layers ----------------------
+$end

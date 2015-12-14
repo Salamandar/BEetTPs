@@ -1,0 +1,80 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{}
+\author{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+
+Logiciel GIGO\\
+BPM : Beam Propagation Method.\\
+
+Equations de Maxwell, densité des fréquences.
+
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        &\nabla\wedge \mathbf{E}=-j\omega\mu_0\mathbf{H}\\        
+        &\nabla\wedge \mathbf{H}=j\omega n^2(x,y,z)\mathbf{E}\\
+        &\nabla\cdot(n^2\mathbf{E})=0\\
+        &\nabla\cdot\mathbf{H}=0\\
+    \end{aligned}
+    \right.
+\end{equation}
+
+On peut ainsi écrire l'équation de propagation :
+\begin{equation}
+    \nabla^2\mathbf{E}+k^2n^2\mathbf{E}=\nabla(\nabla\cdot\mathbf{E})
+\end{equation}
+
+En propagaion selon z :
+
+\[\mathbf{E}=\mathbf{E_Z}+E_z\mathbf{z}\]
+
+\[\nabla=\nabla_t+\mathbf{z}\dfrac{\partial }{\partial z}\]
+
+On réécrit ensuite le laplacien avec ces variables définies. On aura ainsi une décomposition du laplacien.
+
+\begin{equation}
+    \nabla^2\mathbf{E_Z}+\nabla^2E_z\mathbf{z}+k^2n^2\mathbf{E}_t+k^2n^2_zE_z=\nabla(\nabla_t\cdot\mathbf{E}_t+\dfrac{\partial}{\partial z}E_z)
+\end{equation}
+
+En identifiant les deux parties :
+
+ \begin{equation}
+     \left\{     
+     \begin{aligned}
+         &\nabla^2\mathbf{E}_t+k^2n^2\mathbf{E}_t=\nabla_t(\nabla_t\cdot\mathbf{E}_t+\dfrac{\partial}{\partial z}E_z)\\
+         &\nabla^2 E_z+k^2 n^2 E_z=\dfrac{\partial }{\partial z}\left(\nabla_t\cdot\mathbf{E}_t+\dfrac{\partial}{\partial z}E_z)\right)
+     \end{aligned}
+     \right.
+ \end{equation}
+
+\[\nabla\cdot(n^2\mathbf{E}_t)+n^2E_z\mathbf{z}=0\]
+\[\nabla_t \cdot(n^2\mathbf{E}_t)+\dfrac{\partial}{\partial z}(n^2E_z)=\nabla_t\cdot(n^2\mathbf{E}_t)+\underbrace{E_z\dfrac{\partial n^2}{\partial z}}_{\simeq 0} +n^2\dfrac{\partial E_z}{\partial z}=0\]
+
+Par hypothèse d'indice lentement variable
+
+\[\dfrac{\partial E_t}{\partial z}=-\dfrac{1}{n^2}\nabla_t\cdot(n^2\mathbf{E}_t)\]
+
+% {\Huge\textbf{ETC.}}
+%
+%
+\[\nabla^2_t\mathbf{E}_t+\dfrac{\partial^2 \mathbf{E}_t}{\partial z^2}+k^2n^2\mathbf{E}_t=-\nabla_t\left[\dfrac{1}{n^2}(\nabla_tn^2)\cdot\mathbf{E}_t\right]\]
+
+\[\dfrac{\partial^2 \mathbf{E}_t}{\partial z^2}=\left[-2jn_0k\dfrac{\partial \mathbf{e}_t}{\partial z}-\mathbf{e}_tn_0^2k^2\right]\exp\left[-jn_0kz\right]\]
+
+
+
+\[\dfrac{\partial \mathbf{e}_t}{\partial z}=\dfrac{1}{2jn_0k}P\left[\mathbf{e}_t\right]\]
+
+\end{document}

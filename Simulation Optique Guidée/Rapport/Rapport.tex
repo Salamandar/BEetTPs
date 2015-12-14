@@ -1,0 +1,54 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
+\usepackage{textcomp,rotating,epic,eepic,pdfpages}
+\usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
+\usepackage[babel=true,kerning=true]{microtype}
+
+\begin{document}
+
+\include{0.Couverture}
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+L'essor des télécommunications optiques n'est désormais plus à prouver. Omniprésentes dans la plupart des réseaux de télécommunication, les fibres optiques sont devenues incontournables. Il est important de pouvoir gérer les signaux comme on le souhaute. Ainsi, il est primordial d'être capable d'adapter des méthodes d'électronique à l'optique guidée, comme par exemple le multiplexage et demultiplexage. 
+
+\chapter{Étude théorique}
+
+\section{Position du problème}
+%schéma
+
+\section{Calculs}%chiants
+%calculs
+\chapter{Dimensionnement}
+\section{Intégration des paramètres d'utilisation}
+% injection des paramètres dans les calculs
+\section{Optimisation des paramètres}
+% Determination des paramètres en fonction de la partie d'avant
+\chapter{Simulation}
+\section{Résultats de modélisation}
+%Jolies images en 3D
+\section{Validation des paramètres}
+%Est-ce que c'est swag ou pas ?
+\section{Calculs de puissance}
+%Isolation et Pertes
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+
+\appendix
+\chapter{Scripts}
+\section{Guide}
+\section{Itérations}
+
+\bibliographystyle{unsrt}
+\bibliography{Biblio}
+
+
+\end{document}
