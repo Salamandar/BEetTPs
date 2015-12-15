@@ -1,0 +1,66 @@
+go atlas
+set LG  = 0.1
+set dx  = $"LG"/100
+set LDS = 0.1
+set Tox = 0.001
+set TSi = 0.02
+set TBox= 0.03
+
+mesh space.mult = 1.0
+x.mesh loc = 0.0                spac = 0.005
+x.mesh loc = $"LDS"             spac = $"dx"
+x.mesh loc = $"LDS" + $"LG"/2   spac = $"dx"*2
+x.mesh loc = $"LDS" + $"LG"     spac = $"dx"
+x.mesh loc = $"LDS"*2 + $"LG"   spac = 0.005
+
+
+y.mesh loc = 0.000                 spac = 0.001
+y.mesh loc = $"Tox"                spac = 0.001
+y.mesh loc = $"TSi"+$"Tox"         spac = 0.05
+y.mesh loc = $"TSi"+$"Tox"+$"TBox" spac = 0.05
+
+region number = 1 x.min=0.0 x.max = 0.3 y.min = 0.000 	y.max = $"Tox" 				material = Oxide
+region number = 2 x.min=0.0 x.max = 0.3 y.min = $"Tox" 		y.max = $"Tox"+$"Tsi" 		material = Silicon
+region number = 3 x.min=0.0 x.max = 0.3 y.min = $"Tox" + $"Tsi" y.max = $"Tox"+$"Tsi"+$"TBox" material = Oxide
+
+
+electrode name = gate   number = 1 x.min = 0.1 x.max = 0.2 y.min = 0.000 y.max = 0
+electrode name = source number = 2 x.min = 0.0 x.max = 0.0 y.min = 0.002 y.max = 0.012
+electrode name = drain  number = 3 x.min = 0.3 x.max = 0.3 y.min = 0.002 y.max = 0.012
+
+doping uniform conc = 1E15 p.type region = 2
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.0 x.right = 0.1 y.max = 0.012
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.2 x.right = 0.3 y.max = 0.012
+
+struct outf = mos.str
+
+contact name = gate workfun = 4.7
+contact name = source
+contact name = drain
+
+model fermi cvt SRH temperature = 300
+material region = 2 material = Silicon
+method carriers = 2 newton 
+
+output charge band.param ex.field ey.field jx.tot con.band val.band
+
+set VDS=1
+set VG = 1
+solve init
+
+save outfile = nmosvg$"VG"_vds$"VDS"V.str
+
+solve vgate = 0 vdrain = 0 vstep = 0.05 vfinal = $"VDS" name = drain
+log  outfile = idvd_vds$"VDS"V.log
+save outfile = nmosvg0V_vds$"VDS"V.str
+
+solve vgate = 0 vdrain = $"VDS" vstep = 0.05 vfinal = $"VG" name = gate
+log outfile = idvg_vds$"VDS"V.log
+save outfile = nmosvd1V.str
+extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \
+        - abs(ave(v."drain"))/2.0)
+extract name="subvt" \
+        1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))
+
+log off
+quit

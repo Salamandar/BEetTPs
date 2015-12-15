@@ -36,11 +36,17 @@ solve init
 save outfile = nmos1.str
 
 solve vgate = 0 vdrain = 0 vstep = 0.1 vfinal = 1 name = drain
+log outfile =id_vd.log
 save outfile = nmos2.str
 
-log outfile = idvg_vds1.log
-save outfile = nmos3.str
-solve vgate = 0 vdrain = 1 vstep = 0.1 vfinal = 2 name = gate
+solve vgate = 0 vdrain = 1 vstep = 0.025 vfinal = 0.5 name = gate
+log outfile = id_vg_0_vt.log
+save outfile = nmos4.str
+
+solve vgate = 0.5 vdrain = 1 vstep=0.1 vfinal = 2 name = gate
+log outfile =id_vg_vt_2.log
+save outfile = nmos5.str
+
 extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \
         - abs(ave(v."drain"))/2.0)
 extract name="subvt" \
