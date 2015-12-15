@@ -51,19 +51,19 @@ set VG  = 1
 
 save outfile = nmosvg$"VG"_vds$"VDS"V.str
 
-solve vgate = 0 vdrain = 0      vstep = 0.05 vfinal = $"VDS" name = drain
 log  outfile = idvd_vds$"VDS"V.log
+solve vgate = 0 vdrain = 0      vstep = 0.05 vfinal = $"VDS" name = drain
 save outfile = nmos_vg0V_vds1V.str
 
-solve vgate = 0 vdrain = $"VDS" vstep = 0.05 vfinal = $"VG"  name = gate
 log outfile = idvg_vds$"VDS"V.log
+solve vgate = 0 vdrain = $"VDS" vstep = 0.05 vfinal = $"VG"  name = gate
 save outfile = nmos_vg1V_vds1V.str
 extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \
         - abs(ave(v."drain"))/2.0)
 extract name="subvt" \
         1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))
 
-
+log off
 
 
 set VDS = 0.05
@@ -71,12 +71,12 @@ set VG  = 1
 
 save outfile = nmosvg$"VG"_vds$"VDS"V.str
 
-solve vgate = 0 vdrain = 0      vstep = 0.01 vfinal = $"VDS" name = drain
 log  outfile = idvd_vds$"VDS"V.log
+solve vgate = 0 vdrain = 0      vstep = 0.01 vfinal = $"VDS" name = drain
 save outfile = nmos_vg0V_vds50mV.str
 
-solve vgate = 0 vdrain = $"VDS" vstep = 0.05 vfinal = $"VG"  name = gate
 log outfile = idvg_vds$"VDS"V.log
+solve vgate = 0 vdrain = $"VDS" vstep = 0.05 vfinal = $"VG"  name = gate
 save outfile = nmos_vg1V_vds50mV.str
 extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \
         - abs(ave(v."drain"))/2.0)
