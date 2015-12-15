@@ -9,6 +9,7 @@
 \usepackage{textcomp,rotating,epic,eepic,pdfpages}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
 \usepackage[babel=true,kerning=true]{microtype}
+\usepackage{float}
 
 % \pdfsuppresswarningpagegroup=1
 \title{Rapport de Stage d'Application}
@@ -22,6 +23,26 @@ Lors de la conception de composant à semiconducteurs, il est important d'avoir 
 
 \chapter{Architecture "Bulk"}
 
+\section{Position du problème}
+Dans cette partie, on cherche à modéliser un transistor dit "Bulk", que l'on peut représenter schématiquement (Figure \ref{SchemaBulk})
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
+\fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
+\draw [thick] (0,5)--(10,5);
+\draw (3,5)--(3,3)--(0,3);
+\draw (1.5,4)node{n};
+\draw (7,5)--(7,3)--(10,3);
+\draw (8.5,4)node{n};
+\draw (5,4.8)node[below]{Canal};
+
+\draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
+
+\end{tikzpicture}
+\caption{Schéma d'un transistor Bulk}
+\label{SchemaBulk}
+\end{figure}
 \section{Initialisation de la simulation}
 
 Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place la séquence de commandes à réaliser dans le logiciel \texttt{Atlas}. En premier lieu il faut créer un maillage 2D pour pouvoir y inclure des régions.
@@ -54,13 +75,7 @@ struct outf = mos.str}
 \end{minipage}}
 \vspace{0.3cm}
 
-%\begin{tikzpicture}
-
-%Dessiner ici le transistor qu'on modélise
-
-%\end{tikzpicture}
-
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=300pt]{Simu1-Dopage.png}
 \caption{Image des différentes régions et dopages générés par le logiciel}
@@ -71,7 +86,7 @@ Nous avons ainsi une modélisation 2D du transistor, comme le montre la Figure \
 
 On précise ensuite au logiciel les différents contacts que nous allons utiliser, on obtient ainsi l'image en Figure \ref{TransistorFull}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=300pt]{TransistorFull.png}
     \caption{Image des régions, du dopage ainsi que des contacts générée par le logiciel}
@@ -82,8 +97,7 @@ Maintenant que notre transistor est modélisé, nous allons pouvoir réaliser de
 
 \section{Tracés de caractéristiques}
 
-En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes.
-
+En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes, comme le montre la figure \ref{logIdVgmeshfin}.
 
 \noindent\fbox{
 \begin{minipage}{\textwidth}
@@ -109,7 +123,12 @@ extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \ }
 \hspace{1cm} \texttt{ 1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))}
 \end{minipage}}
 
-%image courbe maillage fin
+\begin{figure}[H]
+\centering
+    \includegraphics[width=300pt]{../meshFin.png}
+    \caption{Caractéristique logarithmique $\log(I_d(V_g))$}
+    \label{logIdVgmeshfin}
+\end{figure}
 
 \section{Optimisation du maillage}
 
@@ -132,6 +151,15 @@ y.mesh loc = 0.020 spac = 0.01\\
 y.mesh loc = 1.002 spac = 0.01}
 \end{minipage}}
 \vspace{0.3cm}
+
+On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en figure \ref{logIdVgmeshopti}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{../meshOpti1/Log.png}
+    \caption{Caractéristique $\log(I_g(V_g))$ obtenue avec un maillage optimisé.}
+    \label{logIdVgmeshopti}
+\end{figure}
 
 Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cela est possible grâce à Tonyplot.
 
@@ -164,7 +192,13 @@ On obtient ainsi le dispositif suivant :
 \section{Tracé des caractéristiques}
 
 On peut ainsi tracer les caractéristiques :
-%Courbes
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{../FDSOI/LogIdVg.png}
+    \caption{Caractéristiques $\log(I_d(V_g))$ pour $V_d$ faible (en rouge) et $V_d$ fort (en vert)}    
+\end{figure}
+
+
 %champs / Courant
 
 \section{Extraction des paramètres}
