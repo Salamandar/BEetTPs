@@ -5,7 +5,7 @@
 \usepackage[francais]{babel}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
-\usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
+\usepackage{amsmath,amsfonts,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
 \usepackage{textcomp,rotating,epic,eepic,pdfpages}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
 \usepackage[babel=true,kerning=true]{microtype}
@@ -31,17 +31,20 @@ Nous mettrons en évidence les différents paramètres que l'on peut adapter pou
 \chapter{Étude théorique}
 
 \section{Position du problème}
-%schéma
+\begin{figure}[h]
+    \begin{center}
+        \include{Images/schema_demux}
+%        \includegraphics[width=0.6\textwidth]{Images/guides_sans_phase}
+        \caption{Schéma de principe du démultiplexeur}
+        \label{fig:}
+    \end{center}
+\end{figure}
+
 Le dispositif du coupleur est constitué de deux guides linéaires de longueur \textbf{L}, espacés d'une distance \textbf{d}.
+%Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
+L'intégralité du signal provient d'un seul bras (haut-gauche), aux deux longueurs d'onde $\lambda_1$ et $\lambda_2$.
 
-Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
-
-L'intégralité du signal provient d'un seul bras (haut-gauche), aux deux longueurs d'onde $\lambda_1$ et $\lambda_2$. On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le bras 3 et le signal à $\lambda_2$, par le bras 4.
-
-L'isolation des deux bras à une longueur d'onde donnée est définie par
-\[\text{Isolation}(\lambda) = 10 \log\frac{P_3(\lambda)}{P_4(\lambda)}
-\]
-Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
+On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le bras 3 et le signal à $\lambda_2$, par le bras 4.
 
 Ce problème peut alors être vu selon deux approches, que nous allons détailler.
 
@@ -79,6 +82,22 @@ On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différ
 
 L'approche perturbative est très bonne qualitativement, mais la seconde nous permettra d'étudier quantitativement le problème.
 
+Le problème consiste alors à trouver 
+\[
+\left\{
+    \begin{array}{ll}
+    n, m\in \mathbb{N} \\
+    2n\times {L_c}_1 = (2m+1)\times {L_c}_1
+
+    \end{array}
+\right.
+\]
+
+L'isolation des deux bras à une longueur d'onde donnée est définie par
+\[\text{Isolation}(\lambda) = 10 \log\frac{P_3(\lambda)}{P_4(\lambda)}
+\]
+Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
+
 \section{Calculs}%chiants
 %calculs
 \chapter{Dimensionnement}
@@ -86,7 +105,7 @@ L'approche perturbative est très bonne qualitativement, mais la seconde nous pe
 % injection des paramètres dans les calculs
 \section{Optimisation des paramètres}
 % Determination des paramètres en fonction de la partie d'avant
-\chapter{Simulation}
+\chapter{Simulation} 
 \section{Résultats de modélisation}
 %Jolies images en 3D
 \section{Validation des paramètres}
