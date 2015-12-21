@@ -23,7 +23,7 @@ Il est donc nécessaire de pouvoir séparer en fin de fibre les différents sign
 
 Le but de ce bureau d'étude est de simuler le fonctionnement d'un coupleur directionnel et de mesurer ses performances en démultiplexage de deux longueur d'ondes.
 
-Nous mettrons en évidence les différents paramètres que l'on peut adapter pour modifier le fonctionnement du composant, tels que les indices effectifs $n_eff$, la distance entre les deux guides et la longueur du coupleur.
+Nous mettrons en évidence les différents paramètres que l'on peut adapter pour modifier le fonctionnement du composant, tels que les indices effectifs $n_{eff}$, la distance entre les deux guides et la longueur du coupleur.
 \newline
 \indent Nous mesurerons enfin les performances du démultiplexeur, illustrées par l'isolation des deux bras aux longueurs d'ondes nominales de fonctionnement, ainsi que la tolérance en longueur d'onde du fonctionnement du dispositif et les effets de la courbure en entrée et sortie du coupleur.
 
@@ -43,8 +43,8 @@ L'isolation des deux bras à une longueur d'onde donnée est définie par
 \]
 Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
 
-\section{Approche du problème}
-Ce problème peut être vu selon deux approches, que nous allons détailler.
+Ce problème peut alors être vu selon deux approches, que nous allons détailler.
+
 \subsection{Approche perturbative}
 Considérons un seul guide isolé. La puissance lumineuse se propage dans le guide, mais il existe une partie évanescente hors du guide.
 
@@ -58,10 +58,26 @@ Plus la distance d entre les deux guides est élevée, plus le transfert de puis
 
 On peut donc déjà définir la longueur de couplage $L_c$, longueur nécessaire pour un transfert total de la puissance d'un guide à l'autre.
 
+\subsection{Approche modale}%TODO nom à améliorer
+Une autre approche consiste à considérer les deux guides comme une seule structure, et les modes pair et impair de propagation.
+
+\subsubsection*{Considérons $\lambda_1$ (en vert).}
+À l'entrée, les modes 1 et 2 sont en phase dans le guide supérieur (puissance maximale), et en opposition de phase dans le guide inférieur (pas de puissance).
+
+Les deux modes ne sont pas soumis au même indice effectif $n_{eff}$, et ne se propagent donc pas à la même vitesse dans le dispositif. \newline
+En $L_c$, on se retrouve donc dans la situation opposée :
+\begin{itemize}
+    \item Modes opposés dans le guide supérieur, et donc pas de puissance
+    \item Modes en phase dans le guide inférieur, avec une puissance maximale.
+\end{itemize}
+
+On retrouve alors, comme dans la première approche, un couplage entre les deux guides, avec une puissance sinusoïdale dans les deux guides.
+
+\subsubsection*{Dans le cas de $\lambda_2$ (en rouge),}
+On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différent, d'où une longueur de couplage ${L_c}_2$ différente.
 
 
-
-
+L'approche perturbative est très bonne qualitativement, mais la seconde nous permettra d'étudier quantitativement le problème.
 
 \section{Calculs}%chiants
 %calculs
