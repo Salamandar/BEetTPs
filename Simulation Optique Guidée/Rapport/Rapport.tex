@@ -44,10 +44,10 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-L'essor des télécommunications optiques n'est désormais plus à prouver. Omniprésentes dans la plupart des réseaux de télécommunication, les fibres optiques sont devenues incontournables. Elles sont d'autant plus intéressantes qu'il est possible de véhiculer plusieurs signaux à plusieurs longueurs d'ondes dans une seule et même fibre. \newline
-Il est donc nécessaire de pouvoir séparer en fin de fibre les différents signaux, d'où l'utilisation de démultiplexeurs.
+L'essor des télécommunications optiques n'est désormais plus à prouver. Omniprésentes dans la plupart des réseaux de télécommunication, les fibres optiques sont devenues incontournables. Elles sont d'autant plus intéressantes qu'il est possible de véhiculer plusieurs signaux dans une seule et même fibre, à différentes longueurs d'ondes. \newline
+Il est alors nécessaire de pouvoir séparer en fin de fibre les différentes longueurs d'onde, d'où l'utilisation de démultiplexeurs.
 
-Le but de ce bureau d'étude est de simuler le fonctionnement d'un coupleur directionnel et de mesurer ses performances en démultiplexage de deux longueur d'ondes.
+Le but de ce bureau d'étude est de simuler le fonctionnement d'un coupleur directionnel et de mesurer ses performances pour le démultiplexage de deux longueur d'ondes.
 
 Nous mettrons en évidence les différents paramètres que l'on peut adapter pour modifier le fonctionnement du composant, tels que les indices effectifs $n_{eff}$, la distance entre les deux guides et la longueur du coupleur.
 \newline
@@ -74,11 +74,11 @@ On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le haut et le
 Ce problème peut alors être vu selon deux approches, que nous allons détailler.
 
 \subsection{Approche perturbative}
-Considérons un seul guide isolé. La puissance lumineuse se propage dans le guide, mais il existe une partie évanescente hors du guide.
+Un guide propage la puissance lumineuse, mais il existe aussi une partie évanescente hors du guide.
 
-Dans ce cas du guide isolé, on n'observe pas de pertes dues à cette partie évanescente.
+Dans le cas d'un guide isolé, on n'observe pas de pertes dues à cette partie évanescente.
 
-Mais lorsqu'on rajoute le second guide, la partie évanescente est captée par ce guide, d'où l'apparition de puissance. La totalité de la puissance présente dans le premier guide sera transférée dans le second guide, qui va lui-même subir une perturbation par le premier guide.
+Le rajout d'un second guide est alors perçu comme une perturbation par le premier guide : la partie évanescente est captée par le second guide, d'où l'apparition de puissance. La totalité de la puissance présente dans le premier guide sera transférée dans le second guide, qui va alors lui-même subir une perturbation par le premier guide.
 
 On observe donc un couplage entre les deux guides, et la puissance dans chacun des guides suivra une loi sinusoïdale dans la direction de propagation.
 
@@ -87,23 +87,25 @@ Plus la distance d entre les deux guides est élevée, plus le transfert de puis
 On peut donc déjà définir la longueur de couplage $L_c$, longueur nécessaire pour un transfert total de la puissance d'un guide à l'autre.
 
 \subsection{Approche globale}%TODO nom à améliorer
-Une autre approche consiste à considérer les deux guides comme une seule structure, et les modes pair et impair de propagation.
+Une autre approche consiste à considérer les deux guides comme une seule superstructure, et les deux modes fondamentaux de propagation pair et impair.
 
 \subsubsection*{Considérons $\lambda_1$ (en vert).}
-À l'entrée, les modes 1 et 2 sont en phase dans le guide supérieur (puissance maximale), et en opposition de phase dans le guide inférieur (pas de puissance).
+À l'entrée, les modes pair et impair sont en phase dans le guide supérieur (puissance maximale), et en opposition de phase dans le guide inférieur (pas de puissance).
 
-Les deux modes ne sont pas soumis au même indice effectif $n_{eff}$, et ne se propagent donc pas à la même vitesse dans le dispositif. \newline
-En $L_c$, on se retrouve donc dans la situation opposée :
+Les deux modes ne sont pas soumis au même indice effectif $n_{eff}$, et ne se propagent donc pas à la même vitesse dans le dispositif.
+
+En $L_c$, on se retrouve alors donc dans la situation opposée :
 \begin{itemize}
     \item Modes opposés dans le guide supérieur, et donc pas de puissance
     \item Modes en phase dans le guide inférieur, avec une puissance maximale.
+    \newline
 \end{itemize}
 
 On retrouve alors, comme dans la première approche, un couplage entre les deux guides, avec une puissance sinusoïdale dans les deux guides.
 
 \subsubsection*{Dans le cas de $\lambda_2$ (en rouge),}
 On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différent, d'où une longueur de couplage ${L_c}_2$ différente.
-
+\newline
 
 L'approche perturbative est très bonne qualitativement, mais la seconde nous permettra d'étudier quantitativement le problème.
 
@@ -125,7 +127,7 @@ L'isolation à une longueur d'onde donnée est définie par :
 \[
     \text{Isolation}(\lambda) = 10 \log\frac{P_{haut}(\lambda)}{P_{bas}(\lambda)}
 \]
-Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
+Où $P_{haut}$ et $P_{bas}$ sont les puissances sortant par les guides.
 
 Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et négatives pour la longueur d'onde 2.
 
