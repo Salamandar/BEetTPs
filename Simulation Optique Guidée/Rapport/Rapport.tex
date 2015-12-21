@@ -32,6 +32,36 @@ Nous mettrons en évidence les différents paramètres que l'on peut adapter pou
 
 \section{Position du problème}
 %schéma
+Le dispositif du coupleur est constitué de deux guides linéaires de longueur \textbf{L}, espacés d'une distance \textbf{d}.
+
+Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
+
+L'intégralité du signal provient d'un seul bras (haut-gauche), aux deux longueurs d'onde $\lambda_1$ et $\lambda_2$. On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le bras 3 et le signal à $\lambda_2$, par le bras 4.
+
+L'isolation des deux bras à une longueur d'onde donnée est définie par
+\[\text{Isolation}(\lambda) = 10 \log\frac{P_3(\lambda)}{P_4(\lambda)}
+\]
+Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
+
+\section{Approche du problème}
+Ce problème peut être vu selon deux approches, que nous allons détailler.
+\subsection{Approche perturbative}
+Considérons un seul guide isolé. La puissance lumineuse se propage dans le guide, mais il existe une partie évanescente hors du guide.
+
+Dans ce cas du guide isolé, on n'observe pas de pertes dues à cette partie évanescente.
+
+Mais lorsqu'on rajoute le second guide, la partie évanescente est captée par ce guide, d'où l'apparition de puissance. La totalité de la puissance présente dans le premier guide sera transférée dans le second guide, qui va lui-même subir une perturbation par le premier guide.
+
+On observe donc un couplage entre les deux guides, et la puissance dans chacun des guides suivra une loi sinusoïdale dans la direction de propagation.
+
+Plus la distance d entre les deux guides est élevée, plus le transfert de puissance sera long : la partie évanescente captée par le second guide décroît en $e^{-d^2}$.
+
+On peut donc déjà définir la longueur de couplage $L_c$, longueur nécessaire pour un transfert total de la puissance d'un guide à l'autre.
+
+
+
+
+
 
 \section{Calculs}%chiants
 %calculs
