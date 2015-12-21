@@ -1,1 +1,0 @@
-../Paillet Piédallu/Script1.vbs

@@ -5,10 +5,36 @@
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
 \usepackage{amsmath,amsfonts,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
-\usepackage{textcomp,rotating,epic,eepic,pdfpages,pgfplots}
+\usepackage{textcomp,rotating,epic,eepic,pdfpages,pgfplots,listings}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry}
 \usepackage[babel=true,kerning=true]{microtype}
 \parskip=6pt % adds vertical space between paragraphs
+
+\lstset
+{
+    breaklines=true,
+    tabsize=3,
+    showstringspaces=false
+}
+\lstdefinestyle{Common}
+{
+    extendedchars=\true,
+    language={[Visual]Basic},
+    frame=single,
+    %===========================================================
+    framesep=3pt,%expand outward.
+    framerule=0.4pt,%expand outward.
+    xleftmargin=3.4pt,%make the frame fits in the text area. 
+    xrightmargin=3.4pt,%make the frame fits in the text area.
+    %=========================================================== 
+    rulecolor=\color{Red!0},
+    backgroundcolor=\color{Yellow!10},
+    basicstyle=\tiny\color{Black}\ttfamily,
+    keywordstyle=\color{Orange},
+    identifierstyle=\color{Blue},
+    stringstyle=\color{Red},
+    commentstyle=\color{Green}
+}
 
 
 \begin{document}
@@ -88,7 +114,7 @@ Le problème consiste alors à trouver :
 \[
 \left\{
     \begin{array}{ll}
-        2n\times {L_c}_1 = (2m+1)\times {L_c}_1 = L_{totale}\\
+        2n\times {L_c}_1 = (2m+1)\times {L_c}_2 = L_{totale}\\
         n, m\in \mathbb{N}
     \end{array}
 \right.
@@ -135,10 +161,15 @@ Maintenant que nous avons nos guides monomodes, nous devons trouver un espacemen
 
 \chapter{Simulation} 
 \section{Optimisation des paramètres}
-% Determination des paramètres en fonction de la partie d'avant
-\chapter{Simulation}
 L'éditeur de script intégré dans OptiBPM nous permet de faire varier les caractéristiques de notre dispositif facilement, pour étudier leur impact sur les performances du démultiplexage.
+\input{Script}
 
+\section{Résultats de modélisation}
+Après avoir déterminé la largeur des guides, le facteur de forme des "S-bend" d'entrée et sélectionné une distance de couplage adéquate, nous avons décidé de vérifier la loi sinusoïdale déterminant la puissance en sortie des deux guides.
+
+Nous avons donc lancé une modélisation entre 0 et 2,5mm, par pas de 20$\mu m$.
+
+La puissance d'entrée est 
 
 \begin{figure}[h]
     \begin{center}
@@ -158,12 +189,11 @@ legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.
 \addplot table[x=Z, y=LinearOutTop (Lambda2), col sep=comma, mark=none,smooth]{../Psortante.csv};
 \end{axis}
 \end{tikzpicture}
-        \caption{}
+        \caption{Puissance des guides de sortie pour les deux longueurs d'onde}
         \label{fig:}
     \end{center}
 \end{figure}
 
-\section{Résultats de modélisation}
 %Jolies images en 3D
 \section{Validation des paramètres}
 %Est-ce que c'est swag ou pas ?
