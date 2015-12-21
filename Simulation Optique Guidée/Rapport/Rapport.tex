@@ -3,13 +3,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[francais]{babel}
-
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
 \usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
 \usepackage{textcomp,rotating,epic,eepic,pdfpages}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
 \usepackage[babel=true,kerning=true]{microtype}
+\parskip=6pt % adds vertical space between paragraphs
 
 \begin{document}
 
@@ -18,7 +18,15 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-L'essor des télécommunications optiques n'est désormais plus à prouver. Omniprésentes dans la plupart des réseaux de télécommunication, les fibres optiques sont devenues incontournables. Il est important de pouvoir gérer les signaux comme on le souhaute. Ainsi, il est primordial d'être capable d'adapter des méthodes d'électronique à l'optique guidée, comme par exemple le multiplexage et demultiplexage. 
+L'essor des télécommunications optiques n'est désormais plus à prouver. Omniprésentes dans la plupart des réseaux de télécommunication, les fibres optiques sont devenues incontournables. Elles sont d'autant plus intéressantes qu'il est possible de véhiculer plusieurs signaux à plusieurs longueurs d'ondes dans une seule et même fibre. \newline
+Il est donc nécessaire de pouvoir séparer en fin de fibre les différents signaux, d'où l'utilisation de démultiplexeurs.
+
+Le but de ce bureau d'étude est de simuler le fonctionnement d'un coupleur directionnel et de mesurer ses performances en démultiplexage de deux longueur d'ondes.
+
+Nous mettrons en évidence les différents paramètres que l'on peut adapter pour modifier le fonctionnement du composant, tels que les indices effectifs $n_eff$, la distance entre les deux guides et la longueur du coupleur.
+\newline
+\indent Nous mesurerons enfin les performances du démultiplexeur, illustrées par l'isolation des deux bras aux longueurs d'ondes nominales de fonctionnement, ainsi que la tolérance en longueur d'onde du fonctionnement du dispositif et les effets de la courbure en entrée et sortie du coupleur.
+
 
 \chapter{Étude théorique}
 
