@@ -60,7 +60,7 @@ Plus la distance d entre les deux guides est élevée, plus le transfert de puis
 
 On peut donc déjà définir la longueur de couplage $L_c$, longueur nécessaire pour un transfert total de la puissance d'un guide à l'autre.
 
-\subsection{Approche modale}%TODO nom à améliorer
+\subsection{Approche globale}%TODO nom à améliorer
 Une autre approche consiste à considérer les deux guides comme une seule structure, et les modes pair et impair de propagation.
 
 \subsubsection*{Considérons $\lambda_1$ (en vert).}
@@ -88,7 +88,7 @@ Le problème consiste alors à trouver :
 \[
 \left\{
     \begin{array}{ll}
-        2n\times {L_c}_1 = (2m+1)\times {L_c}_1 = L_{totale}\\
+        2n\times {L_c}_1 = (2m+1)\times {L_c}_2 = L_{totale}\\
         n, m\in \mathbb{N}
     \end{array}
 \right.
@@ -122,20 +122,29 @@ Avec $e$ l'épaisseur du guide, et $k_0=\dfrac{2\pi}{\lambda}$.
 
 En considérant le minimum de l'indice effectif, on peut alors trouver une épaisseur de coupure pour le mode fondamental (m=0) et une épaisseur de coupure pour le mode suivant (m=1), et ce pour chacune des longueurs d'onde considérées.
 
-Ainsi, on obtient, après résolution de l'équation caractéristique pour ces 4 cas : m=0 et m=1 pour $\lambda_1$ et $\lambda_2$, avec $n_{eff}=n_{sub}$, 4 épaisseurs critiques : % ?? 
-
-
-On choisit ainsi une épaisseur $e=3\mu m$ pour chacun des guides, qui sont ainsi monomodes pour les deux longueurs d'ondes que nous allons utiliser.
-
-\section{Distance entre les guides}
-Maintenant que nous avons nos guides monomodes, nous devons trouver un espacement afin de les coupler.
+Ainsi, on obtient, après résolution de l'équation caractéristique pour ces 4 cas : m=0 et m=1 pour $\lambda_1$ et $\lambda_2$, avec $n_{eff}=n_{sub}$ des valeurs limites pour l'épaisseur du guide. Parmis les valeurs possibles, nous avons choisi une épaisseur $e=3\mu m$ pour chacun des guides, qui sont ainsi monomodes pour les deux longueurs d'ondes que nous allons utiliser, ce qui est confirmé par le solveur de modes intégré au logiciel qui nous donne $n_{eff_{\lambda_1}}=1.5020053$ et $n_{eff_{\lambda_1}}=1.5032$, pour $e=3\mu m$.
 
 \section{Longueur des guides}
+On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveur de modes, nous pouvons déterminer aisément les indices effectifs, en réalisant la structure telle que dans le Chapitre 1, en considérant l'aspect global.
+
+\begin{tikzpicture}
+    \draw (7.5,-0.5) node{$n_{sub}=1.50$}; 
+    \draw [thick](0,0)--(15,0);
+    \draw (7.5,0.5) node{$n_c=1.51$};
+    \draw [thick](0,1)--(15,1);
+    \draw (7.5,1.5) node{ $n_{sub}=1.50$};
+    \draw [thick](0,2)--(15,2);
+    \draw (7.5,2.5) node{$n_c=1.51$};
+    \draw [thick](0,3)--(15,3);
+    \draw (7.5,3.5) node{$n_{sub}=1.50$}; 
+    \draw [->](2,2.5)--(4,2.5)node[midway,below]{Sens de propagation};
+\end{tikzpicture} 
+
+Le mode où les deux ondes portées par les guides sont en phase sera indicé $e$ et le le mode où ils sont en opposition de phase sera indicé $o$. Pour $\lambda_1=1.55\,\mu m$, le solveur nous donne $n_{eff1_e}=1.50574544$ et $n_{eff1_o}=1.5034626$. Pour $\lambda_2=1.31\,\mu m$, il nous donne $n_{eff2_e}=1.5062047$ et $n_{eff2_o}=1.5046940$.
+
+On obtient alors pour $\lambda_1$, $L_{c_1}=437\,\mu m$ et pour $\lambda_2$, $L_{c_2}=661\,\mu m$. Ces longueurs de couplages nous donnent ainsi des ordres de grandeur afin de déterminer les longueurs de guide à utiliser pour réaliser le demultiplexeur.
 
 
-\chapter{Simulation} 
-\section{Optimisation des paramètres}
-% Determination des paramètres en fonction de la partie d'avant
 \chapter{Simulation}
 L'éditeur de script intégré dans OptiBPM nous permet de faire varier les caractéristiques de notre dispositif facilement, pour étudier leur impact sur les performances du démultiplexage.
 
