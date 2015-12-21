@@ -66,7 +66,8 @@ Nous mettrons en évidence les différents paramètres que l'on peut adapter pou
 \end{figure}
 
 Le dispositif du coupleur est constitué de deux guides linéaires de longueur \textbf{L}, espacés d'une distance \textbf{d}.
-%Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
+
+Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
 L'intégralité du signal provient d'un seul bras (haut-gauche), aux deux longueurs d'onde $\lambda_1$ et $\lambda_2$.
 
 On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le haut et le signal à $\lambda_2$, par le bas.
@@ -96,8 +97,8 @@ Les deux modes ne sont pas soumis au même indice effectif $n_{eff}$, et ne se p
 
 En $L_c$, on se retrouve alors donc dans la situation opposée :
 \begin{itemize}
-    \item Modes opposés dans le guide supérieur, et donc pas de puissance
-    \item Modes en phase dans le guide inférieur, avec une puissance maximale.
+    \item Opposition de phase dans le guide supérieur, et donc pas de puissance
+    \item En phase dans le guide inférieur, avec une puissance maximale.
     \newline
 \end{itemize}
 
@@ -109,20 +110,38 @@ On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différ
 
 L'approche perturbative est très bonne qualitativement, mais la seconde nous permettra d'étudier quantitativement le problème.
 
+On calcule $L_c$ à partir des indices effectifs des deux modes, et en particulier de leur différence, car c'est la distance que mettent ces deux modes à se retrouver en opposition de phase, donc la distance de transfert du guide "haut" au guide "bas".
+
+\begin{equation}
+    L_c=\dfrac{\lambda}{2(n_{eff_p}-n_{eff_i})}
+\end{equation}
+
+
+
+
 \subsection{Position du problème}
-On veut alors qu'à la longueur d'onde 1, la puissance fasse $n$ aller-retours, tandis qu'à la longueur d'onde 2 elle fasse $m$ aller-retours puis retourne dans le second guide.
 
-Le problème consiste alors à trouver :
-\[
-\left\{
-    \begin{array}{ll}
-        2n\times {L_c}_1 = (2m+1)\times {L_c}_2 = L_{totale}\\
-        n, m\in \mathbb{N}
-    \end{array}
-\right.
-\]
+Le but du multiplexeur est de séparer les longueurs d'onde, on en déduit ainsi qu'une relation permettant de séparer les longueurs d'onde est :
+\begin{equation}
+    2m\times{L_c}_1=(2p+1)\times{L_c}_2\,\,\hspace{1cm}\text{   avec m et p entiers}
+\end{equation}
 
-Nous voulons de plus caractériser la qualité du démultiplexeur par l'isolation des deux guides de sortie.
+En effet, en $2m{L_c}_1$, la puissance associée à la longueur d'onde 1 fait m aller-retours et se retrouve dans le guide "haut", et en $(2p+1){L_c}_2$, la puissance associée à la longueur d'onde 2 fait p aller-retours et change de nouveau de guide pour terminer dans le guide "bas". Nos longueurs d'ondes sont ainsi séparées. Cependant, en pratique, les dispositifs ne sont pas parfaits. 
+
+
+% On veut alors qu'à la longueur d'onde 1, la puissance fasse $n$ aller-retours, tandis qu'à la longueur d'onde 2 elle fasse $m$ aller-retours puis retourne dans le second guide.
+%
+% Le problème consiste alors à trouver :
+% \[
+% \left\{
+%     \begin{array}{ll}
+%         2n\times {L_c}_1 = (2m+1)\times {L_c}_2 = L_{totale}\\
+%         n, m\in \mathbb{N}
+%     \end{array}
+% \right.
+% \]
+%
+C'est pour cela que nous souhaitons également caractériser la qualité du démultiplexeur par l'isolation des deux guides de sortie.
 L'isolation à une longueur d'onde donnée est définie par :
 \[
     \text{Isolation}(\lambda) = 10 \log\frac{P_{haut}(\lambda)}{P_{bas}(\lambda)}
@@ -131,10 +150,6 @@ Où $P_{haut}$ et $P_{bas}$ sont les puissances sortant par les guides.
 
 Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et négatives pour la longueur d'onde 2.
 
-
-
-\section{Calculs}%chiants
-%calculs
 \chapter{Dimensionnement}
 Afin de pouvoir étudier correctement les comportements de la structure que l'on souhaite étudier, il est important de dimensionner les guides correctement.
 
