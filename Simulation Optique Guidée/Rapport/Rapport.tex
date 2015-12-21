@@ -112,7 +112,14 @@ Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et né
 Afin de pouvoir étudier correctement les comportements de la structure que l'on souhaite étudier, il est important de dimensionner les guides correctement.
 \section{Intégration des paramètres d'utilisation}
 
-Nous avons étudié la théorie dans la partie précédente, il faut maintenant la mettre en application afin de déterminer des paramètres de fonctionnement optimaux. Ainsi, dans toute la suite, nous utiliserons des longueurs d'onde de foncionnement $\lambda_1=1.55\mu m$ et $\lambda_2=1.31\mu m$
+Nous avons étudié la théorie dans la partie précédente, il faut maintenant la mettre en application afin de déterminer des paramètres de fonctionnement optimaux. Ainsi, dans toute la suite, nous utiliserons des longueurs d'onde de foncionnement $\lambda_1=1.55\mu m$ et $\lambda_2=1.31\mu m$, des indices valant $n_{sub}=1.50$ et $n_{c}=1.51$ pour le substrat et le coeur du guide respectivement.
+
+En utilisant la méthode de l'indice effectif, puis grâce à l'equation caractéristique :
+\begin{equation}
+    k_0e\sqrt{n_c^2-n_{eff}^2}+\arctan\left(\sqrt{\dfrac{n_{eff}^2-n_{sub}^2}{n_{c}^2-n_{eff}^2}}\right)=m\pi
+\end{equation}
+
+Avec $e$ l'épaisseur du guide, et $k_0=\dfrac{2\pi}{\lambda}$.
 \section{Optimisation des paramètres}
 % Determination des paramètres en fonction de la partie d'avant
 \chapter{Simulation} 
