@@ -30,11 +30,10 @@ Nous mettrons en évidence les différents paramètres que l'on peut adapter pou
 
 \chapter{Étude théorique}
 
-\section{Position du problème}
+\section{Présentation du démultiplexeur}
 \begin{figure}[h]
     \begin{center}
         \include{Images/schema_demux}
-%        \includegraphics[width=0.6\textwidth]{Images/guides_sans_phase}
         \caption{Schéma de principe du démultiplexeur}
         \label{fig:}
     \end{center}
@@ -44,7 +43,7 @@ Le dispositif du coupleur est constitué de deux guides linéaires de longueur \
 %Quatre bras en "S" permettent la connexion de ces deux guides aux fibres d'entrée et de sortie.
 L'intégralité du signal provient d'un seul bras (haut-gauche), aux deux longueurs d'onde $\lambda_1$ et $\lambda_2$.
 
-On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le bras 3 et le signal à $\lambda_2$, par le bras 4.
+On souhaite que l'intégralité du signal à $\lambda_1$ sorte par le haut et le signal à $\lambda_2$, par le bas.
 
 Ce problème peut alors être vu selon deux approches, que nous allons détailler.
 
@@ -82,6 +81,9 @@ On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différ
 
 L'approche perturbative est très bonne qualitativement, mais la seconde nous permettra d'étudier quantitativement le problème.
 
+\subsection{Position du problème}
+On veut alors que la longueur d'onde 1 fasse n aller-retours, tandis que la longueur d'onde 2 fasse m aller-retours puis retourne dans le second guide.
+
 Le problème consiste alors à trouver 
 \[
 \left\{
@@ -93,10 +95,16 @@ Le problème consiste alors à trouver
 \right.
 \]
 
-L'isolation des deux bras à une longueur d'onde donnée est définie par
-\[\text{Isolation}(\lambda) = 10 \log\frac{P_3(\lambda)}{P_4(\lambda)}
+Nous voulons de plus caractériser la qualité du démultiplexeur par l'isolation des deux guides de sortie.
+L'isolation à une longueur d'onde donnée est définie par :
+\[
+    \text{Isolation}(\lambda) = 10 \log\frac{P_{haut}(\lambda)}{P_{bas}(\lambda)}
 \]
 Où $P_3$ et $P_4$ sont respectivement les puissances sortant par le bras 3 et 4.
+
+Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et négatives pour la longueur d'onde 2.
+
+
 
 \section{Calculs}%chiants
 %calculs
