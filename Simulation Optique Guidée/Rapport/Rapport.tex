@@ -58,7 +58,7 @@ Nous mettrons en évidence les différents paramètres que l'on peut adapter pou
 \chapter{Étude théorique}
 
 \section{Présentation du démultiplexeur}
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \include{Images/schema_demux}
         \caption{Schéma de principe du démultiplexeur}
@@ -89,7 +89,15 @@ Plus la distance d entre les deux guides est élevée, plus le transfert de puis
 On peut donc déjà définir la longueur de couplage $L_c$, longueur nécessaire pour un transfert total de la puissance d'un guide à l'autre.
 
 \section{Approche globale}%TODO nom à améliorer
-Une autre approche consiste à considérer les deux guides comme une seule superstructure, et les deux modes fondamentaux de propagation pair et impair.
+Une autre approche consiste à considérer les deux guides comme une seule superstructure, et les deux modes fondamentaux de propagation pair et impair, comme le montre la figure \ref{schema_modes}
+\begin{figure}[H]
+    \begin{center}
+        \include{Images/schema_demux_avec_modes}
+        \caption{Schéma du multiplexeur avec les modes propagés}
+        \label{schema_modes}
+    \end{center}
+\end{figure}
+
 
 \subsection*{Considérons $\lambda_1$ (en vert).}
 À l'entrée, les modes pair et impair sont en phase dans le guide supérieur (puissance maximale), et en opposition de phase dans le guide inférieur (pas de puissance).
@@ -105,6 +113,7 @@ En $L_c$, on se retrouve alors donc dans la situation opposée :
 
 On retrouve alors, comme dans la première approche, un couplage entre les deux guides, avec une puissance sinusoïdale dans les deux guides.
 
+
 \subsection*{Dans le cas de $\lambda_2$ (en rouge),}
 On retrouve exactement le même comportement ; $n_{eff}$ sera néanmoins différent, d'où une longueur de couplage ${L_c}_2$ différente.
 \newline
@@ -117,9 +126,6 @@ On calcule $L_c$ à partir des indices effectifs des deux modes, et en particuli
     L_c=\dfrac{\lambda}{2(n_{eff_p}-n_{eff_i})}
 \end{equation}
 
-
-
-
 \section{Position du problème}
 
 Le but du multiplexeur est de séparer les longueurs d'onde, on en déduit ainsi qu'une relation permettant de séparer les longueurs d'onde est :
@@ -127,7 +133,7 @@ Le but du multiplexeur est de séparer les longueurs d'onde, on en déduit ainsi
     2m\times{L_c}_1=(2p+1)\times{L_c}_2\,\,\hspace{1cm}\text{   avec m et p entiers}
 \end{equation}
 
-En effet, en $2m{L_c}_1$, la puissance associée à la longueur d'onde 1 fait m aller-retours et se retrouve dans le guide "haut", et en $(2p+1){L_c}_2$, la puissance associée à la longueur d'onde 2 fait p aller-retours et change de nouveau de guide pour terminer dans le guide "bas". Nos longueurs d'ondes sont ainsi séparées. Cependant, en pratique, les dispositifs ne sont pas parfaits. 
+En effet, en $2m\times{L_c}_1$, la puissance associée à la longueur d'onde 1 fait m aller-retours et se retrouve dans le guide "haut", et en $(2p+1)\times{L_c}_2$, la puissance associée à la longueur d'onde 2 fait p aller-retours et change de nouveau de guide pour terminer dans le guide "bas". Nos longueurs d'ondes sont ainsi séparées. Cependant, en pratique, les dispositifs ne sont pas parfaits. 
 
 
 % On veut alors qu'à la longueur d'onde 1, la puissance fasse $n$ aller-retours, tandis qu'à la longueur d'onde 2 elle fasse $m$ aller-retours puis retourne dans le second guide.
@@ -149,7 +155,7 @@ L'isolation à une longueur d'onde donnée est définie par :
 \]
 Où $P_{haut}$ et $P_{bas}$ sont les puissances sortant par les guides.
 
-Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et négatives pour la longueur d'onde 2.
+Cette formule nous donne des valeurs positives pour la longueur d'onde 1, et négatives pour la longueur d'onde 2. Le but du dispositif est d'avoir la meilleure isolation possible, pour séparer correctement les longueurs d'onde.
 
 \chapter{Dimensionnement}
 Afin de pouvoir étudier correctement les comportements de la structure que l'on souhaite étudier, il est important de dimensionner les guides correctement.
@@ -176,10 +182,10 @@ Avec $e$ l'épaisseur du guide, et $k_0=\dfrac{2\pi}{\lambda}$.
 
 En considérant le minimum de l'indice effectif, on peut alors trouver une épaisseur de coupure pour le mode fondamental (m=0) et une épaisseur de coupure pour le mode suivant (m=1), et ce pour chacune des longueurs d'onde considérées.
 
-Ainsi, on obtient, après résolution de l'équation caractéristique pour ces 4 cas : m=0 et m=1 pour $\lambda_1$ et $\lambda_2$, avec $n_{\text{eff}}=n_{sub}$ des valeurs limites pour l'épaisseur du guide. Parmis les valeurs possibles, nous avons choisi une épaisseur $e=3\mu m$ pour chacun des guides, qui sont ainsi monomodes pour les deux longueurs d'ondes que nous allons utiliser, ce qui est confirmé par le solveur de modes intégré au logiciel qui nous donne $n_{\text{eff}_{\lambda_1}}=1.5020053$ et $n_{\text{eff}_{\lambda_1}}=1.5032$, pour $e=3\mu m$.
+Ainsi, on obtient, après résolution de l'équation caractéristique pour ces 4 cas, des valeurs limites pour l'épaisseur du guide. Parmis les valeurs possibles, nous avons choisi une épaisseur $e=3\mu m$ pour chacun des guides, qui sont ainsi monomodes pour les deux longueurs d'ondes que nous allons utiliser, ce qui est confirmé par le solveur de modes intégré au logiciel qui nous donne $n_{\text{eff}_{\lambda_1}}=1.5020053$ et $n_{\text{eff}_{\lambda_1}}=1.5032$, pour $e=3\mu m$.
 
 \section{Longueur des guides}
-On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveur de modes, nous pouvons déterminer aisément les indices effectifs, en réalisant la structure telle que dans le Chapitre 1, en considérant l'aspect global.
+Nous avons de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveur de modes, nous pouvons déterminer aisément les indices effectifs, en réalisant la structure telle que dans le Chapitre 1, en considérant l'aspect global.
 
 \begin{figure}[H]
 \centering
@@ -198,7 +204,7 @@ On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveu
     \path[fill=blue,opacity=0.2] (0,0) -- (15,0) -- (15,1) -- (0,1) -- cycle;
     \path[fill=blue,opacity=0.2] (0,2) -- (15,2) -- (15,3) -- (0,3) -- cycle;
 \end{tikzpicture} 
-\caption{Schéma de la structure réaslisée dans le solveur de modes}
+\caption{Schéma de la structure réalisée dans le solveur de modes}
 
 \end{figure}
 
