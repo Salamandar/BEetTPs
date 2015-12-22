@@ -8,6 +8,7 @@
 \usepackage{textcomp,rotating,epic,eepic,pdfpages,pgfplots,listings}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry}
 \usepackage[babel=true,kerning=true]{microtype}
+\usepackage{float}
 \parskip=6pt % adds vertical space between paragraphs
 
 \lstset
@@ -180,6 +181,8 @@ Ainsi, on obtient, après résolution de l'équation caractéristique pour ces 4
 \section{Longueur des guides}
 On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveur de modes, nous pouvons déterminer aisément les indices effectifs, en réalisant la structure telle que dans le Chapitre 1, en considérant l'aspect global.
 
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}
     \draw (7.5,-0.5) node{$n_{sub}=1.50$}; 
     \draw [thick](0,0)--(15,0);
@@ -195,18 +198,20 @@ On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveu
     \path[fill=blue,opacity=0.2] (0,0) -- (15,0) -- (15,1) -- (0,1) -- cycle;
     \path[fill=blue,opacity=0.2] (0,2) -- (15,2) -- (15,3) -- (0,3) -- cycle;
 \end{tikzpicture} 
+\caption{Schéma de la structure réaslisée dans le solveur de modes}
 
+\end{figure}
 
 \begin{description}
     \item[Pour $\lambda_1=1.55\,\mu m$,] le solveur nous donne
     \begin{itemize}
         \item $n_{\text{eff}1_p}=1.50574544$
-        \item $n_{\text{eff}1_i}=1.5034626$
+        \item $n_{\text{eff}1_i}=1.50346926$
     \end{itemize}
     \item[Pour $\lambda_2=1.31\,\mu m$,] il nous donne
     \begin{itemize}
-        \item $n_{\text{eff}2_p}=1.5062047$
-        \item $n_{\text{eff}2_i}=1.5046940$
+        \item $n_{\text{eff}2_p}=1.50620477$
+        \item $n_{\text{eff}2_i}=1.50469404$
     \end{itemize}
 \end{description}
 
