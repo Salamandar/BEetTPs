@@ -25,9 +25,9 @@
     %===========================================================
     framesep=3pt,%expand outward.
     framerule=0.4pt,%expand outward.
-    xleftmargin=3.4pt,%make the frame fits in the text area. 
+    xleftmargin=3.4pt,%make the frame fits in the text area.
     xrightmargin=3.4pt,%make the frame fits in the text area.
-    %=========================================================== 
+    %===========================================================
     rulecolor=\color{Red!0},
     backgroundcolor=\color{Yellow!10},
     basicstyle=\tiny\color{Black}\ttfamily,
@@ -133,7 +133,7 @@ Le but du multiplexeur est de séparer les longueurs d'onde, on en déduit ainsi
     2m\times{L_c}_1=(2p+1)\times{L_c}_2\,\,\hspace{1cm}\text{   avec m et p entiers}
 \end{equation}
 
-En effet, en $2m\times{L_c}_1$, la puissance associée à la longueur d'onde 1 fait m aller-retours et se retrouve dans le guide "haut", et en $(2p+1)\times{L_c}_2$, la puissance associée à la longueur d'onde 2 fait p aller-retours et change de nouveau de guide pour terminer dans le guide "bas". Nos longueurs d'ondes sont ainsi séparées. Cependant, en pratique, les dispositifs ne sont pas parfaits. 
+En effet, en $2m\times{L_c}_1$, la puissance associée à la longueur d'onde 1 fait m aller-retours et se retrouve dans le guide "haut", et en $(2p+1)\times{L_c}_2$, la puissance associée à la longueur d'onde 2 fait p aller-retours et change de nouveau de guide pour terminer dans le guide "bas". Nos longueurs d'ondes sont ainsi séparées. Cependant, en pratique, les dispositifs ne sont pas parfaits.
 
 
 % On veut alors qu'à la longueur d'onde 1, la puissance fasse $n$ aller-retours, tandis qu'à la longueur d'onde 2 elle fasse $m$ aller-retours puis retourne dans le second guide.
@@ -163,7 +163,7 @@ Afin de pouvoir étudier correctement les comportements de la structure que l'on
 \section{Épaisseur des guides}
 Nous avons étudié la théorie dans la partie précédente, il faut maintenant la mettre en application afin de déterminer les paramètres de fonctionnement optimaux. Ainsi, dans toute la suite, nous utiliserons les longueurs d'onde de fonctionnement suivantes :
 \begin{itemize}
-    \item $\lambda_1=1.55\mu m$ 
+    \item $\lambda_1=1.55\mu m$
     \item $\lambda_2=1.31\mu m$
 \end{itemize}
 Ainsi que des indices valant :
@@ -190,7 +190,7 @@ Nous avons de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveu
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
-    \draw (7.5,-0.5) node{$n_{sub}=1.50$}; 
+    \draw (7.5,-0.5) node{$n_{sub}=1.50$};
     \draw [thick](0,0)--(15,0);
     \draw (7.5,0.5) node{$n_c=1.51$};
     \draw [thick](0,1)--(15,1);
@@ -198,12 +198,12 @@ Nous avons de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveu
     \draw [thick](0,2)--(15,2);
     \draw (7.5,2.5) node{$n_c=1.51$};
     \draw [thick](0,3)--(15,3);
-    \draw (7.5,3.5) node{$n_{sub}=1.50$}; 
+    \draw (7.5,3.5) node{$n_{sub}=1.50$};
     \draw [->](2,2.5)--(4,2.5)node[midway,below]{Sens de propagation};
     \path[fill=blue,opacity=0.05](0,-1)-- (15,-1)-- (15,4) -- (0,4) -- cycle;
     \path[fill=blue,opacity=0.2] (0,0) -- (15,0) -- (15,1) -- (0,1) -- cycle;
     \path[fill=blue,opacity=0.2] (0,2) -- (15,2) -- (15,3) -- (0,3) -- cycle;
-\end{tikzpicture} 
+\end{tikzpicture}
 \caption{Schéma de la structure réalisée dans le solveur de modes}
 
 \end{figure}
@@ -238,7 +238,7 @@ On obtient alors pour $\lambda_1$, $L_{c_1}=339\,\mu m$ et pour $\lambda_2$, $L_
 En effet, en prenant $2m=4$ et $2(p+1)=3$, on obtient deux résultats proches, pour une longueur totale $L_{totale}=1300\,\mu m$.
 
 Il faut maintenant entrer ces paramètres dans le logiciel de simulation afin de vérifier la validité de ces calculs et d'extraire des paramètres intéressants.
-\chapter{Simulation} 
+\chapter{Simulation}
 
 L'éditeur de script intégré dans OptiBPM nous permet de faire varier les caractéristiques de notre dispositif facilement, pour étudier leur impact sur les performances du démultiplexage.
 \input{Script}
@@ -299,7 +299,7 @@ On peut alors aisément valider le choix théorique de
 \[L_{totale} = 1300\mu m\]
 \vspace*{2mm}
 
-On peut, grâce à OptiBPM, observer la propagation aux deux longueurs d'onde, pour confirmer le fonctionnement du dispositif : 
+On peut, grâce à OptiBPM, observer la propagation aux deux longueurs d'onde, pour confirmer le fonctionnement du dispositif :
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{Images/intensite900}
@@ -356,7 +356,7 @@ Il est également important de connaître ses limites telles que celles que nous
 
 Il faut aussi considérer les compromis à faire, par exemple entre la qualité d'isolation et la contrainte de place.
 
-Tous ces éléments sont à considérer lorsque l'on veut réaliser un démultiplexeur. Les outils informatique dont nous disposons permettent de réaliser de nombreuses simulations afin d'adapter au mieux les paramètres avant de réaliser un travail de fabrication qui peut être lourd à mettre en place, ou du moins plus lourd qu'entrer un script et des valeurs puis lancer une simulation qui donnera tout autant, si ce n'est plus de résultats qu'une fabrication suivi d'une caractérisation. 
+Tous ces éléments sont à considérer lorsque l'on veut réaliser un démultiplexeur. Les outils informatique dont nous disposons permettent de réaliser de nombreuses simulations afin d'adapter au mieux les paramètres avant de réaliser un travail de fabrication qui peut être lourd à mettre en place, ou du moins plus lourd qu'entrer un script et des valeurs puis lancer une simulation qui donnera tout autant, si ce n'est plus de résultats qu'une fabrication suivi d'une caractérisation.
 
 \nocite{*}
 \bibliographystyle{unsrt}
