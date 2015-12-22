@@ -230,7 +230,7 @@ Après avoir déterminé la largeur des guides, le facteur de forme des "S-bend"
 
 Nous avons donc lancé une modélisation entre 0 et 2,5mm, par pas de 20$\mu m$.
 
-La puissance d'entrée est 1mW.
+La puissance d'entrée est fixée à 1mW, ce qui permet d'avoir en sortie une puissance "normalisée" entre 0 et 1.
 
 \begin{figure}[h]
     \begin{center}
@@ -243,32 +243,70 @@ xtick={0,300,...,2500},
 xlabel={Longueur des guides ($\mu m$)},
 ylabel={Puissance},
 legend columns=-1,
-legend entries={$\lambda_1$ ; bras bas, $\lambda_2$ ; bras haut},
+legend entries={$\lambda_1$ ; bras haut, $\lambda_2$ ; bras bas},
 legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.5)}}
 ]
-\addplot table[x=Z, y=LinearOutBot (Lambda1), col sep=comma, mark=none,smooth]{../Psortante.csv};
 \addplot table[x=Z, y=LinearOutTop (Lambda2), col sep=comma, mark=none,smooth]{../Psortante.csv};
+\addplot table[x=Z, y=LinearOutBot (Lambda1), col sep=comma, mark=none,smooth]{../Psortante.csv};
 \end{axis}
 \end{tikzpicture}
         \caption{Puissance des guides de sortie pour les deux longueurs d'onde}
+        \label{big_graph}
+    \end{center}
+\end{figure}
+On remarque alors que la loi sinusoïdale est parfaitement suivie. Néanmoins, on observe un décalage à l'origine, pour laquelle toute la puissance devrait être dans le bras haut pour les deux longueurs d'onde.
+
+Ce décalage par rapport à la théorie est dû aux "S-bend" : les guides sont couplés bien au-delà des guides linéaires.
+
+On peut extrapoler les courbes vers des longueurs "négatives" pour estimer la valeur de ce décalage : il est de $380\mu m$.
+
+On peut alors estimer les longueurs de couplage entre les guides :
+\begin{description}
+    \item[Pour $\lambda_1$ :] $L_{c1} \simeq 330\mu m$
+    \item[Pour $\lambda_2$ :] $L_{c2} \simeq 430\mu m $
+\end{description}
+
+Ces valeurs sont très proches des longueurs de couplage théoriques.
+
+
+\section{Validation des paramètres}
+On peut facilement remarquer la longueur optimale pour les guides : aux alentours de $900\mu m$, on a deux maxima très proches pour les deux longueurs d'onde.
+
+En tenant compte du décalage dû aux "S-bend", cela correspond à des guides linéaires de $1250\mu m$ environ :
+\begin{description}
+    \item[À $\lambda_1$,] $L = 4*L_{c1} = 4*330 = 1320\mu m$
+    \item[À $\lambda_2$,] $L = 3*L_{c2} = 3*430 = 1290\mu m$
+\end{description}
+
+On peut alors aisément valider le choix théorique de
+\[L_{totale} = 1300\mu m\]
+\vspace*{2mm}
+
+On peut, grâce à OptiBPM, observer la propagation aux deux longueurs d'onde, pour confirmer le fonctionnement du dispositif : 
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Images/intensite900}
+        \caption{Propagation à $\lambda_1=1.55\mu m$}
+        \vspace*{1cm}
+        \includegraphics[width=0.7\textwidth]{Images/intensite900-2}
+        \caption{Propagation à $\lambda_2=1.31\mu m$}
         \label{fig:}
     \end{center}
 \end{figure}
 
-%Jolies images en 3D
-\section{Validation des paramètres}
 %Est-ce que c'est swag ou pas ?
 \section{Calculs de puissance}
 %Isolation et Pertes
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Le demultiplexage est de nos jours très important et très largement utilisé dans les télécommunications. Comprendre son fonctionnement est primordial afin d'être capable d'en réaliser de plus complexes, pour de vraies applications. 
-Il est également important de connaître ses limites telles que celles que nous avons pu voir : le dimensionnement pour avoir la meilleure séparation possible, l'isolation qu'il faut optimiser au maximum pour éviter toute perte d'information, mais aussi la dépendance en longueur d'onde, le défaut de longueur du aux "S" d'entrée et de sortie qui prolongent le couplage. Tous ces élements sont à considérer lorsque l'on veut réaliser un demultiplexeur. Les outils informatique dont nous disposons permettent de réaliser de nombreuses simulations afin d'adapter au mieux les paramètres avant de réaliser un travail de fabrication qui peut être lourd à mettre en place, ou du moins plus lourd qu'entrer un script et des valeurs puis lancer une simulation qui donnera tout autant, si ce n'est plus de résultats qu'une fabrication suivi d'une caractérisation. 
+Le démultiplexage est de nos jours très important et très largement utilisé dans les télécommunications. Comprendre son fonctionnement est primordial afin d'être capable d'en réaliser de plus complexes, pour de vraies applications.
+
+Il est également important de connaître ses limites telles que celles que nous avons pu voir : le dimensionnement pour avoir la meilleure séparation possible, l'isolation qu'il faut optimiser au maximum pour éviter toute perte d'information, mais aussi la dépendance en longueur d'onde, le défaut de longueur d aux "S" d'entrée et de sortie qui prolongent le couplage.
+
+Tous ces éléments sont à considérer lorsque l'on veut réaliser un démultiplexeur. Les outils informatique dont nous disposons permettent de réaliser de nombreuses simulations afin d'adapter au mieux les paramètres avant de réaliser un travail de fabrication qui peut être lourd à mettre en place, ou du moins plus lourd qu'entrer un script et des valeurs puis lancer une simulation qui donnera tout autant, si ce n'est plus de résultats qu'une fabrication suivi d'une caractérisation. 
 
 \nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{Biblio}
-
-
 \end{document}
