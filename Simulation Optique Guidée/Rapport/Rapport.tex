@@ -305,15 +305,15 @@ On peut, grâce à OptiBPM, observer la propagation aux deux longueurs d'onde, p
 \begin{figure}[h]
     \begin{center}
 \begin{tikzpicture}
-\begin{axis}[width=0.6\textwidth,height=0.7\textwidth,
+\begin{axis}[width=0.6\textwidth,height=0.45\textwidth,
 xmin=860, xmax=960,
-ymin=-60, ymax=60,
+ymin=0, ymax=60,
 minor x tick num=1,
 xlabel={Longueur des guides ($\mu m$)},
 ylabel={Isolation (dB)},
 legend columns=-1,
-legend entries={$\lambda_1$ ; bras haut, $\lambda_2$ ; bras bas},
-legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.5)}}
+legend entries={$\lambda_1$, $\lambda_2$},
+legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.12)}}
 ]
 \addplot table[x=Z, y=Isolation, col sep=comma, smooth]{../Isolation.csv};
 \addplot table[x=Z, y=Isolation2, col sep=comma, smooth]{../Isolation.csv};
@@ -323,6 +323,12 @@ legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.
         \label{big_graph}
     \end{center}
 \end{figure}
+
+On peut facilement obtenir une isolation au-delà de 20dB pour les deux longueurs d'ondes.
+
+On remarque par ailleurs que les isolations peuvent atteindre jusqu'à 54dB, sans pour autant qu'on puisse obtenir de telles isolations sur un dispositif : il faut trouver un compromis entre les deux longueurs d'onde, ce qui nous empêche d'atteindre d'extrêmement bonnes isolations pour les deux longueurs d'onde à la fois.
+
+La longueur optimale des guides sera alors de $916\mu m$, pour laquelle on atteint une isolation de 28dB pour les deux longueurs d'onde.
 
 
 %Isolation et Pertes
