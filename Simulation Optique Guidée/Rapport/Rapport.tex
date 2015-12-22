@@ -196,22 +196,25 @@ On choisit de prendre une distance $d=3\mu m$ entre les guides. Grâce au solveu
     \path[fill=blue,opacity=0.2] (0,2) -- (15,2) -- (15,3) -- (0,3) -- cycle;
 \end{tikzpicture} 
 
-Le mode où les deux ondes portées par les guides sont en phase sera indicé $e$ et le le mode où ils sont en opposition de phase sera indicé $o$. 
+
 \begin{description}
     \item[Pour $\lambda_1=1.55\,\mu m$,] le solveur nous donne
     \begin{itemize}
-        \item $n_{\text{eff}1_e}=1.50574544$
-        \item $n_{\text{eff}1_o}=1.5034626$
+        \item $n_{\text{eff}1_p}=1.50574544$
+        \item $n_{\text{eff}1_i}=1.5034626$
     \end{itemize}
     \item[Pour $\lambda_2=1.31\,\mu m$,] il nous donne
     \begin{itemize}
-        \item $n_{\text{eff}2_e}=1.5062047$
-        \item $n_{\text{eff}2_o}=1.5046940$
+        \item $n_{\text{eff}2_p}=1.5062047$
+        \item $n_{\text{eff}2_i}=1.5046940$
     \end{itemize}
 \end{description}
 
-On obtient alors pour $\lambda_1$, $L_{c_1}=437\,\mu m$ et pour $\lambda_2$, $L_{c_2}=661\,\mu m$. Ces longueurs de couplages nous donnent ainsi des ordres de grandeur afin de déterminer les longueurs de guide à utiliser pour réaliser le demultiplexeur.
+On obtient alors pour $\lambda_1$, $L_{c_1}=339\,\mu m$ et pour $\lambda_2$, $L_{c_2}=433\,\mu m$. Ces longueurs de couplages nous donnent ainsi des ordres de grandeur afin de déterminer les longueurs de guide à utiliser pour réaliser le demultiplexeur.
 
+En effet, en prenant $2m=4$ et $2(p+1)=3$, on obtient deux résultats proches, pour une longueur totale $L_{totale}=1300\,\mu m$.
+
+Il faut maintenant entrer ces paramètres dans le logiciel de simulation afin de vérifier la validité de ces calculs et d'extraire des paramètres intéressants.
 \chapter{Simulation} 
 
 L'éditeur de script intégré dans OptiBPM nous permet de faire varier les caractéristiques de notre dispositif facilement, pour étudier leur impact sur les performances du démultiplexage.
@@ -222,7 +225,7 @@ Après avoir déterminé la largeur des guides, le facteur de forme des "S-bend"
 
 Nous avons donc lancé une modélisation entre 0 et 2,5mm, par pas de 20$\mu m$.
 
-La puissance d'entrée est 
+La puissance d'entrée est 1mW.
 
 \begin{figure}[h]
     \begin{center}
@@ -258,10 +261,6 @@ legend style={/tikz/every even column/.append style={column sep=0.5cm},at={(1,0.
 Le demultiplexage est de nos jours très important et très largement utilisé dans les télécommunications. Comprendre son fonctionnement est primordial afin d'être capable d'en réaliser de plus complexes, pour de vraies applications. 
 Il est également important de connaître ses limites telles que celles que nous avons pu voir : le dimensionnement pour avoir la meilleure séparation possible, l'isolation qu'il faut optimiser au maximum pour éviter toute perte d'information, mais aussi la dépendance en longueur d'onde, le défaut de longueur du aux "S" d'entrée et de sortie qui prolongent le couplage. Tous ces élements sont à considérer lorsque l'on veut réaliser un demultiplexeur. Les outils informatique dont nous disposons permettent de réaliser de nombreuses simulations afin d'adapter au mieux les paramètres avant de réaliser un travail de fabrication qui peut être lourd à mettre en place, ou du moins plus lourd qu'entrer un script et des valeurs puis lancer une simulation qui donnera tout autant, si ce n'est plus de résultats qu'une fabrication suivi d'une caractérisation. 
 
-\appendix
-\chapter{Scripts}
-\section{Guide}
-\section{Itérations}
 \nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{Biblio}
