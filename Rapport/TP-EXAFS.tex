@@ -38,17 +38,82 @@ This study is composed of two parts: Firstly, we are going to devellop theorical
 
 \subsection{Grenoble CERN Operating principle}
 
-The Hall where all experiments lines are regrouped is in the figure \ref{Hall}.\medskip
+The ESRF is a synchrotron, so it is mostly coposed by a LINear ACcelerator (LINAC), a booster ring and a storage ring.
+\begin{itemize}
+    \item LINAC: At the beginning, an electron gun make electron and send them to the LINAC where their are accelerate by an alectromagnetic fiels that attract them. At the ESRF, electron gun is a 100 keV triode gun and there are two 6 meter acceleration sections of 35 MW each to put electrons at 200 MeV.
+    \item Booster ring: when electron have made their pre-acceleration in the LINAC, their enter in the booster ring (300 meter circumference) to be accelerated near to light speed at 6 GeV.
+    \item Storage ring: It is the last and biggest ring (844.4 meter circumference). In this ring, electron alternate straight lines and bending sections. The ESRF synchrotron strorage ring is composed by 64 bending magnets and on straight lines, there are 320 quadrupoles to keep the beam focused, 224 sextupoles to avoid chromatic aberration, undulators and wigglers both force electrons to have a sinusoidal trajectory instead of straight one.
+\end{itemize}
+\medskip
+
+Like we have seen in the part \ref{theory}, when electrons turn, there emit X-rays breaking radiation. That X-rays are capted to make experiments on beamlines.\medskip
+
+
+The Hall where all experiments lines (beamlines) are regrouped is in the figure \ref{Hall}.\medskip
 
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/IMG_20151210_213319.jpg}
-        \caption{Hall of experiments (CERN Grenoble)}
+        \caption{Hall of experiments (ESRF Grenoble)}
         \label{Hall}
     \end{center}
 \end{figure}
 \medskip
 
+On the figure \ref{Incident}, you can see the beginning of the beamline used (BM23) the tunnel on the right is the exit of storage ring and the first component focus X-ray beam in the beamline.
+
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.13]{Images/IMG_20151210_202655.jpg}
+        \caption{Beamline enter for X-ray radiation and focus beam straight in the beamline}
+        \label{Incident}
+    \end{center}
+\end{figure}
+\medskip
+
+The first insteresting component is the monochromator on figure \ref{monochromateur}. When the breaking radiation is created, it got a wide band of energy, the monochromator used Bragg reflection to keep only X-rays of energy selected. Bragg's law is the equation \ref{Bragg}. This equation show that the dispertion in wavelength $\lambda$ cause a dispertion in reflection angle. The monochromator use this to shut down X-rays that don't have the right energy.
+
+\begin{equation}
+    2d sin \theta = n \lambda  \label{Bragg}
+\end{equation}
+Avec:\\
+d: distance between the two mirors\\
+$\theta$: reflection angle\\
+n: diffraction order\\
+$\lambda$: wavelength\\
+\medskip
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.13]{Images/IMG_20151210_202721.jpg}
+        \caption{Monochromator}
+        \label{monochromateur}
+    \end{center}
+\end{figure}
+\medskip
+
+Just after the monochromator, it is necessary to put a diffraction grating (figure \ref{Reseau_diffract}) to select only the first diffraction order n=1 (delete harmonics).
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.11]{Images/IMG_20151210_202740.jpg}
+        \caption{Diffraction grating}
+        \label{Reseau_diffract}
+    \end{center}
+\end{figure}
+\medskip
+
+Now we have got the correct X-ray, the mesure is simple, we just need to put our sample in the beamline (figure \ref{ligne_mesure}) and mesure X-ray intensity before and after passing through the sample. The intensity difference give us the absorption induced by the crossing of our sample.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.07]{Images/IMG_20151210_203229.jpg}
+        \includegraphics[scale=0.07]{Images/IMG_20151210_203316.jpg}
+        \caption{experimental cab}
+        \label{ligne_mesure}
+    \end{center}
+\end{figure}
+\medskip
 
 
 \newpage
@@ -76,7 +141,9 @@ The Hall where all experiments lines are regrouped is in the figure \ref{Hall}.\
 \section*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
 
-Au cours de cette étude, nous avons pu mettre en évidence
+	By this study, we have learn a lot about operation of synchrotron and make a real experiment of our matter material caracterization. Moreover, the ESRF it is a great experience in our engineer studies.\smallskip
+	
+	Result of this study bring out EXAFS phenomenon by caracterization of a Cu$_2$O sample, we have compared spectral absorption of our sample to a Cu sample reference and data files and then recover the composition of our sample.
 
 
 \nocite{*}
