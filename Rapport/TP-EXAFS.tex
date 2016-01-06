@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,oneside]{article}
+\documentclass[11pt,a4paper,oneside]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french,english]{babel}
@@ -8,32 +8,36 @@
 \usepackage{amsmath,amsfonts,amssymb,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
 \usepackage{textcomp,rotating,epic,pdfpages,listings,diagbox,multirow,float}
 
-\usepackage[top=15mm,bottom=15mm,left=20mm,right=20mm]{geometry}
+
+\usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
 
 \parskip=6pt % adds vertical space between paragraphs
 
 \DeclareMathOperator{\e}{e}
 
+\usepackage{fancyhdr}
+\lhead{\textsc{EXAFS Practical $-$ Report}}
+\chead{}
+
 \begin{document}
 
 \include{0.Couverture}
+\pagestyle{fancy}
 
-\section*{Introduction}
+\chapter*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
+ESRF is an international (mostly european) structure which is used for characterization of matter. Matter is characterized with X-Ray, produced when electrons are slown down in the synchrotron. During this practical work, we used a method called EXAFS.
 
 Extended X-ray Absorption Fine Structure (EXAFS) is a spectroscopic method to caracterize elements of a sample (fluid or solid). The sample is placed on the trajectory of a X-ray beam, insensity of the X-ray is mesured before and after the sample, it give us absorption of the X-ray produced by passing through the sample.\\
 The sample is scanned by X-rays of differents energies. In the EXAFS domain, kinetic enregy of photoelectron sent is from 50 eV to 1000 eV approximatively.
 
-This study is composed of two parts: Firstly, we are going to devellop theorical aspects of the EXAFS and working principle of the CERN used. Secondly, how to make standards samples and exploitations of results.
-
-
-
+We will first present the theoretical aspects of the EXAFS and the principles of the synchrotron used. Then, we will how how to prepare the line for measurements, how to make samples and some exploitations of the results given by the EXAFS method.
 
 \newpage
 
-\section{Theorical aspects}
-\subsection{EXAFS Domain and utilisation}
-\subsubsection{Atomic X-Ray absorption}
+\chapter{Theorical aspects}
+\section{EXAFS Domain and utilisation}
+\subsection{Atomic X-Ray absorption}\label{theory}
 When interacting with matter, X-Rays are absorbed by atoms, resulting into an electron excitation.
 
 If the incident X-Ray beam has a greater energy than the binding energy of a core-level electron, this electron is ejected from the atom into the continuum, leaving the atom with a core hole.\\This is the Photoelectric effect.
@@ -46,7 +50,7 @@ The atom will relax from this excited state through two main processes : X-Ray F
 
 Those two effects result into a quasi-linear absorption coefficient :
 \[\mu \simeq \frac{\rho Z^4}{A E^3}\]
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{Images/AbsorptionCoeff}
         \caption{The X-Ray absorption coefficient for Pb, Cd, Fe and O.}
@@ -57,13 +61,13 @@ Those two effects result into a quasi-linear absorption coefficient :
 The "edges" in this graph result from the electronic energy levels of the element : for each edge, another core level can absorb the X-Ray, as the incident energy becames enough to excitate the level.
 
 \newpage
-\subsubsection{The XAFS phenomenon}
+\subsection{The XAFS phenomenon}
 For an isolated atom, the absorption edges are perfectly sharp, and $\mu(E)$ is smooth above the edges.
 
 But in condensed matter, the absorbing atom is surrounded by other atoms (same or different) : the emitted photoelectron can scatter from neighbouring atoms and come back to the first atom.
 
 The outgoing and ingoing waves of the back-scattered photoelectron will interfere, thus modulating the absorption coefficient of the atom (Fig. \ref{scatteringschema}).
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{Images/Scattering}
         \caption{A photo-electron emitted (blue) and back-scattered (red) to the central atom}
@@ -75,7 +79,7 @@ This modulation is easily visible on the Figure \ref{exafsgraph}. We will define
 \[\chi(E) = \frac{\mu(E) - \mu_0(E)}{\Delta\mu_0(E_0)}\]
 with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E_0)$ the edge step or "jump".
 
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[height=0.35\textwidth]{Images/EXAFS2}
         \includegraphics[height=0.35\textwidth]{Images/relativeEXAFS}
@@ -86,7 +90,7 @@ with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E
 
 
 \newpage
-\subsection{Grenoble CERN Operating principle}
+\section{Grenoble CERN Operating principle}
 
 The ESRF is a synchrotron, so it is mostly coposed by a LINear ACcelerator (LINAC), a booster ring and a storage ring.
 \begin{itemize}
@@ -96,7 +100,7 @@ The ESRF is a synchrotron, so it is mostly coposed by a LINear ACcelerator (LINA
 \end{itemize}
 \medskip
 
-Like we have seen in the part \ref{theory}, when electrons turn, there emit X-rays breaking radiation. That X-rays are capted to make experiments on beamlines.\medskip
+Like we have seen in the part \ref{theory}, when electrons turn and slow down, they emit X-rays breaking radiation. These X-rays are focused to make experiments on beamlines.\medskip
 
 
 The Hall where all experiments lines (beamlines) are regrouped is in the figure \ref{Hall}.\medskip
@@ -170,19 +174,20 @@ Now we have got the correct X-ray, the mesure is simple, we just need to put our
 
 
 
-\section{Experimental measurements}
-\subsection{Reference sample Cu foil}
+\chapter{Experimental measurements}
+\section{Preparation of the beamline}
+First of all, before starting any measurements on samples, we need to place the sample in the beamline where X-Rays will be able to cross it and interact with the atoms. Fo
 
 
-\subsection{Cu2O sample construction}
+\section{Cu2O sample construction}
 
 
-\subsection{Graph analysis and results} \label{results}
+\section{Graph analysis and results} \label{results}
 The different samples presented earlier and another sample of CuO prepared by the first group have all been analysed using the EXAFS technique. The results are presented and discussed below. All these graphs shows the absorption of copper atoms, since oxygen does not absorb X-Ray very well.
 
-\subsubsection{Absorption graph}
+\subsection{Absorption graph}
 The figure \ref{graph1} presents the absorption graph of the three samples. The normalized absorption is plotted versus the X-ray beam energy. Despite they have a similar composition with the same atoms involved, the three samples have a different absorption at the same energy. The influence of neighbouring atoms can be seen in this first plot, and the interaction of the photo-electron generated are quite different depending on the structure of the material.
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{ImagesTP/image2}
         \caption{}
@@ -192,7 +197,7 @@ The figure \ref{graph1} presents the absorption graph of the three samples. The 
 
 Figure \ref{graph2} shows absorption function plotted versus wavenumber k. The dependence between the energy and the wavenumber of the X-ray is given by   with Wk the ionization energy of the atom.
 Absorption also depends strongly on the material analysed. The pure Cu foil (red curve) shows oscillations with a much higher amplitude than the two oxides. The two oxides signals also present an important noise, especially CuO. The explanation can be a non-uniformity of the concentration of CuO in the sample.
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{ImagesTP/image4}
         \caption{}
@@ -200,12 +205,12 @@ Absorption also depends strongly on the material analysed. The pure Cu foil (red
     \end{center}
 \end{figure}
 
-\subsubsection{Neighbours distance graph}
+\subsection{Neighbours distance graph}
 Now the previous curves can be used to check which neighbours does copper atoms see in the structure of the material. A Fourier transform is performed on the absorption function curves (Fig.\ref{graph2}). So the absorption can now be plotted versus a radial distance as shown in figure \ref{graph3}. The curves obtained have all several peak corresponding to the interaction between the photo-electron and the different neighbours of copper atoms in the structure. To find out which peak correspond to which interaction, these curves are crossed with a database which can be found online. Every interaction between copper and other atoms has his own signature previously measured and classified. That means that the interactions must be predicted depending on the analysed sample. These interactions are then checked one by one.
 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{ImagesTP/image6}
         \caption{}
@@ -216,7 +221,7 @@ Now the previous curves can be used to check which neighbours does copper atoms 
 
 First of all, let’s have a closer look to the copper foil curve. Since the sample only contains copper, it seems obvious to consider the interaction between two copper atoms, where the photo-electron goes to another copper atom then comes back to the first copper atom. The figure \ref{graph4} shows in red this interaction compared to the Cu foil EXAFS curve. There is a match between the Cu foil higher peak and Cu1.1 interaction curve. The peaks on the left of this main peak seems to be explainable with this interaction too. But the right part of the curve does not match really well. However, it can be explained by other interaction between three or more copper atoms, or with the second or more nearest copper atom. The photo-electron can for example go to a second copper atom, then to a third and back to the first. These interactions have been checked and confirmed, but are not plotted in this report.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{ImagesTP/image7}
         \caption{}
@@ -225,7 +230,7 @@ First of all, let’s have a closer look to the copper foil curve. Since the sam
 \end{figure}
 
 The same analysis has been made with the Cu2O oxide sample, the results are plotted on figure \ref{graph5}. The same interaction between two coppers is checked, along with the interaction between a copper atom and an oxygen atom. As predicted, there is a match for both of them. The two main peaks of the oxide curve, along with the one between them, correspond to the green or purple curve. With the same idea than with the copper foil, the rest of the curve is explained by more complicated interactions, with an atom of copper and then an atom of oxygen for example.
-\begin{figure}[h]
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{ImagesTP/image8}
         \caption{}
@@ -238,7 +243,7 @@ The same analysis has been made with the Cu2O oxide sample, the results are plot
 \clearpage
 \newpage
 
-\section*{Conclusion}
+\chapter*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
 
 	By this study, we have learn a lot about operation of synchrotron and make a real experiment of our matter material caracterization. Moreover, the ESRF it is a great experience in our engineer studies.\smallskip
