@@ -193,11 +193,43 @@ The graph of the figure \ref{exafsgraphtimesksquare} shows normalized EXAFS osci
 \end{figure}
 
 The EXAFS equation :
-\[  
+\[  \chi(k) = \frac{f(k,\pi)}{kR^2}\sin(2kR+\delta(k))
+\quad\text{with : } \left\{
+\begin{array}{ll}
+f(k,\pi)\text{ : the back-scattering amplitude}\\
+kR^2\text{ : the spherical wave attenuation}\\
+2kR\text{ : the back \& forth path}\\
+\delta(k)\text{ : the phase shift due to the neighbor atom}\\
+\end{array}
+\right.
 \]
 
 
+With multiple atoms and multiple paths (see fig. \ref{exafsmultiplepaths}), we can rewrite this equation as :
+\[  \chi(k) = \sum_j\frac{S_0^2 N_j f(k,\pi) e^{-2R_j/\lambda(k)}e^{-2k^2\sigma_j^2}}{kR_j^2}\sin(2kR_j+\delta_j(k))
+\]
+Here, $f_j(k)$ and $\delta_j(k)$ are the two scattering proprieties of the neighboring atom of the absorbing atom.
 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[height=0.35\textwidth]{Images/multiplePaths}
+        \caption{Different possibilities of simple and multiple scattering paths}
+        \label{exafsmultiplepaths}
+    \end{center}
+\end{figure}
+
+It is then easy to trace the Fourier transform of this function, as it is a combination of sine waves (see Fig. \ref{fouriertransform}).
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[height=0.35\textwidth]{Images/BeforeFourier}
+        \includegraphics[height=0.35\textwidth]{Images/AfterFourier}
+        \caption{The EXAFS signal and its Fourier transformation}
+        \label{fouriertransform}
+    \end{center}
+\end{figure}
+
+This is in fact the graph we will study to know the absorbing atom environment.
 
 \newpage
 
