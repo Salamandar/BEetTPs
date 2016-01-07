@@ -220,19 +220,59 @@ Here, $f_j(k)$ and $\delta_j(k)$ are the two scattering proprieties of the neigh
 
 It is then easy to trace the Fourier transform of this function, as it is a combination of sine waves (see Fig. \ref{fouriertransform}).
 
+This is in fact the graph we will study to know the absorbing atom environment.
+
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[height=0.35\textwidth]{Images/BeforeFourier}
-        \includegraphics[height=0.35\textwidth]{Images/AfterFourier}
+        \includegraphics[width=0.35\textwidth]{Images/BeforeFourier}
+        \hspace{0.15\textwidth}
+        \includegraphics[width=0.35\textwidth]{Images/AfterFourier}
         \caption{The EXAFS signal and its Fourier transformation}
         \label{fouriertransform}
     \end{center}
 \end{figure}
 
-This is in fact the graph we will study to know the absorbing atom environment.
+
+\subsection{Determination of the atomic species}
+We then just need to compare our data (the Fourier transform of the EXAFS signal) and the databases containing the scattering amplitude ($f(k)$) and the phase shift ($\delta(k)$) for each species we can encounter.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.49\textwidth]{Images/Database1}
+        \includegraphics[width=0.49\textwidth]{Images/Database2}
+        \caption{The scattering amplitude and the phase shift for some species}
+        \label{fouriertransform}
+    \end{center}
+\end{figure}
+
+We can see that for light atoms, we have smooth function. But for heavy atoms, we have sharp changes and a more structured scattering amplitude.
+
+Thanks to the Fourier transform, our EXAFS data is just the sum of the EXAFS characteristics of all the atoms composing the specimen.
+
+\paragraph{The EXAFS accuracy} varies between the parameters : 
+\begin{description}
+    \item[Distances] between atoms (absorber and scatter) have a $\pm 0.01 \AA$ accuracy
+    \item[Coordination numbers] have a bad precision : $\pm 25\%$
+    \item[Scattering atoms] atomic number may be imprecise :
+    \begin{itemize}
+        \item $6<Z<17$ : $Z \pm 1$
+        \item $20<Z<35$ : $Z \pm 3$
+    \end{itemize}
+\end{description}
+
+
+
+\subsection{EXAFS Usage}
+The Extended X-ray Absorption Fine Structure spectroscopy provides us tools to determine, in a nano-structure (molecules, nanocrystals, viruses,…) which atoms form the surface and which do not, which atomic species are neighbors in the structure.
+
+We can thus know the structure of molecules, cristals and more.
+
+EXAFS spectroscopy is used in medicine to study viruses or biological structures, to determine the form of chemicals and then study their impact on environment and living organisms.
+
+
+
 
 \newpage
-
 \chapter{Experimental measurements}
 
 \section{Experimental protocol}
