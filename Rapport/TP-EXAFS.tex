@@ -8,7 +8,6 @@
 \usepackage{amsmath,amsfonts,amssymb,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
 \usepackage{textcomp,rotating,epic,pdfpages,listings,diagbox,multirow,float}
 
-
 \usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
 
 \parskip=6pt % adds vertical space between paragraphs
@@ -27,17 +26,17 @@
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
-ESRF is an international (mostly european) structure which is used for characterization of matter. Matter is characterized with X-Ray, produced when electrons are slown down in the synchrotron. During this practical work, we used a method called EXAFS.
+ESRF is an international (mostly European) structure which is used for characterization of matter. Matter is characterized with X-Ray, produced when electrons are slown down in the synchrotron. During this practical work, we used a method called EXAFS.
 
 Extended X-ray Absorption Fine Structure (EXAFS) is a spectroscopic method to caracterize elements of a sample (fluid or solid). The sample is placed on the trajectory of a X-ray beam, the insensity of the X-ray is mesured before and after the sample, it gives us the absorption of the X-ray while passing through the sample.\\
-The sample is scanned by X-rays of different energies. In the EXAFS domain, kinetic energy of photoelectron goes from 50 eV to 1000 eV approximatively.
+The sample is scanned by X-rays of different energies. In the EXAFS domain, kinetic energy of photoelectron goes from 50 eV to 1000 eV approximately.
 
-We will first present the theoretical aspects of the EXAFS and the principles of the synchrotron used. Then, we will how how to prepare the line for measurements, how to make samples and some exploitations of the results given by the EXAFS method.
+We will first present the theoretical aspects of the EXAFS and the principles of the synchrotron used. Then, we will show how to prepare the line for measurements, how to make samples and some exploitations of the results given by the EXAFS method.
 
 
 \chapter{Theorical aspects}
-\section{EXAFS Domain and utilisation}
-\subsection{Atomic X-Ray absorption}\label{theory}
+\section{EXAFS Domain and utilization}
+\subsection{Atomic X-Ray absorption}
 When interacting with matter, X-Rays are absorbed by atoms, resulting into an electron excitation.
 
 If the incident X-Ray beam has a greater energy than the binding energy of a core-level electron, this electron is ejected from the atom into the continuum, leaving the atom with a core hole.\\This is the Photoelectric effect.
@@ -46,7 +45,7 @@ The atom will relax from this excited state through two main processes : X-Ray F
 
 \paragraph{The Auger Effect :} To fill the core hole, an electron drops into it. The dissipated energy is asborbed by a second electron, thus ejected from a higher energy core-level into the continuum.
 
-\paragraph{The X-Ray Fluorescence :} As in the Auger Effect, an electron drops into the core hole from a higher energy core-level, while emmiting an X-Ray beam of the energy gap between the core levels.
+\paragraph{The X-Ray Fluorescence :} As in the Auger Effect, an electron drops into the core hole from a higher energy core-level, while emitting an X-Ray beam of the energy gap between the core levels.
 
 Those two effects result into a quasi-linear absorption coefficient :
 \[\mu \simeq \frac{\rho Z^4}{A E^3}\]
@@ -58,15 +57,15 @@ Those two effects result into a quasi-linear absorption coefficient :
     \end{center}
 \end{figure}
 
-The "edges" in this graph result from the electronic energy levels of the element : for each edge, another core level can absorb the X-Ray, as the incident energy becames enough to excitate the level.
+The "edges" in this graph result from the electronic energy levels of the element : for each edge, another core level can absorb the X-Ray, as the incident energy became enough to excitate the level.
 
 \newpage
 \subsection{The XAFS phenomenon}
 For an isolated atom, the absorption edges are perfectly sharp, and $\mu(E)$ is smooth above the edges.
 
-But in condensed matter, the absorbing atom is surrounded by other atoms (same or different) : the emitted photoelectron can scatter from neighbouring atoms and come back to the first atom.
+But in condensed matter, the absorbing atom is surrounded by other atoms (same or different) : the emitted photo-electron can scatter from neighboring atoms and come back to the first atom.
 
-The outgoing and ingoing waves of the back-scattered photoelectron will interfere, thus modulating the absorption coefficient of the atom (Fig. \ref{scatteringschema}).
+The outgoing and ingoing waves of the back-scattered photo-electron will interfere, thus modulating the absorption coefficient of the atom (Fig. \ref{scatteringschema}).
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{Images/Scattering}
@@ -75,7 +74,7 @@ The outgoing and ingoing waves of the back-scattered photoelectron will interfer
     \end{center}
 \end{figure}
 
-This modulation is easily visible on the Figure \ref{exafsgraph}. We will define the normalised EXAFS oscillations :
+This modulation is easily visible on the Figure \ref{exafsgraph}. We will define the normalized EXAFS oscillations :
 \[\chi(E) = \frac{\mu(E) - \mu_0(E)}{\Delta\mu_0(E_0)}\]
 with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E_0)$ the edge step or "jump".
 
@@ -83,7 +82,7 @@ with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E
     \begin{center}
         \includegraphics[height=0.35\textwidth]{Images/EXAFS2}
         \includegraphics[height=0.35\textwidth]{Images/relativeEXAFS}
-        \caption{EXAFS phenomenon, raw and normalised}
+        \caption{EXAFS phenomenon, raw and normalized}
         \label{exafsgraph}
     \end{center}
 \end{figure}
@@ -94,14 +93,14 @@ with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E
 
 ESRF is a synchrotron, so it mostly consists in a LINear ACcelerator (LINAC), a booster ring and a storage ring.
 \begin{itemize}
-    \item LINAC: At the beginning, an electron gun makes electron and sends them to the LINAC where they are accelerated by an electromagnetic field. At ESRF, electron gun is a 100 keV triode gun and there are two 6-meters acceleration sections of 35 MW each to give electron an energy of 200 MeV.
+    \item LINAC: At the beginning, an electron gun generates electron and sends them to the LINAC where they are accelerated by an electromagnetic field. At ESRF, electron gun is a 100 keV triode gun and there are two 6-meters acceleration sections of 35 MW each to give electron an energy of 200 MeV.
     \item Booster ring: when electrons have been pre-accelerated in the LINAC, they enter in the booster ring (300 meters circumference) where they will be accelerated to reach a speed close to  the speed of light at an energy of 6 GeV.
-    \item Storage ring: It is the last and biggest ring (844.4 meters circumference). In this ring, electron alternates straight lines and bending sections. The ESRF synchrotron strorage ring consists in 64 bending magnets. On the straight lines, there are 320 quadrupoles to keep the beam focused, 224 sextupoles to avoid chromatic aberration and also ondulators and wigglers which both force the electrons to have a sinusoidal trajectory instead of straight one.
+    \item Storage ring: It is the last and biggest ring (844.4 meters circumference). In this ring, electrons alternate straight lines and bending sections. The ESRF synchrotron storage ring consists in 64 bending magnets. On the straight lines, there are 320 quadrupoles to keep the beam focused, 224 sextupoles to avoid chromatic aberration and also ondulators and wigglers which both force the electrons to have a sinusoidal trajectory instead of a straight one.
 \end{itemize}
 
 Like we have seen in the part \ref{theory}, when electrons turn and slow down, they emit X-rays braking radiation. These X-rays are focused to make experiments on beamlines.
 
-The Hall where all experiments lines (beamlines) are regrouped can be found in the figure \ref{Hall}.
+The Hall where all experiments lines (beamlines) are regrouped can be seen in the figure \ref{Hall}.
 
 \begin{figure}[H]
     \begin{center}
@@ -112,7 +111,7 @@ The Hall where all experiments lines (beamlines) are regrouped can be found in t
 \end{figure}
 \medskip
 
-On the figure \ref{Incident}, you can see the beginning of the beamline used (BM23) the tunnel on the right is the exit of storage ring and the first component focus X-ray beam in the beamline.
+Figure\ref{Incident}, shows the beginning of the beamline we used (BM23), the tunnel on the right is the exit of storage ring and the first component focus X-ray beam in the beamline.
 
 
 \begin{figure}[H]
@@ -124,12 +123,12 @@ On the figure \ref{Incident}, you can see the beginning of the beamline used (BM
 \end{figure}
 \medskip
 
-The first insteresting component is the monochromator on figure \ref{monochromateur}. When the breaking radiation is created, it got a wide band of energy, the monochromator used Bragg reflection to keep only X-rays of energy selected. Bragg's law is the equation \ref{Bragg}. This equation show that the dispertion in wavelength $\lambda$ cause a dispertion in reflection angle. The monochromator uses this to shut down X-rays that don't have the right energy.
+The first interesting component is the monochromator on figure \ref{monochromateur}. When the breaking radiation is created, it got a wide band of energy, the monochromator uses Bragg reflection to keep only X-rays of energy selected. Bragg's law is the equation \ref{Bragg}. This equation shows that the dispersion in wavelength $\lambda$ cause a dispersion in reflection angle. The monochromator uses this to shut down X-rays that don't have the right energy.
 
 \begin{equation}
     2d sin \theta = n \lambda  \label{Bragg}
 \end{equation}
-Avec:\\
+With:\\
 d: distance between the two mirors\\
 $\theta$: reflection angle\\
 n: diffraction order\\
@@ -155,7 +154,7 @@ Just after the monochromator, it is necessary to put a diffraction grating (figu
 \end{figure}
 \medskip
 
-Now we have got the correct X-ray, the mesure is simple, we just need to put our sample in the beamline (figure \ref{ligne_mesure}) and mesure X-ray intensity before and after passing through the sample. The intensity difference give us the absorption induced by the crossing of our sample.
+Now we have got the correct X-ray, the measure is simple, we just need to put our sample in the beamline (figure \ref{ligne_mesure}) and measure X-ray intensity before and after passing through the sample. The intensity difference gives us the absorption induced by the crossing of our sample.
 
 \begin{figure}[H]
     \begin{center}
@@ -167,9 +166,9 @@ Now we have got the correct X-ray, the mesure is simple, we just need to put our
 \end{figure}
 
 \section{Safety}\label{Safety}
-Since they can interact with matter and atoms, and because at ESRF they are quite energetic, X-Rays are dangerous. This is why there are some safety measures that where put in place to guarantee the safety of ESRF employees and reasearchers. In addition of standard measures such as emergency procedure, evacuation there is a part in safety rules concerning radiation protection, and how the site is made to avoid employees to be exposed to radiations, and a large part concerning the beamlines, where the risks are high.
+Since they can interact with matter and atoms, and because at ESRF they are quite energetic, X-Rays are dangerous. This is why there are some safety measures that were put in place to guarantee the safety of ESRF employees and researchers. In addition of standard measures such as emergency procedure, evacuation there is a part in safety rules concerning radiation protection, and how the site is made to avoid employees to be exposed to radiations, and a large part concerning the beamlines, where the risks are high.
 
-There is a control panel (Figure. \ref{SafetyPanel}) at each beamline entrance, which informs if the shutter is closed or not, if the entrance is allowed or not so that everyone can know if it is safe to enter. The hutch is closed if the shutter is open and the door of the hutch can ben opened only if the shutter is closed, so that noone can enter if the shutter is open.
+There is a control panel (Figure. \ref{SafetyPanel}) at each beamline entrance, which informs if the shutter is closed or not, if the entrance is allowed or not so that everyone can know if it is safe to enter. The hutch is closed if the shutter is open and the door of the hutch can be opened only if the shutter is closed, so that noone can enter if the shutter is open.
 
 \begin{figure}[H]
 \centering
@@ -178,14 +177,14 @@ There is a control panel (Figure. \ref{SafetyPanel}) at each beamline entrance, 
     \label{SafetyPanel}    
 \end{figure}
 
-Whenever anyone exit a hutch, a search must be performed, in order to check if anyone stayed inside the hutch. There is a button to start a search, and a button inside the hutch to press, to be sure the search has been realized. Then, it is possible to end the search and close the hutch door. Inside the hutch, there also are emergency buttons to rapidly close the shutter to prevent any problem.
+Whenever anyone exits a hutch, a search must be performed, in order to check if anyone stayed inside the hutch. There is a button to start a search, and a button inside the hutch to press, to be sure the search has been realized. Then, it is possible to end the search and close the hutch door. Inside the hutch, there also are emergency buttons to rapidly close the shutter to prevent any problem.
 
 
 \chapter{Experimental measurements}
 
 \section{Preparation of the beamline}
 
-First of all, before starting any measurements on samples, we need to place the sample in the beamline where X-Rays will be able to cross it and interact with the atoms. For this when need to enter in the hutch, respecting the Safety Measures (See \ref{Safety}). We place the sample at the place made for this. We pump to remove air, and replace it with other gases (A mix between Nitrogen and Helium) thanks to different gases lines available. Once, it is done, we can go out of the hutch, open the shutter and start the measurements.
+First of all, before starting any measurements on samples, we need to place the sample in the beamline where X-Rays will be able to cross it and interact with the atoms. For this when need to enter in the hutch, respecting the Safety Measures (See \ref{Safety}). We place the sample at the place made for this. We pump to remove air, and replace it with other gases (A mix between Nitrogen and Helium) thanks to different gases lines available. Then we can go out of the hutch, open the shutter and start the measurements.
 
 
 \section{Cu$_2$O sample construction}
@@ -199,7 +198,7 @@ For the measurements, we need several samples to be able to make comparison betw
 \end{figure}
 
 
-Then, we put this powder in a press, to create a pellet by submitting the powder to a high pressure. Then, we put the pellet in a sample holder, carely to avoid to break it (Figure \ref{pellet}).
+Then, we put this powder in a press, to create a pellet by submitting the powder to a high pressure. Finally, we put the pellet in a sample holder, carefully to avoid to break it (Figure \ref{pellet}).
 
 \begin{figure}[H]
 \centering
@@ -273,9 +272,9 @@ The same analysis has been made with the Cu2O oxide sample, the results are plot
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-	This practical work allowed us to learned a lot about functioning of a synchrotron and about how to make experiments in such a big structure. We have learned about safety measures that are mandatory in a big scientific place where risks can be high while manipulating. Moreover, is have been a great experience to make an experiment in an important and unique research place like ESRF.
+	This practical work allowed us to learned a lot about how a synchrotron works and about how to make experiments in such a big structure. We have learned about safety measures that are mandatory in a big scientific place where risks can be high while manipulating. Moreover, is has been a great experience to make an experiment in an important and unique research place like ESRF.
 		
-	We were also able to make our own samples, characterize the matter within them and compare several different samples. The study of EXAFS results allowed us to compare the spectral absorption of our Cu$_2$O sample with these of a Cu sample reference and the data files made it possible to recover the composition of our sample. 
+	We were also able to make our own samples, characterize the matter within them and compare several different samples. The study of EXAFS results allowed us to compare the spectral absorption of our Cu$_2$O sample with these of a Cu sample reference and the data files made it possible to analyze the composition of our sample. 
 	
 	Even if the experiment was not revolutionnary (which was not the goal) it made us understand the basics of EXAFS measurements and the exploitation of the results obtained : how to interpret graphs and determine the structure of the matter and the atoms in the sample.
 
