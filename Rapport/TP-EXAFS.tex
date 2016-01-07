@@ -38,6 +38,7 @@ We will first present the principles of functioning of the synchrotron used and 
 
 \section{Operating principle Grenoble Synchrotron}
 
+
 ESRF is a synchrotron, so it mostly consists in a LINear ACcelerator (LINAC), a booster ring and a storage ring :
 \begin{itemize}
     \item LINAC: At the beginning, an electron gun generates electron and sends them to the LINAC where they are accelerated by an electromagnetic field. At ESRF, electron gun is a 100 keV triode gun and there are two 6-meters acceleration sections of 35 MW each to give electron an energy of 200 MeV.
@@ -139,8 +140,6 @@ If the incident X-Ray beam has a greater energy than the binding energy of a cor
 
 The atom will relax from this excited state through two main processes : X-Ray Fluorescence and Auger Effect.
 
-\paragraph{The Auger Effect :} To fill the core hole, an electron drops into it. The dissipated energy is asborbed by a second electron, thus ejected from a higher energy core-level into the continuum.
-
 \paragraph{The X-Ray Fluorescence :} As in the Auger Effect, an electron drops into the core hole from a higher energy core-level, while emitting an X-Ray beam of the energy gap between the core levels.
 
 Those two effects result into a quasi-linear absorption coefficient :
@@ -155,6 +154,7 @@ Those two effects result into a quasi-linear absorption coefficient :
 
 The "edges" in this graph result from the electronic energy levels of the element : for each edge, another core level can absorb the X-Ray, as the incident energy became enough to excitate the level.
 
+\newpage
 \subsection{The XAFS phenomenon}
 For an isolated atom, the absorption edges are perfectly sharp, and $\mu(E)$ is smooth above the edges.
 
@@ -177,17 +177,40 @@ with $\mu_0(E)$ the "smooth background" of the isolated atom, and $\Delta\mu_0(E
     \begin{center}
         \includegraphics[height=0.35\textwidth]{Images/EXAFS2}
         \includegraphics[height=0.35\textwidth]{Images/relativeEXAFS}
-        \caption{EXAFS phenomenon, raw and normalized}
+        \caption{EXAFS phenomenon, raw (photon, E) and normalized (photo-electron, k)}
         \label{exafsgraph}
     \end{center}
 \end{figure}
 
+The graph of the figure \ref{exafsgraphtimesksquare} shows normalized EXAFS oscillations with $k^2$.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[height=0.35\textwidth]{Images/EXAFS3}
+        \caption{EXAFS oscillations, $k^2\chi(k) = f (k)$}
+        \label{exafsgraphtimesksquare}
+    \end{center}
+\end{figure}
+
+The EXAFS equation :
+\[  
+\]
+
+
+
+
+\newpage
+\section{Grenoble CERN Operating principle}
+
+ESRF is a synchrotron, so it mostly consists in a LINear ACcelerator (LINAC), a booster ring and a storage ring.
 \chapter{Experimental measurements}
 
 \section{Experimental protocol}
 In this part, we will briefly show how to initiate an experiment, by the fabrication of a sample and the preparation of the beamline to begin the measurements.
 
+
 \subsection{Cu$_2$O sample construction}
+First of all, before starting any measurements on samples, we need to place the sample in the beamline where X-Rays will be able to cross it and interact with the atoms. For this we need to enter in the hutch, respecting the Safety Measures (See \ref{Safety}). We place the sample at the place made for this. We pump to remove air, and replace it with other gases (A mix between Nitrogen and Helium) thanks to different gases lines available. Then we can go out of the hutch, open the shutter and start the measurements.
 
 For the measurements, we need several samples to be able to make comparison between them. The first sample was made of Copper and was already ready. We also realized a pellet of Cu$_2$O, that we made.
 
@@ -284,7 +307,7 @@ The same analysis has been made with the Cu2O oxide sample, the results are plot
 		
 	We were also able to make our own samples, characterize the matter within them and compare several different samples. The study of EXAFS results allowed us to compare the spectral absorption of our Cu$_2$O sample with these of a Cu sample reference and the data files made it possible to analyze the composition of our sample. 
 	
-	Even if the experiment was not revolutionnary (which was not the goal) it made us understand the basics of EXAFS measurements and the exploitation of the results obtained : how to interpret graphs and determine the structure of the matter and the atoms in the sample.
+	Even if the experiment was not revolutionary (which was not the goal) it made us understand the basics of EXAFS measurements and the exploitation of the results obtained : how to interpret graphs and determine the structure of the matter and the atoms in the sample.
 
 \nocite{*}
 \bibliographystyle{unsrt}
