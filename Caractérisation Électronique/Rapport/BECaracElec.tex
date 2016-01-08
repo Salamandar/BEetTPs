@@ -1,15 +1,18 @@
 \documentclass[a4paper,11pt]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}
 \usepackage[francais]{babel}
-
+\usepackage[babel=true,kerning=true]{microtype}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
-\usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
-\usepackage{textcomp,rotating,epic,eepic,pdfpages}
-\usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
-\usepackage[babel=true,kerning=true]{microtype}
+\usepackage{amsmath,amsfonts,amssymb,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
+\usepackage{textcomp,rotating,epic,pdfpages,listings,diagbox,multirow,float}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.8}
+
+\usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
+
+\parskip=6pt % adds vertical space between paragraphs
 
 \begin{document}
 
@@ -24,20 +27,33 @@
 \chapter{Rappels des équations}
 
 \chapter{Mesure de la tension de seuil}
-La tension de seuil est un paramètre important du transistor. %+blabla
-\section{Méthode de la transconductance}
+La tension de seuil est la caractéristique principale de fonctionnement du transistor. Elle déterminera la consommation du dispositif, ainsi que sa performance en terme de fréquence de fonctionnement. Il est donc nécessaire de caractériser correctement cette tension.
 
-Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'utilisateur. On utilise ainsi une méthode plus adaptée à la caractérisation. On trace la dérivée de $I_d(V_g)$, on détermine son maximum puis, on utilise la tangente à la courbe en ce maximum. Le croisement de cette tangente avec 0 nous donne $V_T$.
-%schéma graphe
+Notamment, la tension de seuil doit être un paramètre constant dans une production industrielle.
+
+\section{Méthode de la transconductance}
+Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'opérateur.
+
+On peut alors calculer la dérivée de $I_d(V_g)$ ; la tangente à $I_d(V_g)$ dont la pente est maximale croise 0 en $V_T$. Cette méthode est beaucoup plus adaptée à une caractérisation fiable, automatisée et constante.
+
+
+%TODO schéma graphe
 
 \subsection{Transistor Bulk}
-%graphe
-%résultats
+%TODO graphe
+%TODO résultats
 
 \subsection{Transistor FDSOI}
-%graphe
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{Images/FD1-10-Transconductance}
+        \caption{Transconductance du transistor FDSOI, $l=10\mu m$}
+        \label{fig:}
+    \end{center}
+\end{figure}
+%TODO graphe
 \noindent On obtient ainsi le gain du transistor \[\beta=G_m=341\mu S\] Ce maximum est atteint pour $V_G=670mV$.
-%graphe tangente
+%TODO graphe tangente
 
 Le tracé de la tangente nous donne ainsi $V_T=450mV$.
 
@@ -47,28 +63,28 @@ On peut également utiliser une méthode différente pour déterminer $V_T$, à 
 
 Cette fonction est linéaire après le seuil, on peut alors approximer asymptotiquement plus précisément. On obtient alors $V_T$.
 \subsection{Transistor Bulk}
-%graphes
+%TODO graphes
 \subsection{Transistor FDSOI}
-%graphes
-%résultats
+%TODO graphes
+%TODO résultats
 \section{Méthode du courant constant}
 A $V_d$ fort il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{DN}}\cdot\dfrac{W}{L}\]
 
 $I_{d_{DN}}$ est un paramètre arbitraire, un critère, réutilisable qui permet de calculer $V_T$ pour plusieurs transistors.
 
 \subsection{Transistor FDSOI}
-%graphe
+%TODO graphe
 
-%calculs
+%TODO calculs
 
 \chapter{Mesure du DIBL}
 Le DIBL est également important à connaître %+blabla
 On peut le calculer à partir des données précedentes.
-%calculs
+%TODO calculs
 On peut vérifier ces calculs en regardant la cours en log.
-%graphe
+%TODO graphe
 On peut également voir l'effet du DIBL en traçant des caractéristiques $I_d(V_d)$.
-%graphe 
+%TODO graphe 
 
 \chapter{Comparaison des architectures}
 
@@ -76,4 +92,22 @@ On peut également voir l'effet du DIBL en traçant des caractéristiques $I_d(V
 \addcontentsline{toc}{chapter}{Conclusion}
 
 Ça marche. %Mais il y a des cons promis.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
