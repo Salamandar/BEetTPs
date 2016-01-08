@@ -125,14 +125,17 @@ extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \ }
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=300pt]{../meshFin.png}
+    \includegraphics[width=300pt]{Images/MeshFin.png}
     \caption{Caractéristique logarithmique $\log(I_d(V_g))$}
     \label{logIdVgmeshfin}
 \end{figure}
 
+A partir de ce graphe il est possible extraire différents paramètres. Par exemple, pour $V_{ds}=50mV$, on trouve $V_t=350mV$ et $SubV_t=170mV/decade$, $I_{sat}=20mA$ et $I_{off}=20\mu A$.
+
 \section{Optimisation du maillage}
 
-Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Ainsi, nous devons trouver un meilleur maillage afin d'optimiser le temps de calcul sans perdre de précision dans les zones importantes. 
+Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Par exemple le maillage n'a pas besoin d'être précis loin en profondeur, ni loin des interfaces. Par contre, proche des interfaces il faut qu'il soit fin pour bien représenter les changements brusques.
+ 
 \vspace{0.3cm}
 
 On modifie alors le maillage comme suit :
@@ -161,12 +164,13 @@ On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en
     \label{logIdVgmeshopti}
 \end{figure}
 
-Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cela est possible grâce à Tonyplot.
-
+Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin.
 
 
 \section{Extraction des paramètres}
 A partir des caractéristiques tracées, nous pouvons remonter à certains paramètres. Par exemple, SS et DIBL.
+
+
 
 %SS 
 
@@ -199,8 +203,6 @@ On peut ainsi tracer les caractéristiques :
 \end{figure}
 
 
-%champs / Courant
-
 \section{Extraction des paramètres}
 
 De même qu'avec l'architecture précédente, on peut extraire les paramètres SS et DIBL.
@@ -208,5 +210,18 @@ De même qu'avec l'architecture précédente, on peut extraire les paramètres S
 %SS
 
 %DIBL
+\chapter{Architecture Bulk}
+
+
+
+\chapter{Longueur de grille}
+
+\section{Comparaison des caractéristiques}
+
+\section{Evolution de $V_T$}
+
+\section{}
+
+
 
 \end{document}
