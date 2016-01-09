@@ -18,7 +18,8 @@
 \begin{document}
 \input{0.Couverture}
 
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 Lors de la conception de composant à semiconducteurs, il est important d'avoir des outils de simulation pour avoir une idée des résultats et performances attendues. Il est également important de maîtriser ces outils de simulation pour réaliser ces simulations. Ce TP a pour but de nous initier à certains de ces outils en nous proposant de réaliser la simulation de composants MOS tel que ceux étudiés de manière théorique en cours. Ainsi, nous pourrons mettre des graphes  numériques sur les équations calculées théoriquement.
 
 \chapter{Architecture "Bulk"}
@@ -26,22 +27,20 @@ Lors de la conception de composant à semiconducteurs, il est important d'avoir 
 \section{Position du problème}
 Dans cette partie, on cherche à modéliser un transistor dit "Bulk", que l'on peut représenter schématiquement (Figure \ref{SchemaBulk})
 \begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
-\fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
-\draw [thick] (0,5)--(10,5);
-\draw (3,5)--(3,3)--(0,3);
-\draw (1.5,4)node{n};
-\draw (7,5)--(7,3)--(10,3);
-\draw (8.5,4)node{n};
-\draw (5,4.8)node[below]{Canal};
-
-\draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
-
-\end{tikzpicture}
-\caption{Schéma d'un transistor Bulk}
-\label{SchemaBulk}
+    \centering
+    \begin{tikzpicture}
+        \fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
+        \fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
+        \draw [thick] (0,5)--(10,5);
+        \draw (3,5)--(3,3)--(0,3);
+        \draw (1.5,4)node{n};
+        \draw (7,5)--(7,3)--(10,3);
+        \draw (8.5,4)node{n};
+        \draw (5,4.8)node[below]{Canal};
+        \draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
+    \end{tikzpicture}
+    \caption{Schéma d'un transistor Bulk}
+    \label{SchemaBulk}
 \end{figure}
 \section{Initialisation de la simulation}
 
@@ -50,7 +49,15 @@ Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place l
 
 \noindent\fbox{
 \begin{minipage}{\textwidth}
-\noindent\texttt{go atlas\\mesh space.mult = 1.0\\x.mesh loc=0.0 spac=0.001\\x.mesh loc=0.1 spac=0.001\\x.mesh loc=0.2 spac=0.001\\x.mesh loc=0.3 spac=0.001\\y.mesh loc=0.000 spac=0.0001\\y.mesh loc=0.002 spac=0.0001\\y.mesh loc=1.002 spac=0.01}
+    \noindent\texttt{go atlas\\
+    mesh space.mult = 1.0\\
+    x.mesh loc=0.0 spac=0.001\\
+    x.mesh loc=0.1 spac=0.001\\
+    x.mesh loc=0.2 spac=0.001\\
+    x.mesh loc=0.3 spac=0.001\\
+    y.mesh loc=0.000 spac=0.0001\\
+    y.mesh loc=0.002 spac=0.0001\\
+    y.mesh loc=1.002 spac=0.01}
 \end{minipage}}
 \vspace{0.3cm}
 
@@ -77,7 +84,7 @@ struct outf = mos.str}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=300pt]{Simu1-Dopage.png}
+\includegraphics[width=300pt]{Images/Simu1-Dopage.png}
 \caption{Image des différentes régions et dopages générés par le logiciel}
 \label{transistortonyplot}
 \end{figure}
@@ -88,7 +95,7 @@ On précise ensuite au logiciel les différents contacts que nous allons utilise
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=300pt]{TransistorFull.png}
+    \includegraphics[width=300pt]{Images/TransistorFull.png}
     \caption{Image des régions, du dopage ainsi que des contacts générée par le logiciel}
     \label{TransistorFull}
 \end{figure}
@@ -101,26 +108,26 @@ En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer d
 
 \noindent\fbox{
 \begin{minipage}{\textwidth}
-\noindent\texttt{output charge band.param ex.field ey.field jx.tot con.band val.band}
-\vspace{0.3cm}
+    \noindent\texttt{output charge band.param ex.field ey.field jx.tot con.band val.band}
+    \vspace{0.3cm}
 
-\noindent\texttt{solve init\\
-save outfile = nmos1.str}
-\vspace{0.3cm}
+    \noindent\texttt{solve init\\
+    save outfile = nmos1.str}
+    \vspace{0.3cm}
 
-\noindent\texttt{solve vgate = 0 vdrain = 0 vstep = 0.1 vfinal = 1 name = drain\\
-save outfile = nmos2.str}
-\vspace{0.3cm}
+    \noindent\texttt{solve vgate = 0 vdrain = 0 vstep = 0.1 vfinal = 1 name = drain\\
+    save outfile = nmos2.str}
+    \vspace{0.3cm}
 
-\noindent\texttt{log outfile = idvg\_vds1.log\\
-save outfile = nmos3.str\\
-solve vgate = 0 vdrain = 1 vstep = 0.1 vfinal = 2 name = gate\\
-extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \ }
+    \noindent\texttt{log outfile = idvg\_vds1.log\\
+    save outfile = nmos3.str\\
+    solve vgate = 0 vdrain = 1 vstep = 0.1 vfinal = 2 name = gate\\
+    extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) \ }
 
-\hspace{1cm} \texttt{- abs(ave(v."drain"))/2.0)}\\
-\texttt{extract name="subvt" \ }
+    \hspace{1cm} \texttt{- abs(ave(v."drain"))/2.0)}\\
+    \texttt{extract name="subvt" \ }
 
-\hspace{1cm} \texttt{ 1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))}
+    \hspace{1cm} \texttt{ 1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))}
 \end{minipage}}
 
 \begin{figure}[H]
@@ -143,15 +150,15 @@ On modifie alors le maillage comme suit :
 
 \noindent\fbox{
 \begin{minipage}{\textwidth}
-\noindent\texttt{mesh space.mult = 1.0\\
-x.mesh loc = 0.0 spac = 0.005\\
-x.mesh loc = 0.1 spac = 0.001\\
-x.mesh loc = 0.2 spac = 0.001\\
-x.mesh loc = 0.3 spac = 0.005\\
-y.mesh loc = 0.000 spac = 0.0001\\
-y.mesh loc = 0.002 spac = 0.001\\
-y.mesh loc = 0.020 spac = 0.01\\
-y.mesh loc = 1.002 spac = 0.01}
+    \noindent\texttt{mesh space.mult = 1.0\\
+    x.mesh loc = 0.0 spac = 0.005\\
+    x.mesh loc = 0.1 spac = 0.001\\
+    x.mesh loc = 0.2 spac = 0.001\\
+    x.mesh loc = 0.3 spac = 0.005\\
+    y.mesh loc = 0.000 spac = 0.0001\\
+    y.mesh loc = 0.002 spac = 0.001\\
+    y.mesh loc = 0.020 spac = 0.01\\
+    y.mesh loc = 1.002 spac = 0.01}
 \end{minipage}}
 \vspace{0.3cm}
 
