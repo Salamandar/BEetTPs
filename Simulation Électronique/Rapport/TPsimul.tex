@@ -6,10 +6,20 @@
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[colorlinks,linkcolor={blue!30!black},citecolor={blue!50!black},urlcolor={blue!80!black}]{hyperref}
 \usepackage{amsmath,array,graphicx,caption,lmodern,subcaption,tikz,url,xspace,wrapfig}
-\usepackage{textcomp,rotating,epic,eepic,pdfpages}
+\usepackage{textcomp,rotating,pdfpages}
+\usepackage{epic,eepic}
 \usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry} % Géométrie de la page, modifier selon le besoin
 \usepackage[babel=true,kerning=true]{microtype}
 \usepackage{float}
+\usepackage{textcomp}
+\usepackage{newfloat}
+\usepackage{fancyhdr}
+\lhead{}
+\chead{}
+
+
+\DeclareFloatingEnvironment[fileext=frm,placement={!ht},name=Tableau]{tableau}
+\captionsetup[tableau]{labelfont=bf}
 
 % \pdfsuppresswarningpagegroup=1
 \title{Rapport de Stage d'Application}
@@ -137,7 +147,30 @@ En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer d
     \label{logIdVgmeshfin}
 \end{figure}
 
-A partir de ce graphe il est possible extraire différents paramètres. Par exemple, pour $V_{ds}=50mV$, on trouve $V_t=350mV$ et $SubV_t=170mV/decade$, $I_{sat}=20mA$ et $I_{off}=20\mu A$.
+
+% Il est également possible de tracer la caractéristique $I_d(V_d)$
+%Graphe
+
+A partir de ce graphe il est possible d'extraire différents paramètres. Par exemple, pour $V_{ds}=50mV$, on trouve, pour la tension de seuil, la pente sous le seuil, le courant de saturation et le courant à vide :
+
+\begin{tableau}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$V_t$&$500mV$\\
+\hline
+$SubV_t$&$170mV/decade$\\
+\hline
+$I_{sat}$&$20mA$\\
+\hline
+$I_{off}$&$20\mu A$\\
+\hline
+\end{tabular}
+\caption{Caractéristiques avec un maillage fin pour $V_{ds}=50mV$}
+
+\end{tableau}
+
+
 
 \section{Optimisation du maillage}
 
@@ -171,13 +204,37 @@ On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en
     \label{logIdVgmeshopti}
 \end{figure}
 
-Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin.
+On peut également extraire des paramètres de ce tracé, comme avec le maillage fin. On trouve ainsi :
 
+\begin{tableau}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$V_t$&$500mV$\\
+\hline
+$SubV_t$&$170mV/decade$\\
+\hline
+$I_{sat}$&$20mA$\\
+\hline
+$I_{off}$&$22\mu A$\\
+\hline
+\end{tabular}
+\caption{Caractéristiques avec un maillage optimisé avec $V_{ds}=50mV$}
+\end{tableau}
+
+Les valeurs trouvées sont cohérentes avec les valeurs précédentes, ce qui laisse à penser que le maillage optimisé ne réduit pas la précision
+
+Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cette comparaison est fournie en Figure \ref{compMesh}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=250pt]{Images/MeshFinEtOpti.png}
+  \caption{Comparaison des deux maillages pour $V_{ds}=50mV$}
+  \label{compMesh}
+\end{figure}
 
 \section{Extraction des paramètres}
 A partir des caractéristiques tracées, nous pouvons remonter à certains paramètres. Par exemple, SS et DIBL.
-
-
 
 %SS 
 
@@ -188,9 +245,25 @@ A partir des caractéristiques tracées, nous pouvons remonter à certains param
 
 \section{Position du problème}
 
-On passe à une architecture FDSOI pour limiter les effets de canaux courts.
+On passe à une architecture Fully Depleted Silicon On Insulator (FDSOI), qui permet de limiter la variation de $V_t$ avec la réduction de la longueur de grille, qui apparaît avec l'architecture Bulk.  Le schéma représentant cette architecture est donné en Figure \ref{SchemaFDSOI}.
 
-%schéma
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
+        \fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
+        \draw [thick] (0,5)--(10,5);
+        \draw (3,5)--(3,3)--(0,3);
+        \draw (1.5,4)node{n};
+        \draw (7,5)--(7,3)--(10,3);
+        \draw (8.5,4)node{n};
+        \draw (5,4.8)node[below]{Canal};
+        \draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
+        \fill [color=gray!30] (0,1)--(0,2)--(10,2)--(10,1)--cycle;
+    \end{tikzpicture}
+    \caption{Schéma d'un transistor FDSOI}
+    \label{SchemaFDSOI}
+\end{figure}
 
 \section{Simulation}
 On reprend les élements précedents en rajoutant une zone d'oxyde sous le silicium dopé n.
@@ -217,18 +290,24 @@ De même qu'avec l'architecture précédente, on peut extraire les paramètres S
 %SS
 
 %DIBL
-\chapter{Architecture Bulk}
+\chapter{Architecture Bulk, Etude plus approfondie}
 
+\section{Comparaison NMOS et PMOS}
 
+Jusqu'à présent toutes nos études ont été réalisées sur des transistors NMOS, cependant, il est possible de voir la différence entre NMOS et PMOS en changeant les zones de dopage. 
 
-\chapter{Longueur de grille}
+\section{Longueur de grille}
+Il est également possible de faire varier la longueur de grille des transistor pour vérifier les effets de canaux courts, donc l'évolution de $V_t$
 
-\section{Comparaison des caractéristiques}
+\subsection{Comparaison des caractéristiques}
 
-\section{Evolution de $V_T$}
+\subsection{Evolution de $V_T$}
 
-\section{}
+\subsection{}
 
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
 
+La simulation est une grande part de la conception dans le sens où entrer quelques lignes  de code dans un programme est bien moins lourd que de mettre en place des protocoles expérimentaux de fabrication et de mesures pour des technologies novatrices dont les caractéristiques sont encore très peu connues. Cependant cela requiert des outils de simulation relativement puissant afin de modéliser tous les effets, mais aussi de solides bases théoriques qui indiquent les équations qui décrivent le comportement des dispositifs et composants. Nous avons pu observer cela via l'étude de composants relativement simples, mais dont l'étude complète et poussée est bien plus rapide via simulation que via les calculs vu en cours, ou même que via des outils de caractérisation de transistors déjà fabriqués.
 
 \end{document}
