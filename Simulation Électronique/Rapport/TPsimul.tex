@@ -268,10 +268,6 @@ On passe à une architecture Fully Depleted Silicon On Insulator (FDSOI), qui pe
 \section{Simulation}
 On reprend les élements précedents en rajoutant une zone d'oxyde sous le silicium dopé n.
 
-On obtient ainsi le dispositif suivant :
-
-%image de dispo
-
 
 \section{Tracé des caractéristiques}
 
@@ -290,11 +286,23 @@ De même qu'avec l'architecture précédente, on peut extraire les paramètres S
 %SS
 
 %DIBL
+
 \chapter{Architecture Bulk, Etude plus approfondie}
 
 \section{Comparaison NMOS et PMOS}
 
 Jusqu'à présent toutes nos études ont été réalisées sur des transistors NMOS, cependant, il est possible de voir la différence entre NMOS et PMOS en changeant les zones de dopage. 
+
+Les tracés des caractéristiques $Id(V_g)$ donnent : 
+
+\begin{figure}[H]
+\includegraphics[width=150pt]{../15Decembre/pmosIDs_Vg.png}
+\includegraphics[width=150pt]{../15Decembre/Ids_Vg.png}
+\caption{Comparaison des caractéristiques de PMOS et NMOS}
+\end{figure}
+
+La caractéristique pour PMOS est le symétrique de celle du NMOS, les valeurs de $V_t$ sont similaires et négatives. 
+
 
 \section{Longueur de grille}
 Il est également possible de faire varier la longueur de grille des transistor pour vérifier les effets de canaux courts, donc l'évolution de $V_t$
