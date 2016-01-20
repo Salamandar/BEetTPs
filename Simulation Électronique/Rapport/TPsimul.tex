@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{newfloat}
+\usepackage{listings}
 \usepackage{fancyhdr}
 \lhead{}
 \chead{}
@@ -20,6 +21,9 @@
 
 \DeclareFloatingEnvironment[fileext=frm,placement={!ht},name=Tableau]{tableau}
 \captionsetup[tableau]{labelfont=bf}
+
+\DeclareFloatingEnvironment[fileext=frm,placement={!ht},name=Code]{code}
+\captionsetup[code]{labelfont=bf}
 
 % \pdfsuppresswarningpagegroup=1
 \title{Rapport de Stage d'Application}
@@ -38,16 +42,18 @@ Lors de la conception de composant à semiconducteurs, il est important d'avoir 
 Dans cette partie, on cherche à modéliser un transistor dit "Bulk", que l'on peut représenter schématiquement (Figure \ref{SchemaBulk})
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}
-        \fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
+    \begin{tikzpicture}[scale=1.4]
+       \fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
         \fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
         \draw [thick] (0,5)--(10,5);
         \draw (3,5)--(3,3)--(0,3);
         \draw (1.5,4)node{n};
         \draw (7,5)--(7,3)--(10,3);
         \draw (8.5,4)node{n};
+        \draw (5,4)node{p};
         \draw (5,4.8)node[below]{Canal};
         \draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
+        \draw (5,5.5)node{Grille};
     \end{tikzpicture}
     \caption{Schéma d'un transistor Bulk}
     \label{SchemaBulk}
@@ -55,8 +61,8 @@ Dans cette partie, on cherche à modéliser un transistor dit "Bulk", que l'on p
 \section{Initialisation de la simulation}
 
 Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place la séquence de commandes à réaliser dans le logiciel \texttt{Atlas}. En premier lieu il faut créer un maillage 2D pour pouvoir y inclure des régions.
-\vspace{0.3cm}
 
+\begin{code}
 \noindent\fbox{
 \begin{minipage}{\textwidth}
     \noindent\texttt{go atlas\\
@@ -69,11 +75,12 @@ Tout d'abord, on utilise l'éditeur \texttt{deckbuild} afin de mettre en place l
     y.mesh loc=0.002 spac=0.0001\\
     y.mesh loc=1.002 spac=0.01}
 \end{minipage}}
-\vspace{0.3cm}
+\caption{Création du maillage fin}
+\end{code}
 
 Il faut ensuite dessiner le composant que nous voulons modéliser sur cette grille. Pour cela, il nous suffira de dessiner des régions en précisant les matériaux utilisés pour chacune d'entre elles.
-\vspace{0.3cm}
 
+\begin{code}[H]
 \noindent\fbox{
 \begin{minipage}{\textwidth}
 \noindent\texttt{region number = 1 x.min=0.0 x.max = 0.3 y.min = 0.0 y.max = 0.002 material = Oxide\\
@@ -90,7 +97,8 @@ doping uniform conc = 1E20 N.type region = 2 x.left = 0.0 x.right = 0.1 y.max = 
 doping uniform conc = 1E20 N.type region = 2 x.left = 0.2 x.right = 0.3 y.max = 0.012\\
 struct outf = mos.str}
 \end{minipage}}
-\vspace{0.3cm}
+\caption{Définition des régions}
+\end{code}
 
 \begin{figure}[H]
 \centering
@@ -114,8 +122,9 @@ Maintenant que notre transistor est modélisé, nous allons pouvoir réaliser de
 
 \section{Tracés de caractéristiques}
 
-En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes, comme le montre la figure \ref{logIdVgmeshfin}.
+En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer des courbes :
 
+\begin{code}[H]
 \noindent\fbox{
 \begin{minipage}{\textwidth}
     \noindent\texttt{output charge band.param ex.field ey.field jx.tot con.band val.band}
@@ -139,6 +148,10 @@ En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer d
 
     \hspace{1cm} \texttt{ 1.0/slope(maxslope(curve(abs(v."gate"),log10(abs(i."drain")))))}
 \end{minipage}}
+\caption{Mise en place des simulations}
+\end{code}
+
+On obtient ainsi des fichiers \texttt{.log} pouvant être lus avec TonyPlot qui affiche les courbes, comme en Figure \ref{logIdVgmeshfin}.
 
 \begin{figure}[H]
 \centering
@@ -175,11 +188,10 @@ Ces valeurs sont cohérentes avec les ordres de grandeurs fournis dans le cours 
 Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Par exemple le maillage n'a pas besoin d'être précis loin en profondeur, ni loin des interfaces. Par contre, proche des interfaces il faut qu'il soit fin pour bien représenter les changements brusques.
  
 \section{Ecriture des modifications}
-\vspace{0.3cm}
 
-On modifie alors le maillage comme suit :
-\vspace{0.3cm}
+\noindent On modifie alors le maillage comme suit, pour réduire le nombre de points loin des interfaces :
 
+\begin{code}[H]
 \noindent\fbox{
 \begin{minipage}{\textwidth}
     \noindent\texttt{mesh space.mult = 1.0\\
@@ -192,15 +204,16 @@ On modifie alors le maillage comme suit :
     y.mesh loc = 0.020 spac = 0.01\\
     y.mesh loc = 1.002 spac = 0.01}
 \end{minipage}}
-\vspace{0.3cm}
-
+\caption{Modification du maillage pour l'optimiser}
+\end{code}
+\newpage
 \section{Tracé de la caractéristique}
 
 On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en figure \ref{logIdVgmeshopti}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=300pt]{../meshOpti1/Log.png}
+    \includegraphics[width=340pt]{../meshOpti1/Log.png}
     \caption{Caractéristique $\log(I_g(V_g))$ obtenue avec un maillage optimisé.}
     \label{logIdVgmeshopti}
 \end{figure}
@@ -255,7 +268,7 @@ On passe à une architecture Fully Depleted Silicon On Insulator (FDSOI), qui pe
 
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.4]
         \fill [color=gray!20] (3,5)--(7,5)--(7,4.8)--(3,4.8)--cycle;
         \fill [color=black] (3,5)--(7,5)--(7,5.2)--(3,5.2)--cycle;
         \draw [thick] (0,5)--(10,5);
@@ -263,16 +276,66 @@ On passe à une architecture Fully Depleted Silicon On Insulator (FDSOI), qui pe
         \draw (1.5,4)node{n};
         \draw (7,5)--(7,3)--(10,3);
         \draw (8.5,4)node{n};
+        \draw (5,4)node{p};
         \draw (5,4.8)node[below]{Canal};
         \draw (3,5)--(3,6)--(7,6)--(7,5)--cycle;
+        \draw (5,5.5)node{Grille};
         \fill [color=gray!30] (0,1)--(0,2)--(10,2)--(10,1)--cycle;
+        \draw (5,1.5)node{Oxyde enterré};
     \end{tikzpicture}
     \caption{Schéma d'un transistor FDSOI}
     \label{SchemaFDSOI}
 \end{figure}
 
-Nous avons modélisé ce transistor sur Silvaco.
+Cette architecture empêche les porteurs, et le champs d'accéder à tout le substrat Si, car celui-ci est remplacé par de l'oxyde.
+\newpage
 
+\section{Code impléménté pour modéliser le transistor}
+Nous avons pu modéliser le transistor FDSOI, en implémentant comme suit, il s'agit simplement d'un ajout d'une région Oxyde, à une profondeur donnée TBox.
+
+\begin{code}[H]
+\noindent\fbox{
+\begin{minipage}{\textwidth}
+    \noindent
+    \texttt{\noindent
+set LG  = 0.1\\
+set dx  = \$"LG"/100\\
+set LDS = 0.1\\
+set Tox = 0.002\\
+set TSi = 0.02\\
+set TBox= 0.03\\
+}
+
+\texttt{
+mesh space.mult = 1.0\\
+x.mesh loc = 0.0                spac = 0.005\\
+x.mesh loc = \$"LDS"             spac = \$"dx"\\
+x.mesh loc = \$"LDS" + \$"LG"/2   spac = \$"dx"*2\\
+x.mesh loc = \$"LDS" + \$"LG"     spac = \$"dx"\\
+x.mesh loc = \$"LDS"*2 + \$"LG"   spac = 0.005\\
+}
+
+\texttt{y.mesh loc = 0.000                 spac = 0.0002\\
+y.mesh loc = \$"Tox"                spac = 0.0002\\
+y.mesh loc = \$"TSi"+\$"Tox"         spac = 0.005\\
+y.mesh loc = \$"TSi"+\$"Tox"+\$"TBox" spac = 0.005}\\
+
+\texttt{region number = 1 x.min=0.0 x.max = 0.3 y.min = 0.000 y.max = 0.002 material = Oxide\\
+region number = 2 x.min=0.0 x.max = 0.3 y.min = 0.002 y.max = 0.022 material = Silicon\\
+region number = 3 x.min=0.0 x.max = 0.3 y.min = 0.022 y.max = 0.052 material = Oxide\\}
+
+
+\texttt{electrode name = gate   number = 1 x.min = 0.1 x.max = 0.2 y.min = 0.000 y.max = 0\\
+electrode name = source number = 2 x.min = 0.0 x.max = 0.0 y.min = 0.002 y.max = 0.012\\
+electrode name = drain  number = 3 x.min = 0.3 x.max = 0.3 y.min = 0.002 y.max = 0.012\\}
+
+\texttt{doping uniform conc = 1E15 p.type region = 2\\
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.0 x.right = 0.1 y.max = 0.012\\
+doping uniform conc = 1E20 N.type region = 2 x.left = 0.2 x.right = 0.3 y.max = 0.012\\}
+\end{minipage}}
+\caption{Modélisation du FDSOI}
+\end{code}
+\newpage
 \section{Tracé des caractéristiques}
 
 On peut ainsi tracer les caractéristiques :
@@ -333,7 +396,7 @@ Tout d'abord, pour $V_d=50mV$ :
 \centering
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd50mV_Condband.png} 
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd50mV_condband.png}
-\caption{Champ Electrique pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
+\caption{Bandes de conduction pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
 \end{figure}
 
 Puis pour $V_d=1V$ :
@@ -342,7 +405,7 @@ Puis pour $V_d=1V$ :
 \centering
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd1V_condband.png} 
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd1V_condband.png}
-\caption{Champ Electrique pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
+\caption{Bandes de conduction pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
 \end{figure}
 
 La bande de conduction reflètent le comportement physique du transistor par application d'un potentiel. Pour $V_d$ faible, les courbes correspondent à ce que la théorie prédit pour une jonction npn, avec le décalage induit par la présence de $V_g$ pour $V_g>V_t$. Pour $V_d$ fort, la courbe est très déformée du à la grande différence de potentiel, il n'y a plus vraiment de partie plate dans la partie p. Cel devrait avoir un influence certaine sur le champ à l'intérieur du tranistor.
@@ -384,7 +447,7 @@ Tout d'abord, pour $V_d=50mV$ :
 \centering
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd50mV_econc.png} 
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd50mV_econc.png}
-\caption{Champ Electrique pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
+\caption{Concentration des porteurs pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
 \end{figure}
 
 Puis pour $V_d=1V$ :
@@ -393,7 +456,7 @@ Puis pour $V_d=1V$ :
 \centering
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd1V_econc.png} 
 \includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd1V_econc.png}
-\caption{Champ Electrique pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
+\caption{Concentration des porteur pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
 \end{figure}
 
 On multiplie la concentration des porteurs environ par deux en dépassant le seuil, dans les deux cas. Cependant, on remarque une différence pour $V_d$ fort. Un creux présent sous le seuil qui disparait lors au passage du seuil. Sous le seuil, les porteurs ne peuvent pas passer et sont naturellement repoussés par le drain. Au-dessus du seuil, en revanche, les porteurs sont attirés par le drain du fait du champ qui règne au sein du canal, ce qui induit le courant car :
