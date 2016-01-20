@@ -24,6 +24,7 @@ La fabrication de composants microélectroniques devient, lorsqu'on diminue la d
 \begin{itemize}
     \item Les courants de fuite par la grille, qui s'accentuent à faible dimension par effet tunnel (lorsque l'épaisseur d'oxyde passe en dessous de 1,2nm)
     \item Les effets de canaux courts qui apparaissent lorsque la largeur de la grille diminue.
+    \item La rugosité des interfaces, notamment canal/grille, va voir son impact sur les performances augmenter
 \end{itemize}
 
 De plus, plus un composant est petit, plus la précision relative de fabrication va diminuer : les dimensions vont perdre en précisions, tandis que l'implantation et la diffusion de dopants dans le canal va apporter des processus aléatoires supplémentaires, à des échelles comparables aux dimensions des composants.
@@ -45,27 +46,55 @@ Notamment, la tension de seuil doit être un paramètre constant dans une produc
 \section{Méthode de la transconductance}
 Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'opérateur.
 
-On peut alors calculer la dérivée de $I_d(V_g)$ ; la tangente à $I_d(V_g)$ dont la pente est maximale croise 0 en $V_T$. Cette méthode est beaucoup plus adaptée à une caractérisation fiable, automatisée et constante.
+Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, automatisée et constante :
+\begin{enumerate}
+    \item Tracé de la caractéristique $I_d = f(V_g)$
+    \item Tracé de la dérivée $\frac{d I_d}{d V_g} = f(V_g)$
+    \item On détermine alors le maximum de la dérivée et on trace la tangente à $I_d(V_g)$ en ce point.
+    \item Cette tangente croise l'axe des abscisses en $V_T$.
+\end{enumerate}
 
-
-%TODO schéma graphe
+Nous allons donc tracer les caractéristiques de transistors des deux technologies, en fixant $V_d = 50mV$.
 
 \subsection{Transistor Bulk}
-\begin{figure}
+Nous n'avons pu tracer qu'une caractéristique de transistor Bulk, manque de transistors fonctionnels.
+
+La figure \ref{transconductance bulk} représente le tracé de la transconductance pour un transistor Bulk de longueur de grille $40\mu m$.
+
+Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterminer :
+\[V_T(Bulk, 40\mu m) = 0,47V
+\]
+
+\begin{figure}[h]
     \begin{center}
-        \includegraphics[width=\textwidth]{Images/Bulk40-Transconductance}
-        \caption{Transconductance du transistor Bulk, $l=40\mu m$}
-        \label{fig:}
+        \includegraphics[width=0.8\textwidth]{Images/Bulk40-Transconductance}
+        \caption{Transconductance du transistor Bulk, $l=40\mu m$, $V_d = 50mV$}
+        \label{transconductance bulk}
     \end{center}
 \end{figure}
-%TODO résultats
+
 
 \subsection{Transistor FDSOI}
-\begin{figure}
+La figure \ref{transc_fdsoi_10um} permet de mesurer :
+\[V_T(FDSOI, 10\mu m) = 0,5V
+\]
+Et la figure \ref{transc_fdsoi_30nm} nous donne :
+\[V_T(FDSOI, 30nm) = 0,37V
+\]
+
+
+\begin{figure}[h]
     \begin{center}
-        \includegraphics[width=\textwidth]{Images/FD1-10-Transconductance}
-        \caption{Transconductance du transistor FDSOI, $l=10\mu m$}
-        \label{fig:}
+        \includegraphics[width=0.8\textwidth]{Images/FD1-10-Transconductance}
+        \caption{Transconductance du transistor FDSOI, $l=10\mu m$, $V_d = 50mV$}
+        \label{transc_fdsoi_10um}
+    \end{center}
+\end{figure}
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/FD11-30-Transconductance}
+        \caption{Transconductance du transistor FDSOI, $l=30nm$, $V_d = 50mV$}
+        \label{transc_fdsoi_30nm}
     \end{center}
 \end{figure}
 %TODO graphe
