@@ -147,10 +147,7 @@ En effet, il suffit ensuite d'ajouter quelques lignes au script afin de tracer d
     \label{logIdVgmeshfin}
 \end{figure}
 
-
-% Il est également possible de tracer la caractéristique $I_d(V_d)$
-%Graphe
-
+\section{Extraction des paramètres}
 A partir de ce graphe il est possible d'extraire différents paramètres. Par exemple, pour $V_{ds}=50mV$, on trouve, pour la tension de seuil, la pente sous le seuil, le courant de saturation et le courant à vide :
 
 \begin{tableau}[H]
@@ -168,14 +165,16 @@ $I_{off}$&$20\mu A$\\
 \end{tabular}
 \caption{Caractéristiques avec un maillage fin pour $V_{ds}=50mV$}
 
+Ces valeurs sont cohérentes avec les ordres de grandeurs fournis dans le cours de composants.
+
 \end{tableau}
 
 
-
-\section{Optimisation du maillage}
+\chapter{Optimisation du maillage}
 
 Nous avons pu voir lors des calculs précédents qu'avec le maillage proposé initialement, l'obtention de points est très longue. En effet, le maillage est beaucoup trop fin, en particulier à des endroits où il n'a pas besoin de l'être. Par exemple le maillage n'a pas besoin d'être précis loin en profondeur, ni loin des interfaces. Par contre, proche des interfaces il faut qu'il soit fin pour bien représenter les changements brusques.
  
+\section{Ecriture des modifications}
 \vspace{0.3cm}
 
 On modifie alors le maillage comme suit :
@@ -195,6 +194,8 @@ On modifie alors le maillage comme suit :
 \end{minipage}}
 \vspace{0.3cm}
 
+\section{Tracé de la caractéristique}
+
 On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en figure \ref{logIdVgmeshopti}
 
 \begin{figure}[H]
@@ -203,6 +204,9 @@ On peut ainsi également tracer la caractéristique obtenue avec ce maillage, en
     \caption{Caractéristique $\log(I_g(V_g))$ obtenue avec un maillage optimisé.}
     \label{logIdVgmeshopti}
 \end{figure}
+ La courbe ressemble fortement à celle trouvée précédemment, avec le maillage fin, donc optimiser le maillage ne semble pas être destructeur.
+
+\section{Extraction des paramètres}
 
 On peut également extraire des paramètres de ce tracé, comme avec le maillage fin. On trouve ainsi :
 
@@ -214,7 +218,7 @@ $V_t$&$500mV$\\
 \hline
 $SubV_t$&$170mV/decade$\\
 \hline
-$I_{sat}$&$20mA$\\
+$I_{sat}$&$2mA$\\
 \hline
 $I_{off}$&$22\mu A$\\
 \hline
@@ -222,9 +226,11 @@ $I_{off}$&$22\mu A$\\
 \caption{Caractéristiques avec un maillage optimisé avec $V_{ds}=50mV$}
 \end{tableau}
 
-Les valeurs trouvées sont cohérentes avec les valeurs précédentes, ce qui laisse à penser que le maillage optimisé ne réduit pas la précision
+\section{Comparaison des deux maillages}
 
-Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cette comparaison est fournie en Figure \ref{compMesh}
+Les valeurs trouvées sont cohérentes avec les valeurs précédentes, ce qui laisse à penser que le maillage optimisé ne réduit pas la précision.
+
+Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le maillage moins précis donne le même résultat que le maillage fin. Cette comparaison est fournie en Figure \ref{compMesh}.
 
 \begin{figure}[H]
   \centering
@@ -233,12 +239,12 @@ Il convient ensuite de comparer les deux courbes obtenues, pour vérifier si le 
   \label{compMesh}
 \end{figure}
 
-\section{Extraction des paramètres}
-A partir des caractéristiques tracées, nous pouvons remonter à certains paramètres. Par exemple, SS et DIBL.
 
-%SS 
+Sur ce graphe, on remarque que malgré les légères différences, les courbes sont très semblables et cela semble rentable d'un point de vue gain de temps de simulation par rapport aux possibles faibles erreurs engendrées. Le maillage optimisé est adapté pour réaliser plusieurs simulations rapides, lors de phases de tests. Puis, il est possible d'utiliser un maillage plus précis par la suite, lorsque l'on souhaite plus de précisions sur les mesures, lorsque les paramètres avec le maillage optimisé donnent des résultats proche de ce que l'on souhaite.
 
-%DIBL
+% \section{Extraction des paramètres}
+% A partir des caractéristiques tracées, nous pouvons remonter à certains paramètres. Par exemple, SS et DIBL.
+%
 
 
 \chapter{Une autre architecture : FDSOI}
@@ -265,29 +271,43 @@ On passe à une architecture Fully Depleted Silicon On Insulator (FDSOI), qui pe
     \label{SchemaFDSOI}
 \end{figure}
 
-\section{Simulation}
-On reprend les élements précedents en rajoutant une zone d'oxyde sous le silicium dopé n.
-
+Nous avons modélisé ce transistor sur Silvaco.
 
 \section{Tracé des caractéristiques}
 
 On peut ainsi tracer les caractéristiques :
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=300pt]{../FDSOI/LogIdVg.png}
     \caption{Caractéristiques $\log(I_d(V_g))$ pour $V_d$ faible (en rouge) et $V_d$ fort (en vert)}    
 \end{figure}
 
+En comparant la courbe à celle trouvée pour l'architecture bulk, on remarque qu'elle est plus lisse, on discerne bien deux parties presque linéaires, alors que c'était moins le cas pour l'architecture bulk.
 
 \section{Extraction des paramètres}
 
-De même qu'avec l'architecture précédente, on peut extraire les paramètres SS et DIBL.
+On peut, à partir de cette courbe déduire : 
 
-%SS
+\begin{tableau}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$V_t$&$350mV$\\
+\hline
+$SubV_t$&$170mV/decade$\\
+\hline
+$I_{sat}$&$1mA$\\
+\hline
+$I_{off}$&$1 nA$\\
+\hline
+\end{tabular}
+\caption{Caractéristiques du FDSOI avec $V_{ds}=1V$}
+\end{tableau}
 
-%DIBL
+On remarque, en comparant aux valeurs pour le transistor bulk que si la tension de seuil et la pente sous le seuil sont relativement proche, les courants sont différents. En particulier le courant $I_{off}$ qui est très faible, ce qui est un bon point point pour la consommation d'energie lorsque le transistor n'est pas actif. De plus, le courant de saturation est également plus faible, donc même en utilisation le transistor consommera moins d'énergie.
 
-\chapter{Architecture Bulk, Etude plus approfondie}
+\chapter{Etude plus approfondie}
 
 \section{Comparaison NMOS et PMOS}
 
@@ -296,22 +316,90 @@ Jusqu'à présent toutes nos études ont été réalisées sur des transistors N
 Les tracés des caractéristiques $Id(V_g)$ donnent : 
 
 \begin{figure}[H]
-\includegraphics[width=150pt]{../15Decembre/pmosIDs_Vg.png}
-\includegraphics[width=150pt]{../15Decembre/Ids_Vg.png}
+\centering
+\includegraphics[width=170pt]{../15Decembre/pmosIDs_Vg.png}
+\includegraphics[width=170pt]{../15Decembre/Ids_Vg.png}
 \caption{Comparaison des caractéristiques de PMOS et NMOS}
 \end{figure}
 
-La caractéristique pour PMOS est le symétrique de celle du NMOS, les valeurs de $V_t$ sont similaires et négatives. 
+La caractéristique pour PMOS est le symétrique de celle du NMOS, les valeurs de $V_t$ sont similaires en valeur absolu et opposées (négative pour le PMOS).
 
+\section{Bandes de conduction}
 
-\section{Longueur de grille}
-Il est également possible de faire varier la longueur de grille des transistor pour vérifier les effets de canaux courts, donc l'évolution de $V_t$
+Grâce à TonyPlot, nous avons pu tracer les bandes de conduction dans une coupe le long du canal.
 
-\subsection{Comparaison des caractéristiques}
+Tout d'abord, pour $V_d=50mV$ :
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd50mV_Condband.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd50mV_condband.png}
+\caption{Champ Electrique pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
+\end{figure}
 
-\subsection{Evolution de $V_T$}
+Puis pour $V_d=1V$ :
 
-\subsection{}
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd1V_condband.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd1V_condband.png}
+\caption{Champ Electrique pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
+\end{figure}
+
+La bande de conduction reflètent le comportement physique du transistor par application d'un potentiel. Pour $V_d$ faible, les courbes correspondent à ce que la théorie prédit pour une jonction npn, avec le décalage induit par la présence de $V_g$ pour $V_g>V_t$. Pour $V_d$ fort, la courbe est très déformée du à la grande différence de potentiel, il n'y a plus vraiment de partie plate dans la partie p. Cel devrait avoir un influence certaine sur le champ à l'intérieur du tranistor.
+
+\section{Champ électrique}
+
+Nous pouvons effectivement représenter le champ électrique :
+
+Tout d'abord, pour $V_d=50mV$ :
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd50mV_Efield.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd50mV_Efield.png}
+\caption{Champ Electrique pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
+\end{figure}
+
+Puis pour $V_d=1V$ :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd1V_Efield.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd1V_Efield.png}
+\caption{Champ Electrique pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
+\end{figure}
+
+On remarque qu'appliquer un $V_d$ fort renforce l'amplitude du pic correspondant au drain. En effet, le champ electrique et le potentiel sont liés par la relation :
+
+\[\vec{E}=-grad(V)\]
+
+Ce qui implique qu'augmenter la différence de potentiel entre le drain et le silicium dopé augmente le champ electrique. Les résultats sont donc conforme à ce que prédit la théorie. De plus, on remarque qu'au-dessus du seuil, le champ electrique ne retombe pas à 0 entre les deux pics, ce qui implique un déplacement des porteurs, et donc l'établissement d'un courant pour $V_g>V_t$.
+\vspace{0.5cm}
+
+\section{Concentration des porteurs}
+
+Justement, nous pouvons également tracer la concentration des porteurs dans le transistor :
+
+Tout d'abord, pour $V_d=50mV$ :
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd50mV_econc.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd50mV_econc.png}
+\caption{Champ Electrique pour $V_d=50mV$ sous le seuil puis au-dessus du seuil}
+\end{figure}
+
+Puis pour $V_d=1V$ :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosbelowseuilVd1V_econc.png} 
+\includegraphics[width=170pt]{../15Decembre/NMOS/nmosaboveseuilVd1V_econc.png}
+\caption{Champ Electrique pour $V_d=1V$ sous le seuil puis au-dessus du seuil}
+\end{figure}
+
+On multiplie la concentration des porteurs environ par deux en dépassant le seuil, dans les deux cas. Cependant, on remarque une différence pour $V_d$ fort. Un creux présent sous le seuil qui disparait lors au passage du seuil. Sous le seuil, les porteurs ne peuvent pas passer et sont naturellement repoussés par le drain. Au-dessus du seuil, en revanche, les porteurs sont attirés par le drain du fait du champ qui règne au sein du canal, ce qui induit le courant car :
+
+\[\rho=\varepsilon_0div(\vec{E})\]
+
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
