@@ -51,6 +51,7 @@ Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, a
     \item Tracé de la caractéristique $I_d = f(V_g)$
     \item Tracé de la dérivée $\frac{d I_d}{d V_g} = f(V_g)$
     \item On détermine alors le maximum de la dérivée et on trace la tangente à $I_d(V_g)$ en ce point.
+    \item Le gain du transistor $\beta = G_m$ est alors la pente de cette tangente
     \item Cette tangente croise l'axe des abscisses en $V_T$.
 \end{enumerate}
 
@@ -61,10 +62,6 @@ Nous n'avons pu tracer qu'une caractéristique de transistor Bulk, manque de tra
 
 La figure \ref{transconductance bulk} représente le tracé de la transconductance pour un transistor Bulk de longueur de grille $40\mu m$.
 
-Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterminer :
-\[V_T(Bulk, 40\mu m) = 0,47V
-\]
-
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/Bulk40-Transconductance}
@@ -73,14 +70,28 @@ Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterm
     \end{center}
 \end{figure}
 
+Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterminer :
+\begin{itemize}
+    \item Le gain du transistor $\beta = G_m = 386\mu S$
+    \item $V_T(Bulk, 40\mu m) = 0,47V$
+\end{itemize}
+
+
 
 \subsection{Transistor FDSOI}
 La figure \ref{transc_fdsoi_10um} permet de mesurer :
-\[V_T(FDSOI, 10\mu m) = 0,5V
-\]
+\begin{itemize}
+    \item Le gain du transistor pour $V_g = 0,62V$ : $\beta = G_m = 700\mu S$
+    \item La tension seuil : \[V_T(FDSOI, 10\mu m) = 0,5V\]
+\end{itemize}
+
+\vspace*{8mm}
 Et la figure \ref{transc_fdsoi_30nm} nous donne :
-\[V_T(FDSOI, 30nm) = 0,37V
-\]
+\begin{itemize}
+    \item Le gain du transistor pour $V_g = 0,8V$ : $\beta = G_m = 500\mu S$
+    \item La tension seuil : \[V_T(FDSOI, 30nm) = 0,37V\]
+\end{itemize}
+
 
 
 \begin{figure}[h]
@@ -97,11 +108,8 @@ Et la figure \ref{transc_fdsoi_30nm} nous donne :
         \label{transc_fdsoi_30nm}
     \end{center}
 \end{figure}
-%TODO graphe
-\noindent On obtient ainsi le gain du transistor \[\beta=G_m=341\mu S\] Ce maximum est atteint pour $V_G=670mV$.
-%TODO graphe tangente
 
-Le tracé de la tangente nous donne ainsi $V_T=450mV$.
+
 
 \section{Méthode de la fonction Y}
 On peut également utiliser une méthode différente pour déterminer $V_T$, à l'aide d'une fonction Y, définie par :
@@ -109,7 +117,14 @@ On peut également utiliser une méthode différente pour déterminer $V_T$, à 
 
 Cette fonction est linéaire après le seuil, on peut alors approximer asymptotiquement plus précisément. On obtient alors $V_T$.
 \subsection{Transistor Bulk}
-%TODO graphes
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/FD1-10-YFunction}
+        \caption{Fonction Y du transistor FDSOI, $l=30nm$, $V_d = 50mV$}
+        \label{yfun_fdsoi_30nm}
+    \end{center}
+\end{figure}
+
 \subsection{Transistor FDSOI}
 %TODO graphes
 %TODO résultats
