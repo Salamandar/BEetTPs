@@ -119,19 +119,33 @@ Cette fonction est linéaire après le seuil, on peut alors approximer asymptoti
 \subsection{Transistor Bulk}
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Images/FD1-10-YFunction}
-        \caption{Fonction Y du transistor FDSOI, $l=30nm$, $V_d = 50mV$}
+        \includegraphics[width=0.8\textwidth]{Images/Bulk40-YFunction}
+        \caption{Fonction Y du transistor Bulk, $l=40\mu m$, $V_d = 50mV$}
         \label{yfun_fdsoi_30nm}
     \end{center}
 \end{figure}
 
 \subsection{Transistor FDSOI}
-%TODO graphes
-%TODO résultats
-\section{Méthode du courant constant}
-A $V_d$ fort il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{DN}}\cdot\dfrac{W}{L}\]
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/FD1-10-YFunction}
+        \caption{Fonction Y du transistor FDSOI, $l=10\mu m$, $V_d = 50mV$}
+        \label{yfun_fdsoi_30nm}
+    \end{center}
+\end{figure}
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/FD11-30-YFunction}
+        \caption{Transconductance du transistor FDSOI, $l=30nm$, $V_d = 50mV$}
+        \label{transc_fdsoi_30nm}
+    \end{center}
+\end{figure}
 
-$I_{d_{DN}}$ est un paramètre arbitraire, un critère, réutilisable qui permet de calculer $V_T$ pour plusieurs transistors.
+\section{Méthode du courant constant}
+À $V_d$ fort, il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{DN}}\cdot\dfrac{W}{L}\]
+
+$I_{d_{DN}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
+
 
 \subsection{Transistor FDSOI}
 %TODO graphe
@@ -141,6 +155,26 @@ $I_{d_{DN}}$ est un paramètre arbitraire, un critère, réutilisable qui permet
 \chapter{Mesure du DIBL}
 Le DIBL est également important à connaître %+blabla
 On peut le calculer à partir des données précedentes.
+\[ DIBL = -\frac{V^{DD}_{Th} - V^{low}_{Th}}{V_{DD} - V^{low}_{D}}
+\]
+
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/DIBL-11-30}
+        \caption{$I_d(V_g)$ du FDSOI, $l = 30nm$}
+        \label{transc_fdsoi_30nm}
+    \end{center}
+\end{figure}
+
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/DIBL-1-10}
+        \caption{$I_d(V_g)$ du FDSOI, $l =10\mu m$}
+        \label{transc_fdsoi_30nm}
+    \end{center}
+\end{figure}
 %TODO calculs
 On peut vérifier ces calculs en regardant la cours en log.
 %TODO graphe
