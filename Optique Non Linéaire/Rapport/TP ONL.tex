@@ -24,9 +24,58 @@ Dans une première partie nous avons utilisé un laser He:Ne de longueur d'onde 
 
 La seconde partie portera sur le calculs des conditions de Génération de seconde harmonique (SHG) (Chapitre \ref{ONLTheorie}) puis l'utilisation d'un laser NdYAG ($\lambda = 1064nm$, invisible) qui nous a permis d'observer le caractère non linéaire du cristal par un doublage de fréquence de l'onde incidente de l'infrarouge vers la lumière visible (Chapitre \ref{ONLExp}).
 
-% On pourrait fusionner les parties théorie et expérience, non ? Et si tu as d'autres idées de titres je suis preneur
 \chapter{Optique Cristalline Linéaire (Théorie)} \label{OCLTheorie}
 \section{Surface des indices}
+Le cristal de RbTiOPO$_4$ (RTP) cristallise dans un système orthorhombique, et admet une symétrie d'orientation $mm2$.
+
+Ce n'est donc pas un cristal centro-symétrique: il est anisotrope, et de classe optique biaxe. Cela veut dire que la susceptibilité électrique linéaire $\chi^{(1)}$ n'est pas un scalaire comme dans un milieu isotrope, mais un tenseur de rang 2 (une matrice), dépendant de la direction de propagation de l'onde incidente. Cette matrice peut être diagonalisée dans le repère diélectrique:
+\[\chi^{(1)} = 
+\left( \begin{matrix}
+\chi^{(1)}_{xx}   & 0                 & 0 \\
+0                 & \chi^{(1)}_{yy}   & 0 \\
+0                 & 0                 & \chi^{(1)}_{zz}
+\end{matrix}\right) \]
+
+Un milieu isotrope aura ses trois valeurs propres égales, un milieu biaxe aura $\chi^{(1)}_{xx} = \chi^{(1)}_{yy} \neq \chi^{(1)}_{zz}$, et un milieu biaxe aura ses trois valeurs propres différentes.
+
+L'indice de réfraction du milieu est directement lié à la susceptibilité électrique: dans un milieu isotrope, on a $n = \sqrt{1+\chi^{(1)}}$.
+
+Dans un milieu anisotrope, cela devient un peu plus complexe. On va commencer par définir les indices de réfraction principaux :
+\[  n_i = \sqrt{+\chi^{(1)}_{ii}} \text{, avec } i=\{x, y, z\} \]
+
+On peut alors écrire l'équation de Fresnel, tirée des équations de Maxwell :
+\[
+    \dfrac{\sin^2(\theta)\cdot\cos^2(\phi)}{\dfrac{1}{n^2(\theta, \phi, \lambda)} - \dfrac{1}{n^2_x(\lambda)}}
+ +  \dfrac{\sin^2(\theta)\cdot\sin^2(\phi)}{\dfrac{1}{n^2(\theta, \phi, \lambda)} - \dfrac{1}{n^2_y(\lambda)}}
+ +  \dfrac{\cos^2(\theta)                 }{\dfrac{1}{n^2(\theta, \phi, \lambda)} - \dfrac{1}{n^2_z(\lambda)}}
+    = 0
+\]
+
+Cette équation quadratique en $n^2$ admet deux solutions :
+\[
+    n^+(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B-B\sqrt{B^2-4C}}}
+    \text{ et }
+    n^-(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B+B\sqrt{B^2-4C}}}
+\]
+
+avec : 
+\[ B =  -sin^2(\theta) cos^2(\phi)  \left[\dfrac{1}{n^2_y(\lambda)} + \dfrac{1}{n^2_z(\lambda)}\right]
+        -sin^2(\theta) sin^2(\phi)  \left[\dfrac{1}{n^2_x(\lambda)} + \dfrac{1}{n^2_z(\lambda)}\right]
+        -cos^2(\theta)              \left[\dfrac{1}{n^2_x(\lambda)} + \dfrac{1}{n^2_y(\lambda)}\right]
+\]
+
+et :
+\[ C =  \dfrac{sin^2(\theta) cos^2(\phi)}{n^2_y(\lambda)n^2_z(\lambda)}
+     +  \dfrac{sin^2(\theta) sin^2(\phi)}{n^2_x(\lambda)n^2_z(\lambda)}
+     +  \dfrac{cos^2(\theta)            }{n^2_x(\lambda)n^2_y(\lambda)}
+\]
+
+Cela définit alors deux nappes intérieure et extérieure, car $n^+ \geq n^-$ est toujours vérifié.
+
+Dans le cas d'un milieu biaxe, les surfaces d'indice ont cette forme :
+
+TODO inclure image générée je ne sais comment en 3D.
+
 \section{Aparallélisme des champs}
 \section{Séparation des polarisations avec un cristal parallélépipédique}
 \section{Séparation des polarisations avec un cristal cylindrique}
