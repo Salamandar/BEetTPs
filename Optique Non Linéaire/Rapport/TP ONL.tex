@@ -11,16 +11,28 @@
 \pgfplotsset{width=7cm,compat=1.8}
 
 \usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
-
-\parskip=6pt % adds vertical space between paragraphs
+\parskip=6pt % Espacement vertical entre les paragraphes
 
 \begin{document}
 \include{0.Couverture}
+\chapter*{Introduction} \addcontentsline{toc}{chapter}{Introduction}
 
+% On pourrait fusionner les parties théorie et expérience, non ? Et si tu as d'autres idées de titres je suis preneur
+\chapter{Optique Cristalline Linéaire (Théorie)}
+\section{Surface des indices}
+\section{Aparallélisme des champs}
+\section{Séparation des polarisations avec un cristal parallélépipédique}
+\section{Séparation des polarisations avec un cristal cylindrique}
 
+\chapter{Optique Cristalline Linéaire (Expérience)}
+\section{Orientation du repère optique}
+\section{Mesure de la distance entre les spots de polarisations}
 
+% Idem
+\chapter{Optique Non-Linéaire: Conversion de fréquences}
+\section{Mise en place de l'expérience pour une SHG de type II}
+\section{Mesure des angles d'accord de phase}
 
-
+\chapter*{Conclusion} \addcontentsline{toc}{chapter}{Conclusion}
 
 \end{document}
-
