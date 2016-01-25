@@ -228,8 +228,11 @@ Le capteur CCD 1D est placé le plus loin possible du cristal, afin d'obtenir la
 \section{Orientation du repère optique}
 Le cristal est cylindrique, de révolution autour de l'axe optique X. Il s'agit alors de déterminer la direction des axes Y et Z.
 
-Il suffit, avec le polariseur, d'allumer uniquement le spot associé à la nappe d'indice circulaire, qui doit 
-%TODO
+Avec les deux spots allumés, on fait tourner le cristal jusqu'à ce qu'ils soient confondus. La direction de propagation est alors soit Y soit Z.
+
+Ensuite, en faisant tourner le cristal, on aura un spot qui ne bougera pas (la polarisation associée à la nappe d'indices circulaire), tandis que l'autre sera dévié (la polarisation associée à la nappe ellipsoïdale).
+
+Si la direction originelle de propagation est Y, ce spot "suivra" la rotation du cristal, tandis qu'il sera dévié dans le même sens si la direction est Z.
 
 \section{Mesure de l'angle entre les spots de polarisations}
 On peut retrouver facilement l'angle $\rho$ grâce à la distance entre le capteur et le cristal et la distance entre les deux spots sur le capteur: 
@@ -251,9 +254,18 @@ On peut alors tracer l'angle $\rho$ entre les deux spots en fonction de l'angle 
     \end{center}
 \end{figure}
 
-Les résultats expérimentaux sont assez proches de la théorie, à un décalage près en $\theta$ ($\theta_0 = 1,5^o$): le repérage de l'axe optique principal Z aurait pu être plus précis.
+Les résultats expérimentaux sont assez proches de la théorie, à un décalage près en $\theta$ ($\theta_0 = 1,5^o$): le repérage de l'axe optique principal Z est assez précis, mais il aurait pu l'être plus.
 
 \section{Forme des spots}
+L'observation de la distance entre les spots nous permet aussi de remarquer leur forme, tracée figure \ref{formespots}.
+\begin{figure}[h]
+    \begin{center}
+%        \includegraphics{}
+        \caption{Intensité reçue par le capteur}
+        \label{formespots}
+    \end{center}
+\end{figure}
+On reconnaît un profil de spots gaussiens, nous avons en effet utilisé un laser gaussien
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Théorie)}\label{ONLTheorie}
 
