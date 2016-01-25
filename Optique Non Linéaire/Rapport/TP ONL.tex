@@ -186,8 +186,8 @@ Une autre méthode est alors d'utiliser un cristal cylindrique.
         \draw (8,1)--(12,1)node[near end]{>};
         \draw (4,1)--(7.74,2)node[midway, sloped, above]{$\vec{\pi}_{ellipse}$};
         \draw (7.74,2)--(12,-2)node[near end, sloped]{>};
-        \draw [-](6,1) arc(0:30:0.95) ;
-        \draw (6.2,1.3)node{$\rho$};
+        \draw [-](6,1) arc(0:30:0.95); \draw (6.2,1.3)node{$\rho$};
+        \draw [-](10,1) arc(0:-54:0.95); \draw (10.3,0.5)node{$\rho_{ext}$};
         \draw [<->](12.2,-2)--(12.2,1)node[midway, right]{d};
         \end{tikzpicture}
         \caption{Propagation des rayons dans le cristal cylindrique}
@@ -236,11 +236,22 @@ On peut retrouver facilement l'angle $\rho$ grâce à la distance entre le capte
 \[  \rho = \frac{d}{2(D(n^+(\theta)-1)-R)} \]
 avec :
 \begin{itemize}
-    \item $d$ : l
+    \item $d$ : la distance entre les spots
+    \item $D$ : la distance entre le cylindre et le capteur
+    \item $R$ : le rayon du cylindre
 \end{itemize}
-On peut retrouver le tracé de l'angle $\rho$ entre les deux spots en fonction de l'angle
+\vspace*{0.5cm}
+On peut alors tracer l'angle $\rho$ entre les deux spots en fonction de l'angle de rotation du cylindre, ainsi que la courbe théorique associée, sur la figure \ref{courbe1} :
 
-% Idem
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/courbe1}
+        \caption{}
+        \label{courbe1}
+    \end{center}
+\end{figure}
+
+Les résultats expérimentaux sont assez proches de la théorie, à un 
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Théorie)}\label{ONLTheorie}
 
