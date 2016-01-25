@@ -26,9 +26,10 @@ La seconde partie portera sur le calculs des conditions de Génération de secon
 
 \chapter{Optique Cristalline Linéaire (Théorie)} \label{OCLTheorie}
 \section{Surface des indices}
-Le cristal de RbTiOPO$_4$ (RTP) cristallise dans un système orthorhombique, et admet une symétrie d'orientation $mm2$.
+\subsection{Introduction : la susceptibilité électrique}
+Dans un milieu quelconque, la susceptibilité électrique linéaire $\chi^{(1)}$ n'est pas forcément un scalaire. On peut de manière générale le représenter par un tenseur de rang 2 (i.e une matrice), dépendant de la direction de propagation de l'onde incidente.
 
-Ce n'est donc pas un cristal centro-symétrique: il est anisotrope, et de classe optique biaxe. Cela veut dire que la susceptibilité électrique linéaire $\chi^{(1)}$ n'est pas un scalaire comme dans un milieu isotrope, mais un tenseur de rang 2 (une matrice), dépendant de la direction de propagation de l'onde incidente. Cette matrice peut être diagonalisée dans le repère diélectrique:
+Ce tenseur est diagonalisable dans le repère diélectrique, qui peut être totalement différent du repère cristallographique. On l'écrit alors sous cette forme :
 \[\chi^{(1)} = 
 \left( \begin{matrix}
 \chi^{(1)}_{xx}   & 0                 & 0 \\
@@ -36,12 +37,19 @@ Ce n'est donc pas un cristal centro-symétrique: il est anisotrope, et de classe
 0                 & 0                 & \chi^{(1)}_{zz}
 \end{matrix}\right) \]
 
+La complexité de cette matrice est dépendante des symétries du cristal considéré : Plus il est de haute symétrie, plus on aura de valeurs propres égales :\\
 Un milieu isotrope aura ses trois valeurs propres égales, un milieu biaxe aura $\chi^{(1)}_{xx} = \chi^{(1)}_{yy} \neq \chi^{(1)}_{zz}$, et un milieu biaxe aura ses trois valeurs propres différentes.
 
+Le cristal de RbTiOPO$_4$ (RTP) cristallise dans un système orthorhombique, et admet une symétrie d'orientation $mm2$. Il est peu symétrique, il est alors de classe optique biaxe.
+
+De plus il est orthorhombique, le repère cristallographique sera alors parallèle au repère diélectrique.
+\vspace*{5mm}
+
+\subsection{L'indice de réfraction}
 L'indice de réfraction du milieu est directement lié à la susceptibilité électrique: dans un milieu isotrope, on a $n = \sqrt{1+\chi^{(1)}}$.
 
 Dans un milieu anisotrope, cela devient un peu plus complexe. On va commencer par définir les indices de réfraction principaux :
-\[  n_i = \sqrt{+\chi^{(1)}_{ii}} \text{, avec } i=\{x, y, z\} \]
+\[  n_i = \sqrt{1+\chi^{(1)}_{ii}} \text{, avec } i=\{x, y, z\} \]
 
 On peut alors écrire l'équation de Fresnel, tirée des équations de Maxwell :
 \[
@@ -70,15 +78,65 @@ et :
      +  \dfrac{cos^2(\theta)            }{n^2_x(\lambda)n^2_y(\lambda)}
 \]
 
+\subsection{Surface des indices}
 Cela définit alors deux nappes intérieure et extérieure, car $n^+ \geq n^-$ est toujours vérifié.
 
 Dans le cas d'un milieu biaxe, les surfaces d'indice ont cette forme :
 
 TODO inclure image générée je ne sais comment en 3D.
 
+\paragraph{L'équation de ces nappes} sur le plan $(\vec x, \vec z)$ est de la forme :
+\[  \frac{1}{n^2_\text{ellipse}} = \frac{\cos^2(\theta)}{n^2_x} + \frac{\sin^2(\theta)}{n^2_z} \]
+\[  n^2_\text{cercle} = n_y \]
+
+La direction de propagation de l'onde électromagnétique est déterminée par l'intersection des nappes $n^+$ et $n^-$, c'est-à-dire par la solution double de l'équation de Fresnel :
+\[  n(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B}} \]
+
+L'angle de propagation $V_z$ est alors défini par :
+\[ \sin^2(V_z) = \frac{n_y^{-2}-n_x^{-2}}{n_z^{-2}-n_x^{-2}} \]
+
+
 \section{Aparallélisme des champs}
+Une susceptibilité électrique non scalaire implique alors que la polarisation du milieu ne soit pas parallèle au champ électrique :
+\[\vec{P} = \epsilon_0 \chi^{(1)} \cdot\vec{E}\]
+
+et : 
+\[\vec{D} = \epsilon_0 \vec{E} + \vec{P}
+          = \epsilon_0 (1+\chi^{(1)}) \cdot\vec{E}
+          = \epsilon_0 \epsilon_r^{(1)} \vec{E}\]
+
+Enfin, on a :
+\begin{itemize}
+    \item $\vec{\pi} \perp \vec{E}$
+    \item $\vec{k}   \perp \vec{D}$
+    \item $\vec{\pi} = \frac{1}{\mu_0} \vec{E}\wedge \vec{B}$
+\end{itemize}
+TODO schéma vecteurs
+
+Il faut garder en tête que l'on observe physiquement $\vec{\pi}$ et $\vec{E}$, et PAS $\vec{k}$ ni $\vec{D}$.
+
 \section{Séparation des polarisations avec un cristal parallélépipédique}
+À l'interface entre un milieu isotrope (l'air) et un milieu anisotrope (notre cristal RTP), il y a une variation d'indice optique anisotrope :
+\begin{itemize}
+    \item $\vec{k}$ et $\vec{D}$ ne varient pas : l'onde conserve la même direction (TODO préciser)
+    \item $\vec{\pi}$ et $\vec{E}$ dévient : l'onde change de direction de propagation 
+\end{itemize}
+
+Seule la direction de propagation change : $\vec{D}$ reste orienté selon la direction originelle de propagation.
+
+TODO schéma cristal
+
+En sortie du cristal, on a le même phénomène qu'en entrée : les deux faisceaux se retrouvent parallèles, mais séparés par une distance $\delta_z$.
+
+Or l'angle $\rho$ est très faible habituellement, $\delta_z$ aussi. Cela ne nous permet pas d'effectuer une mesure précise.
 \section{Séparation des polarisations avec un cristal cylindrique}
+Une autre méthode est alors d'utiliser un cristal cylindrique.
+
+TODO schéma cristal
+
+Comme $\rho_{ext}$ est assez grand, la mesure peut être très précise ; elle peut être améliorée en éloignant le capteur du cristal.
+
+C'est cette configuration que nous avons utilisé dans la suite du TP.
 
 \chapter{Optique Cristalline Linéaire (Expérience)} \label{OCLExp}
 \section{Mise en place de l'expérience}
@@ -127,7 +185,7 @@ $\lambda_3$&$\lambda_2$&$\lambda_1$\\
 
 Les 4 premiers cas sont impossibles car $\lambda_3<\lambda_{1,2}$, or d'après les courbes de $n^+$ et $n^-$, on ne peut avoir $n^+$ avec un longueur d'onde plus faible. Pour des raisons de bijectivité, avoir le même signe partout est impossible. Ce qui laisse 3 possibilités, dont deux dégénérées dans le cas $\lambda_1=\lambda_2$. On notera Type I le cas "-,+,+" et Type II (confondu avec Type III dans notre cas) le cas "-,-,+" (ou "-,+,-").
 
-On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra cond polariser horizontalement, alors que pour le Type II on injecte à la fois sur $n^+$ et $n^-$, il faudra donc un polariseur à 45\textdegree pour injecter simultanément sur ces deux nappes. La polarisation appliquée impose le désaccord de phase, d'où la nécéssité d'être capable de contrôler la polarisation (laser polarisé et utilisation systématique de lame $\dfrac{\lambda}{2}$) lors des manipulations.
+On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra cond polariser horizontalement, alors que pour le Type II on injecte à la fois sur $n^+$ et $n^-$, il faudra donc un polariseur à 45\textdegree pour injecter simultanément sur ces deux nappes. La polarisation appliquée impose le désaccord de phase, d'où la nécessité d'être capable de contrôler la polarisation (laser polarisé et utilisation systématique de lame $\dfrac{\lambda}{2}$) lors des manipulations.
 
 \section{Condition d'accord de phase dans le cas de l'expérience}
 
