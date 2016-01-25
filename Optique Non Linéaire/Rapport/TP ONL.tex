@@ -26,10 +26,10 @@ La seconde partie portera sur le calculs des conditions de Génération de secon
 
 \chapter{Optique Cristalline Linéaire (Théorie)} \label{OCLTheorie}
 \section{Surface des indices}
-\subsection{Introduction : la susceptibilité électrique}
+\subsection{Introduction: la susceptibilité électrique}
 Dans un milieu quelconque, la susceptibilité électrique linéaire $\chi^{(1)}$ n'est pas forcément un scalaire. On peut de manière générale le représenter par un tenseur de rang 2 (i.e une matrice), dépendant de la direction de propagation de l'onde incidente.
 
-Ce tenseur est diagonalisable dans le repère diélectrique, qui peut être totalement différent du repère cristallographique. On l'écrit alors sous cette forme :
+Ce tenseur est diagonalisable dans le repère diélectrique, qui peut être totalement différent du repère cristallographique. On l'écrit alors sous cette forme:
 \[\chi^{(1)} = 
 \left( \begin{matrix}
 \chi^{(1)}_{xx}   & 0                 & 0 \\
@@ -37,7 +37,7 @@ Ce tenseur est diagonalisable dans le repère diélectrique, qui peut être tota
 0                 & 0                 & \chi^{(1)}_{zz}
 \end{matrix}\right) \]
 
-La complexité de cette matrice est dépendante des symétries du cristal considéré : Plus il est de haute symétrie, plus on aura de valeurs propres égales :\\
+La complexité de cette matrice est dépendante des symétries du cristal considéré: Plus il est de haute symétrie, plus on aura de valeurs propres égales:\\
 Un milieu isotrope aura ses trois valeurs propres égales, un milieu biaxe aura $\chi^{(1)}_{xx} = \chi^{(1)}_{yy} \neq \chi^{(1)}_{zz}$, et un milieu biaxe aura ses trois valeurs propres différentes.
 
 Le cristal de RbTiOPO$_4$ (RTP) cristallise dans un système orthorhombique, et admet une symétrie d'orientation $mm2$. Il est peu symétrique, il est alors de classe optique biaxe.
@@ -48,10 +48,10 @@ De plus il est orthorhombique, le repère cristallographique sera alors parallè
 \subsection{L'indice de réfraction}
 L'indice de réfraction du milieu est directement lié à la susceptibilité électrique: dans un milieu isotrope, on a $n = \sqrt{1+\chi^{(1)}}$.
 
-Dans un milieu anisotrope, cela devient un peu plus complexe. On va commencer par définir les indices de réfraction principaux :
+Dans un milieu anisotrope, cela devient un peu plus complexe. On va commencer par définir les indices de réfraction principaux:
 \[  n_i = \sqrt{1+\chi^{(1)}_{ii}} \text{, avec } i=\{x, y, z\} \]
 
-On peut alors écrire l'équation de Fresnel, tirée des équations de Maxwell :
+On peut alors écrire l'équation de Fresnel, tirée des équations de Maxwell:
 \[
     \dfrac{\sin^2(\theta)\cdot\cos^2(\phi)}{\dfrac{1}{n^2(\theta, \phi, \lambda)} - \dfrac{1}{n^2_x(\lambda)}}
  +  \dfrac{\sin^2(\theta)\cdot\sin^2(\phi)}{\dfrac{1}{n^2(\theta, \phi, \lambda)} - \dfrac{1}{n^2_y(\lambda)}}
@@ -59,20 +59,20 @@ On peut alors écrire l'équation de Fresnel, tirée des équations de Maxwell :
     = 0
 \]
 
-Cette équation quadratique en $n^2$ admet deux solutions :
+Cette équation quadratique en $n^2$ admet deux solutions:
 \[
     n^+(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B-B\sqrt{B^2-4C}}}
     \text{ et }
     n^-(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B+B\sqrt{B^2-4C}}}
 \]
 
-avec : 
+avec: 
 \[ B =  -sin^2(\theta) cos^2(\phi)  \left[\dfrac{1}{n^2_y(\lambda)} + \dfrac{1}{n^2_z(\lambda)}\right]
         -sin^2(\theta) sin^2(\phi)  \left[\dfrac{1}{n^2_x(\lambda)} + \dfrac{1}{n^2_z(\lambda)}\right]
         -cos^2(\theta)              \left[\dfrac{1}{n^2_x(\lambda)} + \dfrac{1}{n^2_y(\lambda)}\right]
 \]
 
-et :
+et:
 \[ C =  \dfrac{sin^2(\theta) cos^2(\phi)}{n^2_y(\lambda)n^2_z(\lambda)}
      +  \dfrac{sin^2(\theta) sin^2(\phi)}{n^2_x(\lambda)n^2_z(\lambda)}
      +  \dfrac{cos^2(\theta)            }{n^2_x(\lambda)n^2_y(\lambda)}
@@ -85,27 +85,27 @@ Dans le cas d'un milieu biaxe, les surfaces d'indice ont cette forme :
 
 TODO inclure image générée je ne sais comment en 3D.
 
-\paragraph{L'équation de ces nappes} sur le plan $(\vec x, \vec z)$ est de la forme :
+\paragraph{L'équation de ces nappes} sur le plan $(\vec x, \vec z)$ est de la forme:
 \[  \frac{1}{n^2_\text{ellipse}} = \frac{\cos^2(\theta)}{n^2_x} + \frac{\sin^2(\theta)}{n^2_z} \]
 \[  n^2_\text{cercle} = n_y \]
 
-La direction de propagation de l'onde électromagnétique est déterminée par l'intersection des nappes $n^+$ et $n^-$, c'est-à-dire par la solution double de l'équation de Fresnel :
+La direction de propagation de l'onde électromagnétique est déterminée par l'intersection des nappes $n^+$ et $n^-$, c'est-à-dire par la solution double de l'équation de Fresnel:
 \[  n(\theta, \phi, \lambda) = \dfrac{\sqrt 2}{\sqrt{-B}} \]
 
-L'angle de propagation $V_z$ est alors défini par :
+L'angle de propagation $V_z$ est alors défini par:
 \[ \sin^2(V_z) = \frac{n_y^{-2}-n_x^{-2}}{n_z^{-2}-n_x^{-2}} \]
 
 
 \section{Aparallélisme des champs}
-Une susceptibilité électrique non scalaire implique alors que la polarisation du milieu ne soit pas parallèle au champ électrique :
+Une susceptibilité électrique non scalaire implique alors que la polarisation du milieu ne soit pas parallèle au champ électrique:
 \[\vec{P} = \epsilon_0 \chi^{(1)} \cdot\vec{E}\]
 
-et : 
+et: 
 \[\vec{D} = \epsilon_0 \vec{E} + \vec{P}
           = \epsilon_0 (1+\chi^{(1)}) \cdot\vec{E}
           = \epsilon_0 \epsilon_r^{(1)} \vec{E}\]
 
-Enfin, on a :
+Enfin, on a:
 \begin{itemize}
     \item $\vec{\pi} \perp \vec{E}$
     \item $\vec{k}   \perp \vec{D}$
@@ -116,17 +116,17 @@ TODO schéma vecteurs
 Il faut garder en tête que l'on observe physiquement $\vec{\pi}$ et $\vec{E}$, et PAS $\vec{k}$ ni $\vec{D}$.
 
 \section{Séparation des polarisations avec un cristal parallélépipédique}
-À l'interface entre un milieu isotrope (l'air) et un milieu anisotrope (notre cristal RTP), il y a une variation d'indice optique anisotrope :
+À l'interface entre un milieu isotrope (l'air) et un milieu anisotrope (notre cristal RTP), il y a une variation d'indice optique anisotrope:
 \begin{itemize}
-    \item $\vec{k}$ et $\vec{D}$ ne varient pas : l'onde conserve la même direction (TODO préciser)
-    \item $\vec{\pi}$ et $\vec{E}$ dévient : l'onde change de direction de propagation 
+    \item $\vec{k}$ et $\vec{D}$ ne varient pas: l'onde conserve la même direction (TODO préciser)
+    \item $\vec{\pi}$ et $\vec{E}$ dévient: l'onde change de direction de propagation 
 \end{itemize}
 
-Seule la direction de propagation change : $\vec{D}$ reste orienté selon la direction originelle de propagation.
+Seule la direction de propagation change: $\vec{D}$ reste orienté selon la direction originelle de propagation.
 
 TODO schéma cristal
 
-En sortie du cristal, on a le même phénomène qu'en entrée : les deux faisceaux se retrouvent parallèles, mais séparés par une distance $\delta_z$.
+En sortie du cristal, on a le même phénomène qu'en entrée: les deux faisceaux se retrouvent parallèles, mais séparés par une distance $\delta_z$.
 
 Or l'angle $\rho$ est très faible habituellement, $\delta_z$ aussi. Cela ne nous permet pas d'effectuer une mesure précise.
 \section{Séparation des polarisations avec un cristal cylindrique}
@@ -153,19 +153,19 @@ Maintenant que nous avons vu les effets de l'anisotropie du cristal en réponse 
 
 %je sais pas comment formuler avant ça
 
-$\Delta k$ est le déphasage entre la polarisation non-linéaire et le champs qu'elle génère. La condition d'accord de phase revient à dire :
+$\Delta k$ est le déphasage entre la polarisation non-linéaire et le champs qu'elle génère. La condition d'accord de phase revient à dire:
 
 \[\Delta k=k_3-k_2-k_1=0\]
 
-Or :
+Or:
 
 \[k_i=\dfrac{2\pi}{\lambda_i}n(\lambda_i)\]
 
-On peut ainsi réécrire $\Delta k$ :
+On peut ainsi réécrire $\Delta k$:
 
 \[\Delta k=2\pi\left[\dfrac{n^{\pm}(\lambda_3,\theta,\phi)}{\lambda_3}-\dfrac{n^{\pm}(\lambda_2,\theta,\phi)}{\lambda_2}-\dfrac{n^{\pm}(\lambda_1,\theta,\phi)}{\lambda_1}\right]\]
 
-Il y a ainsi 8 possibilités en focntion du choix de + ou de - pour $n^{\pm}$ :
+Il y a ainsi 8 possibilités en focntion du choix de + ou de - pour $n^{\pm}$:
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -189,7 +189,7 @@ On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra
 
 \section{Condition d'accord de phase dans le cas de l'expérience}
 
-Il nous faut à présent traduire la condiction de phase sur des variables modifiables dans le cas de l'expérience. Nous travaillerons dans le plan YZ avec des longueurs d'ondes suivantes :
+Il nous faut à présent traduire la condiction de phase sur des variables modifiables dans le cas de l'expérience. Nous travaillerons dans le plan YZ avec des longueurs d'ondes suivantes:
 
 \indent$\cdot\,\lambda_1=\lambda_2=1,064\mu m=\lambda$\\
 \indent$\cdot\,\lambda_3=0,532\mu m=\dfrac{\lambda}{2}$\\
@@ -200,67 +200,67 @@ Il nous faut à présent traduire la condiction de phase sur des variables modif
 \Delta k&=\dfrac{2\pi\times 2}{\lambda}\left[n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)-n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)\right]
 \end{align*}
 
-Or : 
+Or: 
 \begin{align*}
     &\cdot n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)=n_x\left(\dfrac{\lambda}{2}\right)\\
     &\cdot n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)=\dfrac{1}{\sqrt{\dfrac{\cos^2\theta}{n_y^2(\lambda)}+\dfrac{\sin^2\theta}{n_z^2(\lambda)}}}
 \end{align*}
 
-Ainsi, après calculs, on obtient : 
+Ainsi, après calculs, on obtient: 
 \[\sin^2\theta_{I}=\dfrac{\dfrac{1}{n_x^2(\lambda/2)}-\dfrac{1}{n_y^2(\lambda)}}{\dfrac{1}{n_z^2(\lambda)}-\dfrac{1}{n_y^2(\lambda)}}\]
 
-D'où : 
+D'où: 
 \[\theta_{I}=41^{\circ}\]
 
 \paragraph{Pour le Type II}
 \[\Delta k=\dfrac{2\pi}{\lambda}\left[2n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)-n^-\left(\lambda,\theta,\dfrac{\pi}{2}\right)-n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)\right]\]
 
-Avec les mêmes expressions pour $n^-(\lambda/2)$ et $n^+(\lambda)$ mais avec :
+Avec les mêmes expressions pour $n^-(\lambda/2)$ et $n^+(\lambda)$ mais avec:
 \[\cdot\,n^-(\lambda)=n_x(\lambda)\]
 
-Ainsi, après calculs, on obtient cette fois :
+Ainsi, après calculs, on obtient cette fois:
 \[\sin^2\theta_{II}=\dfrac{\dfrac{1}{(2n_x(\lambda/2)-n_x(\lambda))^2}-\dfrac{1}{n_y^2(\lambda)}}{\dfrac{1}{n_z^2(\lambda)}-\dfrac{1}{n_y^2(\lambda)}}\]
 
-D'où :
+D'où:
 \[\theta_{II}=76^{\circ}\]
 
 La condtion d'accord de phase se traduit donc par un angle $\theta$ imposé. Cependant, l'accord de phase traduit un maximum d'intéractions entre les 3 photons. Ainsi, les angles trouvées devraient être des maxima d'intensité de lumière à $2\omega$ et non pas des directions exlusives (même si c'est assez séléctif, comme nous le verrons).
 
 \section{Calculs de $\chi$ (Type I et Type II)}
 
-Nous avons à présent les angles $\theta$ dans lesquelles on devrait voir apparaitre la génération de seconde harmonique, donc une lumière de longueur d'onde égale à $0,532\mu m$, pour les Types I et II. Cependant, il reste un point important à vérifier : le  cristal possède-t-il un coefficient de susceptibilité electrique non linéaire non nul pour ces directions ? C'est ce que nous allons vérifier grâce au calcul de $\chi_{eff}$.
+Nous avons à présent les angles $\theta$ dans lesquelles on devrait voir apparaitre la génération de seconde harmonique, donc une lumière de longueur d'onde égale à $0,532\mu m$, pour les Types I et II. Cependant, il reste un point important à vérifier: le  cristal possède-t-il un coefficient de susceptibilité electrique non linéaire non nul pour ces directions ? C'est ce que nous allons vérifier grâce au calcul de $\chi_{eff}$.
 
 \paragraph{Pour le Type I}
-On ecrit l'expression de la susceptibilité effective :
+On ecrit l'expression de la susceptibilité effective:
 
 \[\chi_{eff}^{SHG_I}=\sum_{i,j,k}e^-_j(\lambda/2)\chi_{j,i,k}(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)\]
 
-Avec {i,j,k}={x,y,z} car $\chi^{(2)}$ est un tenseur de 27 élements, mais beaucoup sont nuls, pour des raisons de symétrie du cristal. On se réfère alors à des tables de $\chi^{(2)}$ qui nous fournissent les éléments non nuls, notamment pour le groupe de symétrie 2mm auquel le RTP appartient. Mais avant de regarder cette table, on réduit d'abord les possibilités avec le produit vectoriel des polarisations : $e^-_j(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)$.
+Avec {i,j,k}={x,y,z} car $\chi^{(2)}$ est un tenseur de 27 élements, mais beaucoup sont nuls, pour des raisons de symétrie du cristal. On se réfère alors à des tables de $\chi^{(2)}$ qui nous fournissent les éléments non nuls, notamment pour le groupe de symétrie 2mm auquel le RTP appartient. Mais avant de regarder cette table, on réduit d'abord les possibilités avec le produit vectoriel des polarisations: $e^-_j(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)$.
 
-En effet, on note :
+En effet, on note:
 \[f_{j,i,k}=\begin{pmatrix}-1\\0\\0\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\]
 
 Les coefficients $f_{j,i,k}$ sont presque tous nuls sauf $f_{x,y,y}$, $f_{x,z,z}$, $f_{x,y,z}$ et $f_{x,z,y}$. 
 On peut à présent comparer avec les coefficients non nuls de $\chi^{(2)}$. Or, d'après la table, les quatres coefficients correspondants sont nuls.
 
-Cela implique :
+Cela implique:
 \[\chi_{eff}^{SHG_I}=0\]
 
 Ainsi, la symétrie du cristal de RTP empêche la génération de seconde harmonique en polarisant la lumière selon les nappes $n^+$. On ne verra donc aucune lumière à $0,532\mu m$ en polarisant horizontalement uniquement. Il reste à réaliser la même étude pour le Type II.
 
 \paragraph{Pour le Type II}
 
-On reprend la même étude avec l'expression : 
+On reprend la même étude avec l'expression: 
 
 \[\chi_{eff}^{SHG_I}=\sum_{i,j,k}\chi_{j,i,k}(\lambda/2)e^-_j(\lambda/2)e^+_i(\lambda)e^-_k(\lambda)\]
 
-Dans ce cas :
+Dans ce cas:
 
 \[f_{j,i,k}=\begin{pmatrix}-1\\0\\0\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\begin{pmatrix}-1\\0\\0\end{pmatrix}\]
 
 Alors, $f_{x,y,x}$ et $f_{x,z,x}$ sont non nuls, et d'après les tables $\chi_{x,y,x}$ est nul mais $\chi_{x,z,x}$ ne l'est pas. 
 
-Comme $f_{x,z,x}=\sin\theta'$, on peut écrire :
+Comme $f_{x,z,x}=\sin\theta'$, on peut écrire:
 
 \[\chi_{eff}^2=\chi_{x,z,x}^2\sin^2\theta'\neq 0\]
 
