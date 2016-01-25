@@ -104,12 +104,12 @@ L'angle de propagation $V_z$ est alors défini par:
 
 \section{Aparallélisme des champs}
 Une susceptibilité électrique non scalaire implique alors que la polarisation du milieu ne soit pas parallèle au champ électrique:
-\[\vec{P} = \epsilon_0 \chi^{(1)} \cdot\vec{E}\]
+\[\vec{P} = \varepsilon_0 \chi^{(1)} \cdot\vec{E}\]
 
 et: 
-\[\vec{D} = \epsilon_0 \vec{E} + \vec{P}
-          = \epsilon_0 (1+\chi^{(1)}) \cdot\vec{E}
-          = \epsilon_0 \epsilon_r^{(1)} \vec{E}\]
+\[\vec{D} = \varepsilon_0 \vec{E} + \vec{P}
+          = \varepsilon_0 (1+\chi^{(1)}) \cdot\vec{E}
+          = \varepsilon_0 \varepsilon_r^{(1)} \vec{E}\]
 
 Enfin, on a:
 \begin{itemize}
@@ -130,12 +130,12 @@ Enfin, on a:
 Il faut garder en tête que l'on observe physiquement $\vec{\pi}$ (la direction de propagation de l'énergie lumineuse, donc celle du rayon observable) et $\vec{E}$, et PAS $\vec{k}$ (la direction de l'onde électromagnétique) ni $\vec{D}$.
 
 \section{Séparation des polarisations avec un cristal parallélépipédique}
-Dans tout milieu anisotrope, une onde est en fait la somme de deux composantes $\vec{E^+(\theta,\phi)}$ et $\vec{E^-(\theta,\phi)}$, associées aux deux solutions de l'équation de Fresnel. Elles sont polarisées chacune rectilignement.
+Dans tout milieu anisotrope, une onde est en fait la somme de deux composantes $\vec{E}^+(\theta,\phi)$ et $\vec{E}^-(\theta,\phi)$, associées aux deux solutions de l'équation de Fresnel. Elles sont polarisées chacune rectilignement.
 
 Dans les plans principaux, les deux polarisations sont orthogonales entre elles et:
 \begin{itemize}
-    \item L'onde associée à la nappe circulaire ($\vec{E_c}$) est polarisée orthogonalement au plan
-    \item L'onde associée à la nappe ellipsoïdale ($\vec{E_e}$) est polarisée tangentiellement à l'ellipse.
+    \item L'onde associée à la nappe circulaire ($\vec{E}_{c}$) est polarisée orthogonalement au plan
+    \item L'onde associée à la nappe ellipsoïdale ($\vec{E}_{e}$) est polarisée tangentiellement à l'ellipse.
 \end{itemize}
 
 \newpage
@@ -147,8 +147,8 @@ De plus à l'interface entre un milieu isotrope (l'air) et un milieu anisotrope 
 
 Considérant que la propagation de l'énergie lumineuse ($\vec{\pi}$) est toujours orthogonale à la nappe d'indice:
 \begin{itemize}
-    \item $\vec{\pi_{cercle}}$ est parallèle à $\vec{k_{cercle}}$ et l'onde se propage sans changer de direction
-    \item $\vec{\pi_{ellipse}}$ est dévié par rapport à $\vec{k_{ellipse}}$ et l'onde change de direction.
+    \item $\vec{\pi}_{cercle}$ est parallèle à $\vec{k}_{cercle}$ et l'onde se propage sans changer de direction
+    \item $\vec{\pi}_{ellipse}$ est dévié par rapport à $\vec{k}_{ellipse}$ et l'onde change de direction.
 \end{itemize}
 
 On a donc pu séparer les deux rayons comme on peut le constater sur la figure \ref{cristalparallelepipede}.
@@ -273,18 +273,15 @@ Maintenant que nous avons vu les effets de l'anisotropie du cristal en réponse 
 
 \section{Accord de phase}
 
-%je sais pas comment formuler avant ça
-
-$\Delta k$ est le déphasage entre la polarisation non-linéaire et le champs qu'elle génère. La condition d'accord de phase revient à dire:
-
+L'interaction entre ces 3 photons est maximale si la quantité de mouvement est conservée, on appelle cela la condition d'accord de phase. Cette condition s'écrit :
+% $\Delta k$ est le déphasage entre la polarisation non-linéaire et le champ qu'elle génère. La condition d'accord de phase revient à dire:
 \[\Delta k=k_3-k_2-k_1=0\]
+Avec $\Delta k$ qui est à la fois le déphasage entre la polarisation non-linéaire et le champ qu'elle génère et la différence de quantité de mouvement des photons en intéractions et $k_i$ les normes des vecteurs d'onde mis en jeu lors de l'intéraction.
 
 Or:
-
 \[k_i=\dfrac{2\pi}{\lambda_i}n(\lambda_i)\]
 
 On peut ainsi réécrire $\Delta k$:
-
 \[\Delta k=2\pi\left[\dfrac{n^{\pm}(\lambda_3,\theta,\phi)}{\lambda_3}-\dfrac{n^{\pm}(\lambda_2,\theta,\phi)}{\lambda_2}-\dfrac{n^{\pm}(\lambda_1,\theta,\phi)}{\lambda_1}\right]\]
 
 Il y a ainsi 8 possibilités en fonction du choix de + ou de - pour $n^{\pm}$:
@@ -427,7 +424,7 @@ Nous avons trouvé des directions de maxima aux repères 30, 58, 210 et 238 degr
 \end{figure}
 
 \section{Mesure de la longueur d'onde générée}
-Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moitié (et pas deux longueurs d'ondes proches par exemple). On utilise alors un spectromètre pour trouver la longueur d'onde du faisceau vert (Fig \ref{spectro}). On remarque qu'il n'y a que deux pics, l'incident à $1,064\mu m$ et la longueur d'onde moitié, on a donc bien une génération de seconde harmonique.
+Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moitié (et pas deux longueurs d'ondes proches par exemple). On utilise alors un spectromètre pour trouver la longueur d'onde du faisceau vert (Fig \ref{spectro}). On remarque qu'il n'y a que deux pics, l'incident à $1,064\mu m$ et la longueur d'onde moitié $0,532\mu m$, on a donc bien une génération de seconde harmonique.
 
 \begin{figure}[H]
 \centering
