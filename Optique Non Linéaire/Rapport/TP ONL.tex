@@ -127,18 +127,39 @@ Enfin, on a:
 \end{figure}
 
 
-Il faut garder en tête que l'on observe physiquement $\vec{\pi}$ et $\vec{E}$, et PAS $\vec{k}$ ni $\vec{D}$.
+Il faut garder en tête que l'on observe physiquement $\vec{\pi}$ (la direction de propagation de l'énergie lumineuse, donc celle du rayon observable) et $\vec{E}$, et PAS $\vec{k}$ (la direction de l'onde électromagnétique) ni $\vec{D}$.
 
 \section{Séparation des polarisations avec un cristal parallélépipédique}
-À l'interface entre un milieu isotrope (l'air) et un milieu anisotrope (notre cristal RTP), il y a une variation d'indice optique anisotrope:
+Dans tout milieu anisotrope, une onde est en fait la somme de deux composantes $\vec{E^+(\theta,\phi)}$ et $\vec{E^-(\theta,\phi)}$, associées aux deux solutions de l'équation de Fresnel. Elles sont polarisées chacune rectilignement.
+
+Dans les plans principaux, les deux polarisations sont orthogonales entre elles et :
 \begin{itemize}
-    \item $\vec{k}$ et $\vec{D}$ ne varient pas: l'onde conserve la même direction (TODO préciser)
-    \item $\vec{\pi}$ et $\vec{E}$ dévient: l'onde change de direction de propagation 
+    \item L'onde associée à la nappe circulaire ($\vec{E_c}$) est polarisée orthogonalement au plan
+    \item L'onde associée à la nappe ellipsoïdale ($\vec{E_e}$) est polarisée tangentiellement à l'ellipse.
 \end{itemize}
 
-Seule la direction de propagation change: $\vec{D}$ reste orienté selon la direction originelle de propagation.
+\newpage
+De plus à l'interface entre un milieu isotrope (l'air) et un milieu anisotrope (notre cristal RTP), il y a une variation d'indice optique anisotrope:
+\begin{itemize}
+    \item $\vec{k}$ et $\vec{D}$ ne varient pas: l'onde conserve la même direction de propagation
+    \item $\vec{\pi}$ et $\vec{E}$ dévient: l'énergie lumineuse (le rayon) change de direction de propagation.\newline
+\end{itemize}
 
-TODO schéma cristal
+Considérant que la propagation de l'énergie lumineuse ($\vec{\pi}$) est toujours orthogonale à la nappe d'indice :
+\begin{itemize}
+    \item $\vec{\pi_{cercle}}$ est parallèle à $\vec{k_{cercle}}$ et l'onde se propage sans changer de direction
+    \item $\vec{\pi_{ellipse}}$ est dévié par rapport à $\vec{k_{ellipse}}$ et l'onde change de direction.
+\end{itemize}
+
+On a donc pu séparer les deux rayons comme on peut le constater sur la figure \ref{cristalparallelepipede}.
+
+\begin{figure}[h]
+    \begin{center}
+        %\includegraphics{}
+        \caption{Propagation des rayons dans le cristal parallélépipédique}
+        \label{cristalparallelepipede}
+    \end{center}
+\end{figure}
 
 En sortie du cristal, on a le même phénomène qu'en entrée: les deux faisceaux se retrouvent parallèles, mais séparés par une distance $\delta_z$.
 
@@ -152,8 +173,28 @@ Comme $\rho_{ext}$ est assez grand, la mesure peut être très précise ; elle p
 
 C'est cette configuration que nous avons utilisé dans la suite du TP.
 
+De simples calculs géométriques prenant en compte notamment la distance entre le cristal et le capteur optique nous permettent de retrouver $\rho$ en fonction de la distance (linéaire) entre les deux faisceaux.
+
 \chapter{Optique Cristalline Linéaire (Expérience)} \label{OCLExp}
 \section{Mise en place de l'expérience}
+Comme toute expérience d'optique, pour avoir un faisceau horizontal et tous les éléments optiques alignés correctement, on utilise une paire de miroirs entre le laser source He:Ne et le cristal : 
+
+Le premier miroir permet d'amener le faisceau depuis la hauteur du laser, vers la même hauteur que le cristal. Le second miroir permet alors, sans modifier la hauteur du faisceau, d'ajuster uniquement sa direction pour qu'il soit horizontal.
+
+On règle donc d'abord le premier miroir puis le second, plusieurs fois pour "converger" vers une configuration précise.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Images/Schema_exp1}
+        \caption{Schéma de l'expérience}
+        \label{schema_exp1}
+    \end{center}
+\end{figure}
+
+On règle l'atténuateur pour avoir, au niveau du capteur CCD, un signal non saturé mais propre.
+
+Le polariseur permet d'éteindre un des spots. En effet on peut polariser intégralement la lumière verticalement ou horizontalement, et dans ce cas seul le spot concerné sera allumé. Ceci permet de vérifier l'orientation du cristal.
+
 \section{Orientation du repère optique}
 \section{Mesure de la distance entre les spots de polarisations}
 
