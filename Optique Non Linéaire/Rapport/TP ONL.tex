@@ -251,11 +251,13 @@ On peut alors tracer l'angle $\rho$ entre les deux spots en fonction de l'angle 
     \end{center}
 \end{figure}
 
-Les résultats expérimentaux sont assez proches de la théorie, à un 
+Les résultats expérimentaux sont assez proches de la théorie, à un décalage près en $\theta$ (1,5\textdegree) : le repérage de l'axe optique principal Z aurait pu être plus précis.
+
+
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Théorie)}\label{ONLTheorie}
 
-Maintenant que nous avons vu les effets de l'anisotropie du cristal en réponse linéaire, il nous faut étudier la non-linéarité, notamment la Génération de Seconde Harmonique (SHG). La Génération de Seconde Harmonique est un cas dégénéré de fusion de photons (en considérant l'apsect corpusculaire), elle correspond à l'intéraction de deux photons de fréquence $\omega$ qui donnent un photon de fréquence 2$\omega$.
+Maintenant que nous avons vu les effets de l'anisotropie du cristal en réponse linéaire, il nous faut étudier la non-linéarité, notamment la Génération de Seconde Harmonique (SHG). La Génération de Seconde Harmonique est un cas dégénéré de fusion de photons (en considérant l'aspect corpusculaire), elle correspond à l'interaction de deux photons de fréquence $\omega$ qui donnent un photon de fréquence 2$\omega$.
 
 \section{Accord de phase}
 
@@ -273,7 +275,7 @@ On peut ainsi réécrire $\Delta k$:
 
 \[\Delta k=2\pi\left[\dfrac{n^{\pm}(\lambda_3,\theta,\phi)}{\lambda_3}-\dfrac{n^{\pm}(\lambda_2,\theta,\phi)}{\lambda_2}-\dfrac{n^{\pm}(\lambda_1,\theta,\phi)}{\lambda_1}\right]\]
 
-Il y a ainsi 8 possibilités en focntion du choix de + ou de - pour $n^{\pm}$:
+Il y a ainsi 8 possibilités en fonction du choix de + ou de - pour $n^{\pm}$:
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -293,11 +295,11 @@ $\lambda_3$&$\lambda_2$&$\lambda_1$\\
 
 Les 4 premiers cas sont impossibles car $\lambda_3<\lambda_{1,2}$, or d'après les courbes de $n^+$ et $n^-$, on ne peut avoir $n^+$ avec un longueur d'onde plus faible. Pour des raisons de bijectivité, avoir le même signe partout est impossible. Ce qui laisse 3 possibilités, dont deux dégénérées dans le cas $\lambda_1=\lambda_2$. On notera Type I le cas "-,+,+" et Type II (confondu avec Type III dans notre cas) le cas "-,-,+" (ou "-,+,-").
 
-On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra cond polariser horizontalement, alors que pour le Type II on injecte à la fois sur $n^+$ et $n^-$, il faudra donc un polariseur à 45\textdegree pour injecter simultanément sur ces deux nappes. La polarisation appliquée impose le désaccord de phase, d'où la nécessité d'être capable de contrôler la polarisation (laser polarisé et utilisation systématique de lame $\dfrac{\lambda}{2}$) lors des manipulations.
+On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra donc polariser horizontalement, alors que pour le Type II on injecte à la fois sur $n^+$ et $n^-$, il faudra donc un polariseur à 45\textdegree pour injecter simultanément sur ces deux nappes. La polarisation appliquée impose le désaccord de phase, d'où la nécessité d'être capable de contrôler la polarisation (laser polarisé et utilisation systématique de lame $\dfrac{\lambda}{2}$) lors des manipulations.
 
 \section{Condition d'accord de phase dans le cas de l'expérience}
 
-Il nous faut à présent traduire la condiction de phase sur des variables modifiables dans le cas de l'expérience. Nous travaillerons dans le plan YZ avec des longueurs d'ondes suivantes:
+Il nous faut à présent traduire la condition de phase sur des variables modifiables dans le cas de l'expérience. Nous travaillerons dans le plan YZ avec des longueurs d'ondes suivantes:
 
 \indent$\cdot\,\lambda_1=\lambda_2=1,064\mu m=\lambda$\\
 \indent$\cdot\,\lambda_3=0,532\mu m=\dfrac{\lambda}{2}$\\
@@ -332,24 +334,24 @@ Ainsi, après calculs, on obtient cette fois:
 D'où:
 \[\theta_{II}=76^{\circ}\]
 
-La condtion d'accord de phase se traduit donc par un angle $\theta$ imposé. Cependant, l'accord de phase traduit un maximum d'intéractions entre les 3 photons. Ainsi, les angles trouvées devraient être des maxima d'intensité de lumière à $2\omega$ et non pas des directions exlusives (même si c'est assez séléctif, comme nous le verrons).
+La condition d'accord de phase se traduit donc par un angle $\theta$ imposé. Cependant, l'accord de phase traduit un maximum d'interactions entre les 3 photons. Ainsi, les angles trouvées devraient être des maxima d'intensité de lumière à $2\omega$ et non pas des directions exclusives (même si c'est assez sélectif, comme nous le verrons).
 
 \section{Calculs de $\chi$ (Type I et Type II)}
 
-Nous avons à présent les angles $\theta$ dans lesquelles on devrait voir apparaitre la génération de seconde harmonique, donc une lumière de longueur d'onde égale à $0,532\mu m$, pour les Types I et II. Cependant, il reste un point important à vérifier: le  cristal possède-t-il un coefficient de susceptibilité electrique non linéaire non nul pour ces directions ? C'est ce que nous allons vérifier grâce au calcul de $\chi_{eff}$.
+Nous avons à présent les angles $\theta$ dans lesquelles on devrait voir apparaître la génération de seconde harmonique, donc une lumière de longueur d'onde égale à $0,532\mu m$, pour les Types I et II. Cependant, il reste un point important à vérifier: le  cristal possède-t-il un coefficient de susceptibilité électrique non linéaire non nul pour ces directions ? C'est ce que nous allons vérifier grâce au calcul de $\chi_{eff}$.
 
 \paragraph{Pour le Type I}
 On ecrit l'expression de la susceptibilité effective:
 
 \[\chi_{eff}^{SHG_I}=\sum_{i,j,k}e^-_j(\lambda/2)\chi_{j,i,k}(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)\]
 
-Avec {i,j,k}={x,y,z} car $\chi^{(2)}$ est un tenseur de 27 élements, mais beaucoup sont nuls, pour des raisons de symétrie du cristal. On se réfère alors à des tables de $\chi^{(2)}$ qui nous fournissent les éléments non nuls, notamment pour le groupe de symétrie 2mm auquel le RTP appartient. Mais avant de regarder cette table, on réduit d'abord les possibilités avec le produit vectoriel des polarisations: $e^-_j(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)$.
+Avec {i,j,k}={x,y,z} car $\chi^{(2)}$ est un tenseur de 27 éléments, mais beaucoup sont nuls, pour des raisons de symétrie du cristal. On se réfère alors à des tables de $\chi^{(2)}$ qui nous fournissent les éléments non nuls, notamment pour le groupe de symétrie 2mm auquel le RTP appartient. Mais avant de regarder cette table, on réduit d'abord les possibilités avec le produit vectoriel des polarisations: $e^-_j(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)$.
 
 En effet, on note:
 \[f_{j,i,k}=\begin{pmatrix}-1\\0\\0\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\]
 
 Les coefficients $f_{j,i,k}$ sont presque tous nuls sauf $f_{x,y,y}$, $f_{x,z,z}$, $f_{x,y,z}$ et $f_{x,z,y}$. 
-On peut à présent comparer avec les coefficients non nuls de $\chi^{(2)}$. Or, d'après la table, les quatres coefficients correspondants sont nuls.
+On peut à présent comparer avec les coefficients non nuls de $\chi^{(2)}$. Or, d'après la table, les quatre coefficients correspondants sont nuls.
 
 Cela implique:
 \[\chi_{eff}^{SHG_I}=0\]
