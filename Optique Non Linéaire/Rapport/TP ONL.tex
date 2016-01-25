@@ -88,12 +88,134 @@ TODO inclure image générée je ne sais comment en 3D.
 % Idem
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Théorie)}\label{ONLTheorie}
-\section{Calculs de $\chi$ (Type I et Type II)}
-\section{Calcul des angles pour le Type II}
 
+Maintenant que nous avons vu les effets de l'anisotropie du cristal en réponse linéaire, il nous faut étudier la non-linéarité, notamment la Génération de Seconde Harmonique (SHG). La Génération de Seconde Harmonique est un cas dégénéré de fusion de photons (en considérant l'apsect corpusculaire), elle correspond à l'intéraction de deux photons de fréquence $\omega$ qui donnent un photon de fréquence 2$\omega$.
+
+\section{Accord de phase}
+
+%je sais pas comment formuler avant ça
+
+$\Delta k$ est le déphasage entre la polarisation non-linéaire et le champs qu'elle génère. La condition d'accord de phase revient à dire :
+
+\[\Delta k=k_3-k_2-k_1=0\]
+
+Or :
+
+\[k_i=\dfrac{2\pi}{\lambda_i}n(\lambda_i)\]
+
+On peut ainsi réécrire $\Delta k$ :
+
+\[\Delta k=2\pi\left[\dfrac{n^{\pm}(\lambda_3,\theta,\phi)}{\lambda_3}-\dfrac{n^{\pm}(\lambda_2,\theta,\phi)}{\lambda_2}-\dfrac{n^{\pm}(\lambda_1,\theta,\phi)}{\lambda_1}\right]\]
+
+Il y a ainsi 8 possibilités en focntion du choix de + ou de - pour $n^{\pm}$ :
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+$\lambda_3$&$\lambda_2$&$\lambda_1$\\
+\hline
++&+&+\\
++&+&-\\
++&-&-\\
+\hline
+-&+&+\\
+-&+&-\\
+-&-&+\\
+\hline
+-&-&-\\
+\end{tabular}
+\end{center}
+
+Les 4 premiers cas sont impossibles car $\lambda_3<\lambda_{1,2}$, or d'après les courbes de $n^+$ et $n^-$, on ne peut avoir $n^+$ avec un longueur d'onde plus faible. Pour des raisons de bijectivité, avoir le même signe partout est impossible. Ce qui laisse 3 possibilités, dont deux dégénérées dans le cas $\lambda_1=\lambda_2$. On notera Type I le cas "-,+,+" et Type II (confondu avec Type III dans notre cas) le cas "-,-,+" (ou "-,+,-").
+
+On remarque ainsi que pour le Type I, on injecte sur les nappes $n^+$, il faudra cond polariser horizontalement, alors que pour le Type II on injecte à la fois sur $n^+$ et $n^-$, il faudra donc un polariseur à 45\textdegree pour injecter simultanément sur ces deux nappes. La polarisation appliquée impose le désaccord de phase, d'où la nécéssité d'être capable de contrôler la polarisation (laser polarisé et utilisation systématique de lame $\dfrac{\lambda}{2}$) lors des manipulations.
+
+\section{Condition d'accord de phase dans le cas de l'expérience}
+
+Il nous faut à présent traduire la condiction de phase sur des variables modifiables dans le cas de l'expérience. Nous travaillerons dans le plan YZ avec des longueurs d'ondes suivantes :
+
+\indent$\cdot\,\lambda_1=\lambda_2=1,064\mu m=\lambda$\\
+\indent$\cdot\,\lambda_3=0,532\mu m=\dfrac{\lambda}{2}$\\
+
+\paragraph{Pour le Type I}
+\begin{align*}
+\Delta k&=2\pi\left[\dfrac{n^-(\lambda_3,\theta,\phi)}{\lambda_3}-\dfrac{n^+(\lambda_2,\theta,\phi)}{\lambda_2}-\dfrac{n^+(\lambda_1,\theta,\phi)}{\lambda_1}\right]\\
+\Delta k&=\dfrac{2\pi\times 2}{\lambda}\left[n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)-n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)\right]
+\end{align*}
+
+Or : 
+\begin{align*}
+    &\cdot n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)=n_x\left(\dfrac{\lambda}{2}\right)\\
+    &\cdot n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)=\dfrac{1}{\sqrt{\dfrac{\cos^2\theta}{n_y^2(\lambda)}+\dfrac{\sin^2\theta}{n_z^2(\lambda)}}}
+\end{align*}
+
+Ainsi, après calculs, on obtient : 
+\[\sin^2\theta_{I}=\dfrac{\dfrac{1}{n_x^2(\lambda/2)}-\dfrac{1}{n_y^2(\lambda)}}{\dfrac{1}{n_z^2(\lambda)}-\dfrac{1}{n_y^2(\lambda)}}\]
+
+D'où : 
+\[\theta_{I}=41^{\circ}\]
+
+\paragraph{Pour le Type II}
+\[\Delta k=\dfrac{2\pi}{\lambda}\left[2n^-\left(\dfrac{\lambda}{2},\theta,\dfrac{\pi}{2}\right)-n^-\left(\lambda,\theta,\dfrac{\pi}{2}\right)-n^+\left(\lambda,\theta,\dfrac{\pi}{2}\right)\right]\]
+
+Avec les mêmes expressions pour $n^-(\lambda/2)$ et $n^+(\lambda)$ mais avec :
+\[\cdot\,n^-(\lambda)=n_x(\lambda)\]
+
+Ainsi, après calculs, on obtient cette fois :
+\[\sin^2\theta_{II}=\dfrac{\dfrac{1}{(2n_x(\lambda/2)-n_x(\lambda))^2}-\dfrac{1}{n_y^2(\lambda)}}{\dfrac{1}{n_z^2(\lambda)}-\dfrac{1}{n_y^2(\lambda)}}\]
+
+D'où :
+\[\theta_{II}=76^{\circ}\]
+
+La condtion d'accord de phase se traduit donc par un angle $\theta$ imposé. Cependant, l'accord de phase traduit un maximum d'intéractions entre les 3 photons. Ainsi, les angles trouvées devraient être des maxima d'intensité de lumière à $2\omega$ et non pas des directions exlusives (même si c'est assez séléctif, comme nous le verrons).
+
+\section{Calculs de $\chi$ (Type I et Type II)}
+
+Nous avons à présent les angles $\theta$ dans lesquelles on devrait voir apparaitre la génération de seconde harmonique, donc une lumière de longueur d'onde égale à $0,532\mu m$, pour les Types I et II. Cependant, il reste un point important à vérifier : le  cristal possède-t-il un coefficient de susceptibilité electrique non linéaire non nul pour ces directions ? C'est ce que nous allons vérifier grâce au calcul de $\chi_{eff}$.
+
+\paragraph{Pour le Type I}
+On ecrit l'expression de la susceptibilité effective :
+
+\[\chi_{eff}^{SHG_I}=\sum_{i,j,k}e^-_j(\lambda/2)\chi_{j,i,k}(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)\]
+
+Avec {i,j,k}={x,y,z} car $\chi^{(2)}$ est un tenseur de 27 élements, mais beaucoup sont nuls, pour des raisons de symétrie du cristal. On se réfère alors à des tables de $\chi^{(2)}$ qui nous fournissent les éléments non nuls, notamment pour le groupe de symétrie 2mm auquel le RTP appartient. Mais avant de regarder cette table, on réduit d'abord les possibilités avec le produit vectoriel des polarisations : $e^-_j(\lambda/2)e^+_i(\lambda)e^+_k(\lambda)$.
+
+En effet, on note :
+\[f_{j,i,k}=\begin{pmatrix}-1\\0\\0\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\]
+
+Les coefficients $f_{j,i,k}$ sont presque tous nuls sauf $f_{x,y,y}$, $f_{x,z,z}$, $f_{x,y,z}$ et $f_{x,z,y}$. 
+On peut à présent comparer avec les coefficients non nuls de $\chi^{(2)}$. Or, d'après la table, les quatres coefficients correspondants sont nuls.
+
+Cela implique :
+\[\chi_{eff}^{SHG_I}=0\]
+
+Ainsi, la symétrie du cristal de RTP empêche la génération de seconde harmonique en polarisant la lumière selon les nappes $n^+$. On ne verra donc aucune lumière à $0,532\mu m$ en polarisant horizontalement uniquement. Il reste à réaliser la même étude pour le Type II.
+
+\paragraph{Pour le Type II}
+
+On reprend la même étude avec l'expression : 
+
+\[\chi_{eff}^{SHG_I}=\sum_{i,j,k}\chi_{j,i,k}(\lambda/2)e^-_j(\lambda/2)e^+_i(\lambda)e^-_k(\lambda)\]
+
+Dans ce cas :
+
+\[f_{j,i,k}=\begin{pmatrix}-1\\0\\0\end{pmatrix}\begin{pmatrix}0\\-\cos\theta'\\\sin\theta'\end{pmatrix}\begin{pmatrix}-1\\0\\0\end{pmatrix}\]
+
+Alors, $f_{x,y,x}$ et $f_{x,z,x}$ sont non nuls, et d'après les tables $\chi_{x,y,x}$ est nul mais $\chi_{x,z,x}$ ne l'est pas. 
+
+Comme $f_{x,z,x}=\sin\theta'$, on peut écrire :
+
+\[\chi_{eff}^2=\chi_{x,z,x}^2\sin^2\theta'\neq 0\]
+
+On peut donc avoir de la génération de seconde harmonique de Type II sur le cristal de RTP. Cependant, on remarque que $\chi_{eff}$ est maximal pour $\theta'\simeq\theta=90$\textdegree, or la condition d'accord de phase nous impose $\theta=76$\textdegree. Le rendement ne sera donc pas idéal, pour s'en approcher, il faudrait changer les longueurs d'ondes en jeu pour modifier l'angle imposé par la condition d'accord de phase (cf courbe d'accord de phase). Cependant, il est impossible d'avoir 0\% de rendement d'après ces mêmes courbes car $\theta=0$ n'est jamais solution de la condition d'accord de phase.
+
+Il nous faut alors mettre en place l'expérience de SHG Type II afin de valider ces calculs, notamment vérifier l'angle trouvé.
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Expérience)} \label{ONLExp}
+Après avoir établit certains paramètres pour l'expérience, il faut la mettre en place afin de les vérifier.
 \section{Mise en place de l'expérience pour une SHG de type II}
+Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite. 
+
+%photo ?
 \section{Mesure des angles d'accord de phase}
 
 \chapter*{Conclusion} \addcontentsline{toc}{chapter}{Conclusion}
