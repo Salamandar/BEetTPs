@@ -391,11 +391,16 @@ On peut donc avoir de la génération de seconde harmonique de Type II sur le cr
 Il nous faut alors mettre en place l'expérience de SHG Type II afin de valider ces calculs, notamment vérifier l'angle trouvé.
 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Expérience)} \label{ONLExp}
-Après avoir établit certains paramètres pour l'expérience, il faut la mettre en place afin de les vérifier.
+Après avoir établi certains paramètres pour l'expérience, il faut la mettre en place afin de les vérifier.
 \section{Mise en place de l'expérience pour une SHG de type II}
-Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite, cependant, on utilise cette fois un laser à $1,064\mu m$ soit invisible pour l'oeil humain et très puissant. Les consignes de sécurité sont alors bien plus strictes à cause de la dangerosité de ce laser. On met des lunettes de protections (pour la longueur d'onde considérée) et on ne place jamais nos yeux à hauteur du banc d'optique. On fait également attention à prévenir lorsqu'on allume le laser, comme on ne le voit pas. On peut vérifier la présence du faisceau grâce à un des cristaux qui emmettent du rouge lorsqu'ils reçoivent de l'infrarouge (placés sur une petite plaquette).
+Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite (Fig \ref{montageONL}), cependant, on utilise cette fois un laser à $1,064\mu m$ soit invisible pour l'oeil humain et très puissant. Les consignes de sécurité sont alors bien plus strictes à cause de la dangerosité de ce laser. On met des lunettes de protections (pour la longueur d'onde considérée) et on ne place jamais nos yeux à hauteur du banc d'optique. On fait également attention à prévenir lorsqu'on allume le laser, comme on ne le voit pas. On peut vérifier la présence du faisceau grâce à un des cristaux qui emmettent du rouge lorsqu'ils reçoivent de l'infrarouge (placés sur une petite plaquette).
 
-%photo ?
+\begin{figure}
+\centering
+    \includegraphics[width=200pt]{Photos/montage2}
+    \caption{Photo du montage pour la SHG}
+    \label{montageONL}
+\end{figure}
 \section{Mesure des angles d'accord de phase}
 On observe le faisceau en sortie du cristal, avec un écran blanc. On fait tourner le cristal afin de se placer dans les directions $\theta$ trouvées précédemment, sans connaître le repère. Donc on tourne juste jusqu'à faire apparaître un faisceau vert. Une fois une des directions trouvées, on essaye de repérer à l'oeil le maximum d'intensité, puis on note le repère angulaire du goniomètre. On fait ensuite tourner le cristal pour repérer les 3 autres angles (cristal biaxe : donc deux axes symétriques, on place ensuite ces repères sur un cercle, car on ne connait pas le repère optique, donc on ne peut déterminer directement $\theta_{II}$.
 
@@ -403,7 +408,7 @@ Nous avons trouvé des directions de maxima aux repères 30, 58, 210 et 238 degr
 
 \begin{figure}
     \centering
-    \begin{tikzpicture}[scale=2]
+    \begin{tikzpicture}[scale=1.5]
     \draw [->](-3,0)--(3,0);
     \draw (3,0)node[below]{$Y$};
     \draw [->](0,-3)--(0,3);
@@ -422,14 +427,28 @@ Nous avons trouvé des directions de maxima aux repères 30, 58, 210 et 238 degr
 \end{figure}
 
 \section{Mesure de la longueur d'onde générée}
-Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moitié (et pas deux longueurs d'ondes proches par exemple). On utilise alors un spectromètre pour trouver la longueur d'onde du faisceau vert. 
+Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moitié (et pas deux longueurs d'ondes proches par exemple). On utilise alors un spectromètre pour trouver la longueur d'onde du faisceau vert (Fig \ref{spectro}). On remarque qu'il n'y a que deux pics, l'incident à $1,064\mu m$ et la longueur d'onde moitié, on a donc bien une génération de seconde harmonique.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=300pt]{Photos/courbe}
+    \caption{Spectrogramme après le cristal}
+    \label{spectro}
+\end{figure}
 
 \section{Vérification de la loi quadratique}
-On cherche ensuite à déterminer comment varie l'intensité de la lumière à $\lambda/2$ par rapport à l'intensité incidente. On mesure la puissance incidente et la puissance après le cristal en séparant les longueurs d'ondes graâce à un prisme. 
+On cherche ensuite à déterminer comment varie l'intensité de la lumière à $\lambda/2$ par rapport à l'intensité incidente. On mesure la puissance incidente et la puissance après le cristal en séparant les longueurs d'ondes grâce à un prisme. L'intensité de la longueur d'onde générée est censée varier quadratiquement en fonction de l'intensité incidente. En Figure \ref{Intesité}, nous avons tracé les intensités mesurées (en soustrayant l'offset du à la luminosité de la salle (150nW), car même en travaillant dans le noir, il reste de la lumière parasite), cependant on ne retrouve pas de relation quadratique, on remarque au contraire que la courbe est plutôt linéaire. Multiplier l'intensité par deux ne multiplie pas l'intensité verte par 4. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=250pt]{Photos/graphe}
+    \caption{Intensité de l'onde générée en fonction de l'intensité de l'onde incidente}
+    \label{Intensité}
+\end{figure}
 
 
 \chapter*{Conclusion} \addcontentsline{toc}{chapter}{Conclusion}
-Au cours de ce TP nous avons pu mettre en évidence les concepts décrits théoriquement en cours. Nous avons pu observer grâce au laser et à sa forme cylindrique spécifique, l'anisotropie du cristal de RTP qui sépare les différentes polarisations de la lumière, mais également les effets non-linéaires qui peuvent intervenir sous certaines conditions. Nous avons réalisé ces expériences en accord avec la théorie, en vérifiant celle-ci grâce aux expérimentations.
+Au cours de ce TP nous avons pu mettre en évidence les concepts décrits théoriquement en cours. Nous avons pu observer grâce au laser et à sa forme cylindrique spécifique, l'anisotropie du cristal de RTP qui sépare les différentes polarisations de la lumière, mais également les effets non-linéaires qui peuvent intervenir sous certaines conditions. Nous avons réalisé ces expériences en accord avec la théorie, en vérifiant celle-ci grâce aux expérimentations. Ces effets non linéaires sont important pour certaines applications, notamment par exemple la génération de laser aux fréquences TeraHertz, car technologiquement c'est difficile à produire mais avec des sommes ou des soustractions de fréquence de laser existant, cela devient possible.
 
 
 \end{document}
