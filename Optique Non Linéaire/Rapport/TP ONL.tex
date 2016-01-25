@@ -85,7 +85,7 @@ Dans le cas d'un milieu biaxe, les surfaces d'indice ont la forme visible en fig
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{Images/surface_indices}
+        \includegraphics[width=0.4\textwidth]{Images/Schema_surface_indices}
         \caption{Surface des indices d'un cristal biaxe}
         \label{surf_indices}
     \end{center}
@@ -120,7 +120,7 @@ Enfin, on a:
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{Images/vecteurs.pdf}
+        \includegraphics[width=0.4\textwidth]{Images/Schema_surface_indices_orient_vect}
         \caption{Vecteurs caractéristiques de l'onde}
         \label{vecteurs}
     \end{center}
@@ -234,7 +234,7 @@ Ensuite, en faisant tourner le cristal, on aura un spot qui ne bougera pas (la p
 
 Si la direction originelle de propagation est Y, ce spot "suivra" la rotation du cristal, tandis qu'il sera dévié dans le même sens si la direction est Z.
 
-\section{Mesure de l'angle entre les spots de polarisations}
+\section{Mesure de l'angle entre les spots de polarisation}
 On peut retrouver facilement l'angle $\rho$ grâce à la distance entre le capteur et le cristal et la distance entre les deux spots sur le capteur: 
 \[  \rho = \frac{d}{2(D(n^+(\theta)-1)-r)} \]
 avec:
@@ -393,10 +393,36 @@ Il nous faut alors mettre en place l'expérience de SHG Type II afin de valider 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Expérience)} \label{ONLExp}
 Après avoir établit certains paramètres pour l'expérience, il faut la mettre en place afin de les vérifier.
 \section{Mise en place de l'expérience pour une SHG de type II}
-Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite. 
+Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite, cependant, on utilise cette fois un laser à $1,064\mu m$ soit invisible pour l'oeil humain et très puissant. Les consignes de sécurité sont alors bien plus strictes à cause de la dangerosité de ce laser. On met des lunettes de protections (pour la longueur d'onde considérée) et on ne place jamais nos yeux à hauteur du banc d'optique. On fait également attention à prévenir lorsqu'on allume le laser, comme on ne le voit pas. On peut vérifier la présence du faisceau grâce à un des cristaux qui emmettent du rouge lorsqu'ils reçoivent de l'infrarouge (placés sur une petite plaquette).
 
 %photo ?
 \section{Mesure des angles d'accord de phase}
+On observe le faisceau en sortie du cristal, avec un écran blanc. On fait tourner le cristal afin de se placer dans les directions $\theta$ trouvées précédemment, sans connaître le repère. Donc on tourne juste jusqu'à faire apparaître un faisceau vert. Une fois une des directions trouvées, on essaye de repérer à l'oeil le maximum d'intensité, puis on note le repère angulaire du goniomètre. On fait ensuite tourner le cristal pour repérer les 3 autres angles (cristal biaxe : donc deux axes symétriques, on place ensuite ces repères sur un cercle, car on ne connait pas le repère optique, donc on ne peut déterminer directement $\theta_{II}$.
+
+Nous avons trouvé des directions de maxima aux repères 30, 58, 210 et 238 degrés du goniomètre (Voir Fig. \ref{anglesONL}. On trouve alors $\theta=\dfrac{210-58}{2}=\dfrac{390-238}{2}=76$\textdegree, ce qui vérifie bien la valeur trouvée précédemment grâce à la théorie.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=2]
+    \draw [->](-3,0)--(3,0);
+    \draw (3,0)node[below]{$Y$};
+    \draw [->](0,-3)--(0,3);
+    \draw (0,3)node[left]{$Z$};
+    \draw (2,0) arc(0:14:2) --(0,0);
+    \draw (-2,0) arc(180:180-14:2)--(0,0);
+    
+    \draw (2,0) arc(0:-14:2) --(0,0);
+    \draw (-2,0) arc(180:180+14:2)--(0,0);
+    \draw [thick] (0,0) circle(2);
+    \draw [dotted] (2,0) arc (0:-44:2)--(0,0) node[midway, below]{\small "0" du goniomètre};
+    \end{tikzpicture}
+    \caption{Vu de dessus du cristal et des directions des maxima d'intensité du rayonnement vert}
+    \label{anglesONL}
+
+\end{figure}
+
+Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moitié (et pas deux longueurs d'ondes proches par exemple). On utilise alors un spectromètre pour trouver la longueur d'onde du faisceau vert. 
+
 
 \chapter*{Conclusion} \addcontentsline{toc}{chapter}{Conclusion}
 Au cours de ce TP nous avons pu mettre en évidence les concepts décrits théoriquement en cours. Nous avons pu observer grâce au laser et à sa forme cylindrique spécifique, l'anisotropie du cristal de RTP qui sépare les différentes polarisations de la lumière, mais également les effets non-linéaires qui peuvent intervenir sous certaines conditions. Nous avons réalisé ces expériences en accord avec la théorie, en vérifiant celle-ci grâce aux expérimentations.
