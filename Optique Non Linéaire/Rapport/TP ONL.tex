@@ -155,7 +155,18 @@ On a donc pu séparer les deux rayons comme on peut le constater sur la figure \
 
 \begin{figure}[h]
     \begin{center}
-        %TODO \includegraphics{}
+        \begin{tikzpicture}
+              
+        \draw (4,0)--(8,0)--(8,3)--(4,3)--cycle;
+        \draw (2,1)--(4,1)node[midway]{>};
+        \draw (4,1)--(8,1)node[midway, below]{$\vec{\pi}_{cercle}$};
+        \draw (8,1)--(10,1)node[midway]{>};
+        \draw (4,1)--(8,2)node[midway, sloped, above]{$\vec{\pi}_{ellipse}$};
+        \draw (8,2)--(10,2)node[midway]{>};
+        \draw [->](6,1) arc(0:30:0.5) node{\rho};
+        \end{tikzpicture}
+        
+        
         \caption{Propagation des rayons dans le cristal parallélépipédique}
         \label{cristalparallelepipede}
     \end{center}
