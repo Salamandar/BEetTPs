@@ -391,9 +391,19 @@ Il nous faut alors mettre en place l'expérience de SHG Type II afin de valider 
 \chapter{Optique Non-Linéaire: Conversion de fréquences (Expérience)} \label{ONLExp}
 Après avoir établi certains paramètres pour l'expérience, il faut la mettre en place afin de les vérifier.
 \section{Mise en place de l'expérience pour une SHG de type II}
-Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite, une lame $\lambda/2$ et un cube polariseur pour régler la puissance du laser et une lame $\lambda/2$ afin de pouvoir régler la polarisation correctement. Une lame BK7 permettra de faire les mesures de puissance en séparant le faisceau, et une lentille focalisera la lumière sur le cristal. Enfin, un filtre et un prisme permettront de séparer les différentes longueurs d'ondes qui composeront la lumière (Fig \ref{montageONL}). On utilise cette fois un laser à $1,064\mu m$ soit invisible pour l'œil humain, il est également puissant. Les consignes de sécurité sont alors bien plus strictes à cause de la dangerosité de ce laser. On met des lunettes de protections (pour la longueur d'onde considérée) et on ne place jamais nos yeux à hauteur du banc d'optique. On fait également attention à prévenir lorsqu'on allume le laser, comme on ne le voit pas. On peut vérifier la présence du faisceau grâce à un des cristaux qui émettent du rouge lorsqu'ils reçoivent de l'infrarouge (placés sur une petite plaquette).
+Le montage ressemblera à celui vu précédemment, avec des miroirs pour calibrer le faisceau comme on le souhaite, une lame $\lambda/2$ et un cube polariseur pour régler la puissance du laser et une lame $\lambda/2$ afin de pouvoir régler la polarisation correctement. Une lame BK7 permettra de faire les mesures de puissance en séparant le faisceau, et une lentille focalisera la lumière sur le cristal. Enfin, un filtre et un prisme permettront de séparer les différentes longueurs d'ondes qui composeront la lumière (Figures \ref{schemamontageONL} et \ref{montageONL}). On utilise cette fois un laser à $1,064\mu m$ soit invisible pour l'œil humain, il est également puissant. Les consignes de sécurité sont alors bien plus strictes à cause de la dangerosité de ce laser. On met des lunettes de protections (pour la longueur d'onde considérée) et on ne place jamais nos yeux à hauteur du banc d'optique. On fait également attention à prévenir lorsqu'on allume le laser, comme on ne le voit pas. On peut vérifier la présence du faisceau grâce à un des cristaux qui émettent du rouge lorsqu'ils reçoivent de l'infrarouge (placés sur une petite plaquette).
 
-\begin{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=400pt]{Photos/schemamontage}
+    \caption{Schéma du montage pour la SHG}
+    \label{schemamontageONL}
+\end{figure}
+
+
+
+\begin{figure}[H]
 \centering
     \includegraphics[width=200pt]{Photos/montage2}
     \caption{Photo du montage pour la SHG}
@@ -404,13 +414,13 @@ On observe le faisceau en sortie du cristal, avec un écran blanc. On fait tourn
 
 Nous avons trouvé des directions de maxima aux repères 30, 58, 210 et 238 degrés du goniomètre (Voir Fig. \ref{anglesONL}. On trouve alors $\theta=\dfrac{210-58}{2}=\dfrac{390-238}{2}=76$\textdegree, ce qui vérifie bien la valeur trouvée précédemment grâce à la théorie.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \begin{tikzpicture}[scale=1.5]
-    \draw [->](-3,0)--(3,0);
-    \draw (3,0)node[below]{$Y$};
-    \draw [->](0,-3)--(0,3);
-    \draw (0,3)node[left]{$Z$};
+    \begin{tikzpicture}[scale=1.2]
+    \draw [->](-2.2,0)--(2.2,0);
+    \draw (2.2,0)node[below]{$Y$};
+    \draw [->](0,-2.2)--(0,2.2);
+    \draw (0,2.2)node[left]{$Z$};
     \draw (2,0) arc(0:14:2) --(0,0);
     \draw (-2,0) arc(180:180-14:2)--(0,0);
     
@@ -435,7 +445,7 @@ Cependant, il reste à vérifier que l'on génère bien la longueur d'onde moiti
 \end{figure}
 
 \section{Vérification de la loi quadratique}
-On cherche ensuite à déterminer comment varie l'intensité de la lumière à $\lambda/2$ par rapport à l'intensité incidente. On mesure la puissance incidente et la puissance après le cristal en séparant les longueurs d'ondes grâce à un prisme. L'intensité de la longueur d'onde générée est censée varier quadratiquement en fonction de l'intensité incidente. En Figure \ref{Intensité}, nous avons tracé les intensités mesurées (en soustrayant l'offset du à la luminosité de la salle (150nW), car même en travaillant dans le noir, il reste de la lumière parasite), cependant on ne retrouve pas de relation quadratique, on remarque au contraire que la courbe est plutôt linéaire. Multiplier l'intensité par deux ne multiplie pas l'intensité verte par 4. 
+On cherche ensuite à déterminer comment varie l'intensité de la lumière à $\lambda/2$ par rapport à l'intensité incidente. On mesure la puissance incidente et la puissance après le cristal en séparant les longueurs d'ondes grâce à un prisme. L'intensité de la longueur d'onde générée est censée varier quadratiquement en fonction de l'intensité incidente. En Figure \ref{Intensité}, nous avons tracé les intensités mesurées (en soustrayant l'offset du à la luminosité de la salle (150nW), car même en travaillant dans le noir, il reste de la lumière parasite), cependant on ne retrouve pas de relation quadratique, on remarque au contraire que la courbe est plutôt linéaire. Multiplier l'intensité par deux ne multiplie pas l'intensité verte par 4., ce qui ne correspond pas à ce qu'on pourrait attendre.
 
 \begin{figure}[H]
     \centering
