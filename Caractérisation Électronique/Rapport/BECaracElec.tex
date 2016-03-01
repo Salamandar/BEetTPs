@@ -41,12 +41,12 @@ Avant tout, un petit rappel des équations caractérisant un transistor est néc
 
 \begin{itemize}
     \item Le courant de drain en fonction des tensions est donné par:
-        \[I_d (V_g, V_d) = \frac{W}{L} \cdot \mu_{eff}(V_g) \cdot Q_i(V_g) \cdot V_d\] 
+        \[I_d (V_g, V_d) = \frac{W}{L} \cdot \mu_{eff}(V_g) \cdot Q_i(V_g) \cdot V_d \qquad [mA]\] 
     \item avec l'inversion de charge en inversion forte:
-        \[Q_i(V_g) \simeq C_{ox}(V_g - V_T - \frac{V_d}{2})\]
+        \[Q_i(V_g) \simeq C_{ox}(V_g - V_T - \frac{V_d}{2}) \qquad [C]\]
     \item et la mobilité effective en inversion forte:
         \[\mu_{eff}(V_g) =\frac{\mu_0}{1+\theta_1 (V_g - V_T - \frac{V_d}{2}) 
-                                        +\theta_2 (V_g - V_T - \frac{V_d}{2})^2} \]
+                                        +\theta_2 (V_g - V_T - \frac{V_d}{2})^2} \qquad [\frac{cm^2}{V\cdot s}] \]
 
         Avec ici $\theta_{\{1,2\}}$ les coefficients d'atténuation de la mobilité linéaire et quadratique, qui sont dus essentiellement à la diffusion par la rugosité de la surface de la grille. 
 \end{itemize}
@@ -55,9 +55,9 @@ Il nous faut aussi rappeler les paramètres essentiels du transistor que nous al
 \begin{itemize}
     \item La tension seuil $V_{th}$
     \item La transconductance ohmique:
-        \[g_m (V_g) = \dfrac{\partial I_d}{\partial V_g}\]
+        \[g_m (V_g) = \dfrac{\partial I_d}{\partial V_g} \qquad [A/V]\]
     \item Le gain en transconductance:
-        \[\beta = G_m = \dfrac{W}{L} \cdot C_{ox} \cdot \mu_0\]
+        \[\beta = G_m = \dfrac{W}{L} \cdot C_{ox} \cdot \mu_0 \qquad [\text{Pas d'unité}]\]
 \end{itemize}
 
 Enfin, la fonction Y permet d'extraire le gain en transconductance et la tension seuil de façon plus précise et "automatisable" que par la transconductance ohmique. Elle est en fait basée sur la transconductance elle-même :
