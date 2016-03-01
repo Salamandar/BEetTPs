@@ -20,14 +20,14 @@
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
-La fabrication de composants microélectroniques devient, lorsqu'on diminue la dimension, de plus en plus critique en terme de qualité. En effet, on va être sensibles à différents effets qui vont s'accentuer à faible dimension :
+La fabrication de composants microélectroniques devient, lorsqu'on diminue la dimension, de plus en plus critique en terme de qualité. En effet, on va être sensibles à différents effets qui vont s'accentuer à faible dimension:
 \begin{itemize}
     \item Les courants de fuite par la grille, qui s'accentuent à faible dimension par effet tunnel (lorsque l'épaisseur d'oxyde passe en dessous de 1,2nm)
     \item Les effets de canaux courts qui apparaissent lorsque la largeur de la grille diminue.
     \item La rugosité des interfaces, notamment canal/grille, va voir son impact sur les performances augmenter
 \end{itemize}
 
-De plus, plus un composant est petit, plus la précision relative de fabrication va diminuer : les dimensions vont perdre en précisions, tandis que l'implantation et la diffusion de dopants dans le canal va apporter des processus aléatoires supplémentaires, à des échelles comparables aux dimensions des composants.
+De plus, plus un composant est petit, plus la précision relative de fabrication va diminuer: les dimensions vont perdre en précisions, tandis que l'implantation et la diffusion de dopants dans le canal va apporter des processus aléatoires supplémentaires, à des échelles comparables aux dimensions des composants.
 
 Pourtant, un processeur nécessite d'avoir des milliards de transistors de performances constantes, notamment une tension de seuil qui devra être la plus constante possible sur l'ensemble des transistors.
 
@@ -37,6 +37,38 @@ Nous avons à disposition des transistors BULK et FDSOI, de dimensions de grille
 
 \chapter{Rappels des équations}
 
+Avant tout, un petit rappel des équations caractérisant un transistor est nécessaire. On s'intéresse essentiellement au régime linéaire du transistor, donc en forte inversion.
+
+\begin{itemize}
+    \item Le courant de drain en fonction des tensions est donné par:
+        \[I_d (V_g, V_d) = \frac{W}{L} \cdot \mu_{eff}(V_g) \cdot Q_i(V_g) \cdot V_d\] 
+    \item avec l'inversion de charge en inversion forte:
+        \[Q_i(V_g) \simeq C_{ox}(V_g - V_T - \frac{V_d}{2})\]
+    \item et la mobilité effective en inversion forte:
+        \[\mu_{eff}(V_g) =\frac{\mu_0}{1+\theta_1 (V_g - V_T - \frac{V_d}{2}) 
+                                        +\theta_2 (V_g - V_T - \frac{V_d}{2})^2} \]
+
+        Avec ici $\theta_{\{1,2\}}$ les coefficients d'atténuation de la mobilité linéaire et quadratique, qui sont dus essentiellement à la diffusion par la rugosité de la surface de la grille. 
+\end{itemize}
+
+Il nous faut aussi rappeler les paramètres essentiels du transistor que nous allons étudier: 
+\begin{itemize}
+    \item La tension seuil $V_{th}$
+    \item La transconductance ohmique:
+        \[g_m (V_g) = \dfrac{\partial I_d}{\partial V_g}\]
+    \item Le gain en transconductance:
+        \[\beta = G_m = \dfrac{W}{L} \cdot C_{ox} \cdot \mu_0\]
+\end{itemize}
+
+Enfin, la fonction Y permet d'extraire le gain en transconductance et la tension seuil de façon plus précise et "automatisable" que par la transconductance ohmique. Elle est en fait basée sur la transconductance elle-même :
+\[ Y(V_g) = \frac{I_d(V_g)}{\sqrt{g_m(V_g)}}
+\]
+
+On peut alors exprimer $Y(V_g)$ sous la forme suivante :
+\[Y(V_g) = \frac{\beta}{1+ \theta_1 (V_g - V_T - \frac{V_d}{2})} \frac{V_d (V_g - V_{Th} - \frac{V_d}{2})}{\sqrt{\dfrac{\partial}{\partial V_g}(V_d \cdot C_{ox} (V_g - V_{Th} - \frac{V_d}{2}))}}
+\]
+
+
 \chapter{Mesure de la tension de seuil}
 La tension de seuil est la caractéristique principale de fonctionnement du transistor. Elle déterminera la consommation du dispositif, ainsi que sa performance en terme de fréquence de fonctionnement. Il est donc nécessaire de caractériser correctement cette tension.
 
@@ -45,7 +77,7 @@ Notamment, la tension de seuil doit être un paramètre constant dans une produc
 \section{Méthode de la transconductance}
 Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$, graphiquement. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'opérateur donc non applicable en l'état.
 
-Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, automatisée et constante :
+Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, automatisée et constante:
 \begin{enumerate}
     \item Tracé de la caractéristique $I_d = f(V_g)$
     \item Tracé de la dérivée $\frac{d I_d}{d V_g} = f(V_g)$
@@ -69,7 +101,7 @@ La figure \ref{transconductance bulk} représente le tracé de la transconductan
     \end{center}
 \end{figure}
 
-Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterminer :
+Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterminer:
 \begin{itemize}
     \item Le gain du transistor $\beta = G_m = 386\mu S$
     \item $V_T(Bulk, 40\mu m) = 0,47V$
@@ -79,17 +111,18 @@ Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterm
 \subsection{Transistor FDSOI}
 Nous pouvons réaliser la même étude sur des transistor FDSOI.
 
-La figure \ref{transc_fdsoi_10um} permet de mesurer :
+La figure \ref{transc_fdsoi_10um} permet de mesurer:
+
 \begin{itemize}
-    \item Le gain du transistor pour $V_g = 0,62V$ : $\beta = G_m = 700\mu S$
-    \item La tension seuil : \[V_T(FDSOI, 10\mu m) = 0,5V\]
+    \item Le gain du transistor pour $V_g = 0,62V$: $\beta = G_m = 700\mu S$
+    \item La tension seuil: \[V_T(FDSOI, 10\mu m) = 0,5V\]
 \end{itemize}
 
 \vspace*{8mm}
-Et la figure \ref{transc_fdsoi_30nm} nous donne :
+Et la figure \ref{transc_fdsoi_30nm} nous donne:
 \begin{itemize}
-    \item Le gain du transistor pour $V_g = 0,8V$ : $\beta = G_m = 500\mu S$
-    \item La tension seuil : \[V_T(FDSOI, 30nm) = 0,37V\]
+    \item Le gain du transistor pour $V_g = 0,8V$: $\beta = G_m = 500\mu S$
+    \item La tension seuil: \[V_T(FDSOI, 30nm) = 0,37V\]
 \end{itemize}
 
 
@@ -112,7 +145,7 @@ Et la figure \ref{transc_fdsoi_30nm} nous donne :
 
 
 \section{Méthode de la fonction Y}
-On peut également utiliser une méthode différente pour déterminer $V_T$, à l'aide d'une fonction Y, définie par :
+On peut également utiliser une méthode différente pour déterminer $V_T$, à l'aide d'une fonction Y, définie par:
 \[Y(V_g)=\dfrac{I_d(V_g)}{\sqrt{g_m(V_g)}}\]
 
 Cette fonction est linéaire après le seuil, on peut alors approximer asymptotiquement plus précisément. On obtient alors $V_T$.
@@ -147,7 +180,7 @@ Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV
 
 
 \section{Méthode du courant constant}
-À $V_d$ fort, il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{N}}\cdot\dfrac{W}{L}\]
+À $V_d$ fort, il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation: \[I_{d_{TH}}=I_{d_{N}}\cdot\dfrac{W}{L}\]
 
 $I_{d_{N}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
 
