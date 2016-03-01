@@ -35,8 +35,8 @@ L'industrie microélectronique nécessite donc de caractériser parfaitement les
 
 Nous avons à disposition des transistors BULK et FDSOI, de dimensions de grilles entre $30nm$ et $10\mu m$.
 
-\chapter{Rappels des équations}
-
+\chapter{Rappels théoriques}
+\section{Rappels des formules}
 Avant tout, un petit rappel des équations caractérisant un transistor est nécessaire. On s'intéresse essentiellement au régime linéaire du transistor, donc en forte inversion.
 
 \begin{itemize}
@@ -68,6 +68,20 @@ On peut alors exprimer $Y(V_g)$ sous la forme suivante :
 \[Y(V_g) = \frac{\beta}{1+ \theta_1 (V_g - V_T - \frac{V_d}{2})} \frac{V_d (V_g - V_{Th} - \frac{V_d}{2})}{\sqrt{\dfrac{\partial}{\partial V_g}(V_d \cdot C_{ox} (V_g - V_{Th} - \frac{V_d}{2}))}}
 \]
 
+\section{Effets de canaux courts}
+Les principaux effets lors de la réduction des dimensions d'un transistor sont les effets de canaux courts.
+
+Lors de l'augmentation de la tension appliquée $V_d$ au transistor, arrive un moment où $V_d \simeq V_g$. Il apparaît alors un pincement du canal de conduction : La résistance du canal du transistor va augmenter avec $V_d$, plus le pincement du canal sera important.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Images/Canaux_Courts.png}
+        \caption{Schéma d'effets de canaux courts}
+        \label{fig:}
+    \end{center}
+\end{figure}
+
+En contrepartie, lorsqu'on augmente $V_d$, le champ électrique dans le canal augmente, de la même manière que la résistance du canal. Donc au final, le courant passant dans le transistor sera constant à partir de $V_d \simeq V_g$. Le transistor est dans un régime de saturation.
 
 \chapter{Mesure de la tension de seuil}
 La tension de seuil est la caractéristique principale de fonctionnement du transistor. Elle déterminera la consommation du dispositif, ainsi que sa performance en terme de fréquence de fonctionnement. Il est donc nécessaire de caractériser correctement cette tension.
