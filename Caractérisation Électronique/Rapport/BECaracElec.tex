@@ -35,16 +35,15 @@ L'industrie microélectronique nécessite donc de caractériser parfaitement les
 
 Nous avons à disposition des transistors BULK et FDSOI, de dimensions de grilles entre $30nm$ et $10\mu m$.
 
-
 \chapter{Rappels des équations}
 
 \chapter{Mesure de la tension de seuil}
 La tension de seuil est la caractéristique principale de fonctionnement du transistor. Elle déterminera la consommation du dispositif, ainsi que sa performance en terme de fréquence de fonctionnement. Il est donc nécessaire de caractériser correctement cette tension.
 
-Notamment, la tension de seuil doit être un paramètre constant dans une production industrielle.
+Notamment, la tension de seuil doit être un paramètre constant dans une production industrielle et surtout très bien déterminé pour les applications pour lesquelles le transistor est fait.
 
 \section{Méthode de la transconductance}
-Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'opérateur.
+Cette méthode repose sur la caractéristique $I_d$ en fonction de $V_g$. En effet, ce tracé permet de déterminer assez facilement $V_T$, graphiquement. Cependant, une méthode uniquement visuelle n'est pas systématique et fortement dépendante de l'opérateur donc non applicable en l'état.
 
 Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, automatisée et constante :
 \begin{enumerate}
@@ -58,7 +57,7 @@ Une autre méthode sera beaucoup plus adaptée à une caractérisation fiable, a
 Nous allons donc tracer les caractéristiques de transistors des deux technologies, en fixant $V_d = 50mV$.
 
 \subsection{Transistor Bulk}
-Nous n'avons pu tracer qu'une caractéristique de transistor Bulk, manque de transistors fonctionnels.
+Nous n'avons pu tracer qu'une caractéristique de transistor Bulk, par manque de transistors fonctionnels (le jeu étant d'abord de trouver un transistor qui n'ait pas déjà été grillé par les groupes précédents).
 
 La figure \ref{transconductance bulk} représente le tracé de la transconductance pour un transistor Bulk de longueur de grille $40\mu m$.
 
@@ -77,8 +76,9 @@ Le maximum de la dérivée est atteint pour $V_g = 0,69V$, on peut alors déterm
 \end{itemize}
 
 
-
 \subsection{Transistor FDSOI}
+Nous pouvons réaliser la même étude sur des transistor FDSOI.
+
 La figure \ref{transc_fdsoi_10um} permet de mesurer :
 \begin{itemize}
     \item Le gain du transistor pour $V_g = 0,62V$ : $\beta = G_m = 700\mu S$
@@ -121,30 +121,35 @@ Cette fonction est linéaire après le seuil, on peut alors approximer asymptoti
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/Bulk40-YFunction}
         \caption{Fonction Y du transistor Bulk, $l=40\mu m$, $V_d = 50mV$}
-        \label{yfun_fdsoi_30nm}
+        \label{yfun_bulk_40}
     \end{center}
 \end{figure}
+
+On remarque ainsi dans la figure \ref{yfun_bulk_40} que la tension de seuil pour le transistor Bulk de $40\mu m$ vaut $650mV$, valeur légèrement supérieure à ce que nous avons déterminé précédemment.
 
 \subsection{Transistor FDSOI}
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/FD1-10-YFunction}
         \caption{Fonction Y du transistor FDSOI, $l=10\mu m$, $V_d = 50mV$}
-        \label{yfun_fdsoi_30nm}
+        \label{yfun_fdsoi_10um}
     \end{center}
 \end{figure}
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/FD11-30-YFunction}
         \caption{Transconductance du transistor FDSOI, $l=30nm$, $V_d = 50mV$}
-        \label{transc_fdsoi_30nm}
+        \label{yfun_fdsoi_30nm}
     \end{center}
 \end{figure}
 
-\section{Méthode du courant constant}
-À $V_d$ fort, il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{DN}}\cdot\dfrac{W}{L}\]
+Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV$ pour le transistor de 10 $\mu m$ et (Figure \ref{yfun_fdsoi_30nm}) $V_T=450mV$ pour celui de $30nm$. Ces valeurs sont sensiblement différentes des valeurs précédentes.
 
-$I_{d_{DN}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
+
+\section{Méthode du courant constant}
+À $V_d$ fort, il n'est plus possible de trouver grâce à la méthode de la transconductance. On utilise alors une méthode dite du courant constant. Elle consiste à trouver un courant de seuil $I_{d_{TH}}$ pour $V_d$ faible, qui correspond au courant à $V_T$, puis de considérer la relation : \[I_{d_{TH}}=I_{d_{N}}\cdot\dfrac{W}{L}\]
+
+$I_{d_{N}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
 
 
 \subsection{Transistor FDSOI}
@@ -153,17 +158,16 @@ $I_{d_{DN}}$ est alors un paramètre arbitraire, un critère, que l'on pourra ut
 %TODO calculs
 
 \chapter{Mesure du DIBL}
-Le DIBL est également important à connaître %+blabla
+Le DIBL est également important à connaître car il peut sensiblement modifier les performances du transistor. C'est un effet qui apparait lorsque les  longueurs de grille du transistor deviennent faibles. En effet, il arrive un moment dans la réduction de la longueur de grille où la tension appliquée $V_D$ a un influence sur la tension de seuil. 
 On peut le calculer à partir des données précedentes.
 \[ DIBL = -\frac{V^{DD}_{Th} - V^{low}_{Th}}{V_{DD} - V^{low}_{D}}
 \]
-
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/DIBL-11-30}
         \caption{$I_d(V_g)$ du FDSOI, $l = 30nm$}
-        \label{transc_fdsoi_30nm}
+        \label{DIBL_fdsoi_30nm}
     \end{center}
 \end{figure}
 
@@ -172,7 +176,7 @@ On peut le calculer à partir des données précedentes.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/DIBL-1-10}
         \caption{$I_d(V_g)$ du FDSOI, $l =10\mu m$}
-        \label{transc_fdsoi_30nm}
+        \label{DIBL_fdsoi_10um}
     \end{center}
 \end{figure}
 %TODO calculs
@@ -181,13 +185,12 @@ On peut vérifier ces calculs en regardant la cours en log.
 On peut également voir l'effet du DIBL en traçant des caractéristiques $I_d(V_d)$.
 %TODO graphe 
 
-\chapter{Comparaison des architectures}
+\section{Comparaison des architectures}
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Ça marche. %Mais il y a des cons promis.
-
+Ce TP nous a permis de découvir plus en détails la caractérisation électronique que nous avions abordé l'an passé en caractérisant des diodes et des capacités. Nous avons ainsi pu observer le comportement electrique de différents transistors (Architecture bulk et FDSOI) de taille différentes et d'étudier leurs performances. De plus ce TP est un complément aux cours de composants car il permet de visualiser en pratique les résultats affirmés en cours. Nous avons pu mesurer les caractéristiques tracées à main levée en cours et trouver les caractéristiques des transistors, mesures classiques en microéléctroniques.
 
 
 
