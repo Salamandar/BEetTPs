@@ -60,28 +60,43 @@ Il nous faut aussi rappeler les paramètres essentiels du transistor que nous al
         \[\beta = G_m = \dfrac{W}{L} \cdot C_{ox} \cdot \mu_0 \qquad [\text{Pas d'unité}]\]
 \end{itemize}
 
-Enfin, la fonction Y permet d'extraire le gain en transconductance et la tension seuil de façon plus précise et "automatisable" que par la transconductance ohmique. Elle est en fait basée sur la transconductance elle-même :
+Enfin, la fonction Y permet d'extraire le gain en transconductance et la tension seuil de façon plus précise et "automatisable" que par la transconductance ohmique. Elle est en fait basée sur la transconductance elle-même:
 \[ Y(V_g) = \frac{I_d(V_g)}{\sqrt{g_m(V_g)}}
 \]
 
-On peut alors exprimer $Y(V_g)$ sous la forme suivante :
+On peut alors exprimer $Y(V_g)$ sous la forme suivante:
 \[Y(V_g) = \frac{\beta}{1+ \theta_1 (V_g - V_T - \frac{V_d}{2})} \frac{V_d (V_g - V_{Th} - \frac{V_d}{2})}{\sqrt{\dfrac{\partial}{\partial V_g}(V_d \cdot C_{ox} (V_g - V_{Th} - \frac{V_d}{2}))}}
 \]
 
 \section{Effets de canaux courts}
 Les principaux effets lors de la réduction des dimensions d'un transistor sont les effets de canaux courts.
 
-Lors de l'augmentation de la tension appliquée $V_d$ au transistor, arrive un moment où $V_d \simeq V_g$. Il apparaît alors un pincement du canal de conduction : La résistance du canal du transistor va augmenter avec $V_d$, plus le pincement du canal sera important.
+Lors de l'augmentation de la tension appliquée $V_d$ au transistor, arrive un moment où $V_d \simeq V_g$. Il apparaît alors un pincement du canal de conduction: La résistance du canal du transistor va augmenter avec $V_d$, plus le pincement du canal sera important.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{Images/Canaux_Courts.png}
+        \includegraphics[width=0.9\textwidth]{Images/Canaux_Courts.png}
         \caption{Schéma d'effets de canaux courts}
         \label{fig:}
     \end{center}
 \end{figure}
 
 En contrepartie, lorsqu'on augmente $V_d$, le champ électrique dans le canal augmente, de la même manière que la résistance du canal. Donc au final, le courant passant dans le transistor sera constant à partir de $V_d \simeq V_g$. Le transistor est dans un régime de saturation.
+
+\section{DIBL (Drain Induced Barrier Lowering)}
+Pour des transistors de taille "classique", le potentiel à chaque bout du canal est égal à $V_d$ et $V_g$ respectivement; grâce à un canal assez long, le potentiel au milieu du canal sera fixé par $V_g$ et les potentiels en bout de canal n'auront pas d'influence au milieu du canal.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Images/DIBL_schema.png}
+        \caption{Potentiel le long du canal pour une grille courte : $V_d$ influe sur $V_{Th}$}
+        \label{fig:}
+    \end{center}
+\end{figure}
+
+Quand on diminue les dimensions des transistors, ceci n'est plus le cas : l'augmentation de la tension $V_d$ aura une influence sur le potentiel au milieu du canal. La tension de seuil à appliquer à la grille ne sera alors plus exactement la même : la tension seuil a baissé. 
+
+Ceci est un problème très important en micro-électronique, car le changement de la tension seuil d'un transistor signifie un changement de son fonctionnement et on ne peut alors plus garantir le fonctionnement correct d'une puce, dont le fonctionnement correct nécessite des transistors de caractéristique constante et uniforme.
 
 \chapter{Mesure de la tension de seuil}
 La tension de seuil est la caractéristique principale de fonctionnement du transistor. Elle déterminera la consommation du dispositif, ainsi que sa performance en terme de fréquence de fonctionnement. Il est donc nécessaire de caractériser correctement cette tension.
