@@ -77,7 +77,7 @@ Lors de l'augmentation de la tension appliquée $V_d$ au transistor, arrive un m
     \begin{center}
         \includegraphics[width=0.9\textwidth]{Images/Canaux_Courts.png}
         \caption{Schéma d'effets de canaux courts}
-        \label{fig:}
+        \label{fig:canaux}
     \end{center}
 \end{figure}
 
@@ -90,7 +90,7 @@ Pour des transistors de taille "classique", le potentiel à chaque bout du canal
     \begin{center}
         \includegraphics[width=0.7\textwidth]{Images/DIBL_schema.png}
         \caption{Potentiel le long du canal pour une grille courte : $V_d$ influe sur $V_{Th}$}
-        \label{fig:}
+        \label{fig:potcanaux}
     \end{center}
 \end{figure}
 
@@ -213,11 +213,7 @@ Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV
 
 $I_{d_{N}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
 
-
-\subsection{Transistor FDSOI}
-%TODO graphe
-
-%TODO calculs
+Cependant, de part le trop faible nombre de transistors fonctionnels, nous n'avons pu mener pleinement à bien cette étude qui requiert plusieurs longueurs de grille différentes afin d'être validée.
 
 \chapter{Mesure du DIBL}
 Le DIBL est également important à connaître car il peut sensiblement modifier les performances du transistor. C'est un effet qui apparait lorsque les  longueurs de grille du transistor deviennent faibles. En effet, il arrive un moment dans la réduction de la longueur de grille où la tension appliquée $V_D$ a un influence sur la tension de seuil. 
@@ -225,10 +221,36 @@ On peut le calculer à partir des données précedentes.
 \[ DIBL = -\frac{V^{DD}_{Th} - V^{low}_{Th}}{V_{DD} - V^{low}_{D}}
 \]
 
+Pour cela, on peut tracer les courbes représentant le courant en fonction de la tension de grille pour deux tensions $V_d$ différentes.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/logidvg10um}
+        \caption{$log(I_d(V_g))$ du FDSOI, $l = 10\mu m$}
+        \label{logidvg_fdsoi_10um}
+    \end{center}
+\end{figure}
+
+On remarque sur la figure \ref{logidvg_fdsoi_10um} que les deux courbes sont presques confondues, la tension $V_d$ n'a que peu d'influence sur la tension de seuil, si bien qu'on peut considérer le DIBL nul : les deux tensions de seuils sont trop proches.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Images/logidvg30nm}
+        \caption{$log(I_d(V_g))$ du FDSOI, $l = 30nm$}
+        \label{logidvg_fdsoi_30nm}
+    \end{center}
+\end{figure}
+
+En revanche, sur la figure \ref{logidvg_fdsoi_30nm} on remarque clairement un décalage des deux courbes. Le DIBL est important, ce qui est logique pour un transistor de longueur de grille 30nm. 
+
+\[DIBL = 210mV/V\]
+
+On peut également rémarquer l'effet du DIBL sur les caractéristiques $I_d(V_d)$
+
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/DIBL-11-30}
-        \caption{$I_d(V_g)$ du FDSOI, $l = 30nm$}
+        \caption{$I_d(V_d)$ du FDSOI, $l = 30nm$}
         \label{DIBL_fdsoi_30nm}
     \end{center}
 \end{figure}
@@ -237,22 +259,17 @@ On peut le calculer à partir des données précedentes.
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{Images/DIBL-1-10}
-        \caption{$I_d(V_g)$ du FDSOI, $l =10\mu m$}
+        \caption{$I_d(V_d)$ du FDSOI, $l =10\mu m$}
         \label{DIBL_fdsoi_10um}
     \end{center}
 \end{figure}
-%TODO calculs
-On peut vérifier ces calculs en regardant la cours en log.
-%TODO graphe
-On peut également voir l'effet du DIBL en traçant des caractéristiques $I_d(V_d)$.
-%TODO graphe 
 
-\section{Comparaison des architectures}
+Sur ces courbes, on remarque que pour le transistor de $10\mu m$, dans la zone saturée le courant $I_d$ ne dépend plus de $V_d$, il est constant, tandis que pour le transistor court, la pente est non nulle. Cette pente provient du DIBL et ne correspond pas au fonctionnement normal d'un transistor "idéal".
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Ce TP nous a permis de découvir plus en détails la caractérisation électronique que nous avions abordé l'an passé en caractérisant des diodes et des capacités. Nous avons ainsi pu observer le comportement electrique de différents transistors (Architecture bulk et FDSOI) de taille différentes et d'étudier leurs performances. De plus ce TP est un complément aux cours de composants car il permet de visualiser en pratique les résultats affirmés en cours. Nous avons pu mesurer les caractéristiques tracées à main levée en cours et trouver les caractéristiques des transistors, mesures classiques en microéléctroniques.
+Ce TP nous a permis de découvir plus en détails la caractérisation électronique que nous avions abordé l'an passé en caractérisant des diodes et des capacités. Nous avons ainsi pu observer le comportement electrique de différents transistors (Architecture bulk et FDSOI) de taille différentes et d'étudier leurs performances. De plus ce TP est un complément aux cours de composants car il permet de visualiser en pratique les résultats affirmés en cours. Nous avons pu mesurer les caractéristiques tracées à main levée en cours et trouver les caractéristiques des transistors, mesures classiques en microéléctroniques. Ces éléments seront importants par la suite car ces mesures et calculs sont systématique pour beaucoup de parties des processus d'élaboration en microélectronique, en phases de tests autant qu'en phase de fiabilité par exemple.
 
 
 
