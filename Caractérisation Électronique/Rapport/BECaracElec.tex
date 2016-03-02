@@ -96,8 +96,6 @@ Pour des transistors de taille "classique", le potentiel à chaque bout du canal
 
 Quand on diminue les dimensions des transistors, ceci n'est plus le cas : l'augmentation de la tension $V_d$ aura une influence sur le potentiel au milieu du canal. La tension de seuil à appliquer à la grille ne sera alors plus exactement la même : la tension seuil a baissé.
 
-On peut
-
 Ceci est un problème très important en micro-électronique, car le changement de la tension seuil d'un transistor signifie un changement de son fonctionnement et on ne peut alors plus garantir le fonctionnement correct d'une puce, dont le fonctionnement correct nécessite des transistors de caractéristique constante et uniforme.
 
 \chapter{Mesure de la tension de seuil}
@@ -207,7 +205,7 @@ On remarque ainsi dans la figure \ref{yfun_bulk_40} que la tension de seuil pour
     \end{center}
 \end{figure}
 
-Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV$ pour le transistor de 10 $\mu m$ et (Figure \ref{yfun_fdsoi_30nm}) $V_T=450mV$ pour celui de $30nm$. Ces valeurs sont sensiblement différentes des valeurs précédentes.
+Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV$ pour le transistor de 10 $\mu m$ et (Figure \ref{yfun_fdsoi_30nm}) $V_T=450mV$ pour celui de $30nm$. Ces valeurs sont sensiblement différentes des valeurs précédentes, les méthodes de détermination étant différentes et s'appuyant sur des extrapolations linéaires.
 
 
 \section{Méthode du courant constant}
@@ -216,6 +214,17 @@ Pour les transistors FDSOI, on obtient (Figure \ref{yfun_fdsoi_10um}) $V_T=490mV
 $I_{d_{N}}$ est alors un paramètre arbitraire, un critère, que l'on pourra utiliser pour une série de transistors dont les dimensions seront différentes, afin de déterminer $V_T$ de manière uniforme.
 
 Cependant, de part le trop faible nombre de transistors fonctionnels, nous n'avons pu mener pleinement à bien cette étude qui requiert plusieurs longueurs de grille différentes afin d'être validée.
+
+Pour l'architecture DIBL, nous avons du déterminer :
+
+\[I_{d_{N}}=I_{d_{TH}}*L=1,98.10^{-12} A.m = 1,98 \mu A.\mu m\]
+
+Grâce au transistor de $10\mu m$. Nous pouvons tenter de vérifier avec le transistor de $30nm$, en appliquant la formule, on trouve : 
+
+\[I_{d_{TH}}=\dfrac{I_{d_{N}}}{L} = 6,6.10^{-5}\mu A\]
+
+Les valeurs trouvées par cette méthode semblent incohérentes, c'est sans doute du au fait que nous n'avons pas pu établir de statistique à cause du faible nombre de transistors fonctionnels. Peut-être que ceux utilisés n'étaient pas optimaux.
+
 
 \chapter{Mesure du DIBL}
 Le DIBL est également important à connaître car il peut sensiblement modifier les performances du transistor. C'est un effet qui apparait lorsque les  longueurs de grille du transistor deviennent faibles. En effet, il arrive un moment dans la réduction de la longueur de grille où la tension appliquée $V_D$ a un influence sur la tension de seuil.
